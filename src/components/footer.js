@@ -17,12 +17,12 @@ const Footer = () => {
 
                 <div class="footer-box">
                     <h3>Follow us</h3>
-                    <div class="social">
+                    {/* <div class="social">
                         <li><a href="#"><i class='bx bxl-facebook-circle'></i>Facebook</a></li>
                         <li><a href="#"><i class='bx bxl-twitter'></i>Twitter</a></li>
                         <li><a href="#"><i class='bx bxl-instagram' ></i>Instagram</a></li>
                         <li><a href="#"><i class='bx bxl-blogger'></i>Blog</a></li>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div class="footer-box">
