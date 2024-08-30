@@ -147,12 +147,12 @@ const Home = () => {
                 <div className="overlay-text"><b><h3>Healthcare</h3></b></div>
               </div>
               </Link>
-            <a href="#">
+            
               <div className="image-container">
-                <img src="/disaster.png" alt="Disaster Relief" />
+                <img src="/disaster.png"/>
                 <div className="overlay-text"><b><h3>Disaster Relief</h3></b></div>
               </div>
-            </a>
+            
             <a href="children.html">
               <div className="image-container">
                 <img src="/child.jpeg" alt="Children's Homes" />
