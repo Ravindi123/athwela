@@ -20,7 +20,9 @@ const Login = () => {
                     </div>
                     <div class="forget">
                         <label><input type="checkbox" id="remember-me"/> Remember Me</label>
-                        <a href="#">Forgot Password</a>
+                        {/* <a href="#"> */}
+                            Forgot Password
+                            {/* </a> */}
                     </div>
                     <button class="submit" type="button" onclick="window.location.href='projectRegistration.html'">Log In</button>
                     {/* <button type="submit">Log In</button> */}

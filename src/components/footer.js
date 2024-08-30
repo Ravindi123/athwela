@@ -30,8 +30,8 @@ const Footer = () => {
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="payment.html">Donate</a></li>
-                    <li><a href="#">Fundraise</a></li>
-                    <li><a href="#">Review</a></li>
+                    {/* <li><a href="#">Fundraise</a></li>
+                    <li><a href="#">Review</a></li> */}
                 </div>
 
                 <div class="footer-box">
