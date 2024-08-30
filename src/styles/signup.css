@@ -1,4 +1,4 @@
-/* * {
+* {
     margin: 0;
     padding: 0;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
@@ -19,12 +19,12 @@
   
 }
 
-.signup_container {
+/* .signup_container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("statbar-img.jpg") no-repeat center center/cover;
+    background: url(/public/statbar-img.jpg) no-repeat center center/cover;
 } */
 
 .signup_container 
@@ -34,7 +34,10 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
+    background: url(/public/statbar-img.jpg) no-repeat center center/cover;
 }
+
 
 .form_box {
     position: relative;
