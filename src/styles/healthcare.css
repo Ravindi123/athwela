@@ -266,12 +266,13 @@ body {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    transition: opacity 0.3s, box-shadow 0.3s;
+    transition: opacity 0.8s, box-shadow 0.3s;
 }
 
 .donate_button:hover {
     opacity: 0.8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%);
 }
 
 .donate_button:active {
