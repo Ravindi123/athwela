@@ -4,21 +4,21 @@ import '../styles/signup.css';
 const signup = () => {
     return (
         <section className = "signup_container">
-        <div class="form-box">
-            <div class="form-value">
+        <div class="form_box">
+            <div class="form_value">
                 <form>
                     <h2>Sign Up</h2>
                     <div class="inputbox">
                         <ion-icon name="letter-outline"></ion-icon>
-                        <input type={text} id="email" required></input>
+                        <input type="email" id="email" required></input>
                         <label for="email">Name</label>
                     </div><div class="inputbox">
                         <ion-icon name="card-outline"></ion-icon>
-                        <input type={number} id="email" required></input>
+                        <input type="email" id="email" required></input>
                         <label for="email">NIC Number</label>
                     </div><div class="inputbox">
                         <ion-icon name="call-outline"></ion-icon>
-                        <input type={number} id="email" required></input>
+                        <input type="email" id="email" required></input>
                         <label for="email">Mobile Number</label>
                     </div>
                     <div class="inputbox">
@@ -45,4 +45,4 @@ const signup = () => {
     );
 };
 
-export default Login;
+export default signup;

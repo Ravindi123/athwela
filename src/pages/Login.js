@@ -4,8 +4,8 @@ import '../styles/login.css';
 const Login = () => {
     return (
         <section class="container">
-        <div class="form-box">
-            <div class="form-value">
+        <div class="form_box">
+            <div class="form_value">
                 <form>
                     <h2>Login</h2>
                     <div class="inputbox">

@@ -9,7 +9,7 @@
     background: url(/public/statbar-img.jpg) no-repeat center center/cover;
 }
 
-.form-box {
+.form_box {
     position: relative;
     width: 400px;
     padding: 20px;

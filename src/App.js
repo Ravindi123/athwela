@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FirebaseProvider from './firebaseContext';
 import Healthcare from './pages/healthcare';
+import signup from './pages/signup';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="/home" element={<>
           <div><Home/></div>
           <footer><Footer/></footer></>} />
+          <Route path="/signup" element={
+          <div><signup/></div>}/>
           <Route path="/healthcare" element={<>
           <div><Healthcare/></div>
           <footer><Footer/></footer></>} />
