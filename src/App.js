@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FirebaseProvider from './firebaseContext';
 import Healthcare from './pages/healthcare';
 import Signup from './pages/signup';
+import SignupOrganization from './pages/signupOrganization';
+import Select from './pages/select';
 
 function App() {
   return (
@@ -23,13 +25,17 @@ function App() {
           <Route path="/home" element={<>
           <div><Home/></div>
           <footer><Footer/></footer></>} />
-          <Route path="/signup" element={
-          <div><Signup/></div>}/>
+          <Route path="/select" element={
+          <div><section/><Select/></div>}/>
           <Route path="/healthcare" element={<>
           <div><Healthcare/></div>
           <footer><Footer/></footer></>} />
         <Route path="/login" element={<div><Login/></div>} />
+        <Route path="/signup" element={<div><Signup/></div>} />
+        <Route path="/signupOrganization" element={<div><SignupOrganization/></div>} />
       </Routes>
+
+      
     </Router>
 
       
