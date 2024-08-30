@@ -215,7 +215,7 @@ body {
     text-overflow: ellipsis;
 }
 
-.project-info .progress_bar {
+.project_info .progress_bar {
     width: 100%;
     background-color: #a0a0a0;
     border-radius: 5px;
@@ -228,24 +228,24 @@ body {
     background-color: green;
 }
 
-.project-info .funding,
-.project-info .needed,
-.project-info .status {
+.project_info .funding,
+.project_info .needed,
+.project_info .status {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: right;
 }
 
-.project-info .needed {
+.project_info .needed {
     color: #6a0202;
 }
 
-.project-info .status {
+.project_info .status {
     color: green;
 }
 
-.donate-button {
+.donate_button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -269,11 +269,11 @@ body {
     transition: opacity 0.3s, box-shadow 0.3s;
 }
 
-.donate-button:hover {
+.donate_button:hover {
     opacity: 0.8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.donate-button:active {
+.donate_button:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }

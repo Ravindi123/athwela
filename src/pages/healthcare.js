@@ -39,17 +39,17 @@ const Healthcare = () => {
                 {projects.map((project) => (
                     <div class="project_card" key={project.id}>
                         <div class="image_container">
-                            <img src="/images/verified.jpg" alt="Verified Icon" class="verified-icon" />
-                            <img src="/images/kidneyPatient.jpg" alt="Project Image" class="project-image" />
+                            <img src="/images/verified.jpg" alt="Verified Icon" class="verified_icon" />
+                            <img src="/images/kidneyPatient.jpg" alt="Project Image" class="project_image" />
                         </div>
 
                         <div class="project_info">
                             <span class="category">Healthcare</span>
-                            <a href="project-details.html" class="project-title">
+                            <a href="project-details.html" class="project_title">
                                 <h3>{project.name}</h3>
                             </a>
                             <p class="description">{project.description}</p>
-                            <div class="progress-bar">
+                            <div class="progress_bar">
                                 <div class="progress" style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
                             </div>
                             <p class="status">{((project.raised / project.need) * 100).toFixed(0)}% funded</p>
