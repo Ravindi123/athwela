@@ -194,6 +194,7 @@ header{
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
+    width: 10%;
 }
 
 .prev {
@@ -206,6 +207,7 @@ header{
 
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%);
 }
 
 /*about us section*/
