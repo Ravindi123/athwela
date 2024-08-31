@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -27,7 +28,7 @@ const Login = () => {
                     <button class="submit" type="button" onclick="window.location.href='projectRegistration.html'">Log In</button>
                     {/* <button type="submit">Log In</button> */}
                     <div class="register">
-                        <p>Don't have an account? <a href="select.html">Sign Up</a></p>
+                        <p>Don't have an account? <Link to="/select">Sign Up</Link></p>
                     </div>
                 </form>
             </div>

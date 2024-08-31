@@ -149,7 +149,7 @@ const Home = () => {
               </Link>
             
               <div className="image-container">
-                <img src="/disaster.png"/>
+                <img src="/disaster.png" alt='desaster'/>
                 <div className="overlay-text"><b><h3>Disaster Relief</h3></b></div>
               </div>
             

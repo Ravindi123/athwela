@@ -20,7 +20,7 @@ function App() {
     
       <Routes>
         <Route path="/" element={<>
-          <div><Home/></div>
+          <div><Select/></div>
           <footer><Footer/></footer></>} />
           <Route path="/home" element={<>
           <div><Home/></div>

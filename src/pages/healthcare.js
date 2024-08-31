@@ -39,8 +39,8 @@ const Healthcare = () => {
                 {projects.map((project) => (
                     <div class="project_card" key={project.id}>
                         <div class="image_container">
-                            <img src="/images/verified.jpg" class="verified_icon" />
-                            <img src="/images/kidneyPatient.jpg" class="project_image" />
+                            <img src="/images/verified.jpg" alt='verified' class="verified_icon" />
+                            <img src="/images/kidneyPatient.jpg" alt={project.name} class="project_image" />
                         </div>
 
                         <div class="project_info">
