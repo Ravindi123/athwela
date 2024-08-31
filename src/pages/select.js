@@ -15,9 +15,9 @@ const Select = () => {
                 <form>
                     <h2>Are you an;</h2>
                     
-                    <div class="buttons">
-                        <button class="submit" type="button" onClick={() => handleNavigate('/signupOrganization')}>Organization</button>
-                        <button class="submit" type="button" onClick={() => handleNavigate('/signup')}>Individual</button>
+                    <div class="buttons_select">
+                        <button class="submit" type="button_s" onClick={() => handleNavigate('/signupOrganization')}>Organization</button>
+                        <button class="submit" type="button_s" onClick={() => handleNavigate('/signup')}>Individual</button>
                     </div>
                 </form>
             </div>
