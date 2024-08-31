@@ -39,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
     return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, []);
+  }, [nextSlide]);
 
   useEffect(() => {
     showSlides();

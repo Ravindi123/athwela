@@ -3,7 +3,7 @@ import '../styles/signup.css';
 
 const SignupOrganization = () => {
     return (
-        <section>
+        <section class="signup_container">
             <div className="form_box">
                 <div className="form_value">
                     <form>
@@ -49,7 +49,7 @@ const SignupOrganization = () => {
 
                         <div className="forget">
                             <label>
-                                <input type="checkbox" id="remember-me" /> I Agree to <a href="#">All Terms and Conditions</a>.
+                                 <input type="checkbox" id="remember-me" /> I Agree to {/*<a href="#">All Terms and Conditions</a>. */}
                             </label>
                         </div>
 
