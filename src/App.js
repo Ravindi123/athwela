@@ -26,7 +26,7 @@ function App() {
           <div><Home/></div>
           <footer><Footer/></footer></>} />
           <Route path="/select" element={
-          <div><section/><Select/></div>}/>
+          <div><Select/></div>}/>
           <Route path="/healthcare" element={<>
           <div><Healthcare/></div>
           <footer><Footer/></footer></>} />
