@@ -115,7 +115,7 @@ const SignupOrganization = () => {
 
                         <div className={styles.forget}>
                             <label>
-                                 <input type="checkbox" id="remember-me" /> I Agree to {/*<a href="#">All Terms and Conditions</a>. */}
+                                <input type="checkbox" id="remember-me" /> I Agree to All Terms and Conditions.
                             </label>
                         </div>
 

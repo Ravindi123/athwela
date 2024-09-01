@@ -1,4 +1,6 @@
 // import React, { useState, useEffect } from 'react';
+import '../styles/styles.css';
+// import React, { useState, useEffect } from 'react';
 // import styles from '../styles/styles.module.css';
 // import { Link } from 'react-router-dom';
 
@@ -211,35 +213,47 @@ import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
+  // const [slideIndex, setSlideIndex] = useState(0);
 
-  const slides = [
-    {
-      image: '/project-img2.jpeg',
-      caption: 'Join us in supporting a brave child\'s fight against cancer. Your generous donation can provide life-saving treatments and hope for a brighter, healthier future. Together, we can make a difference.'
-    },
-    {
-      image: '/project-img3.jpg',
-      caption: 'Help us equip underprivileged students with essential school supplies. Your contribution can empower their education and pave the way for a brighter future. Together, let\'s make learning accessible for all.'
-    },
-    {
-      image: '/project-img1.jpg',
-      caption: 'Support our mission to provide nutritious meals for elderly residents in need. Your donation can bring comfort and nourishment to those who deserve our care. Together, let\'s make a difference.'
-    }
-  ];
+  // const slides = [
+  //   {
+  //     image: '/project-img2.jpeg',
+  //     caption: 'Join us in supporting a brave child\'s fight against cancer. Your generous donation can provide life-saving treatments and hope for a brighter, healthier future. Together, we can make a difference.'
+  //   },
+  //   {
+  //     image: '/project-img3.jpg',
+  //     caption: 'Help us equip underprivileged students with essential school supplies. Your contribution can empower their education and pave the way for a brighter future. Together, let\'s make learning accessible for all.'
+  //   },
+  //   {
+  //     image: '/project-img1.jpg',
+  //     caption: 'Support our mission to provide nutritious meals for elderly residents in need. Your donation can bring comfort and nourishment to those who deserve our care. Together, let\'s make a difference.'
+  //   }
+  // ];
 
-  const nextSlide = () => {
-    setSlideIndex(prevIndex => (prevIndex + 1) % slides.length);
-  };
+  // const showSlides = () => {
+  //   if (slideIndex >= slides.length) {
+  //     setSlideIndex(0);
+  //   } else if (slideIndex < 0) {
+  //     setSlideIndex(slides.length - 1);
+  //   }
+  // };
 
-  const prevSlide = () => {
-    setSlideIndex(prevIndex => (prevIndex - 1 + slides.length) % slides.length);
-  };
+  // const nextSlide = () => {
+  //   setSlideIndex(prevIndex => (prevIndex + 1) % slides.length);
+  // };
+  
+  // const prevSlide = () => {
+  //   setSlideIndex(prevIndex => (prevIndex - 1 + slides.length) % slides.length);
+  // };
 
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+  //   return () => clearInterval(interval); // Clean up the interval on component unmount
+  // }, [nextSlide]);
+
+  // useEffect(() => {
+  //   showSlides();
+  // }, [slideIndex]);
 
   return (
     <div>
@@ -259,6 +273,8 @@ const Home = () => {
           </div>
         </div>
 
+        {/* <div className="slider-container">
+          <div className="slider" style={{ transform: `translateX(${-slideIndex * 100}%)`, display: 'flex', transition: 'transform 0.5s ease-in-out' }}>
         <div className={styles.sliderContainer}>
           <div className={styles.slider} style={{ transform: `translateX(${-slideIndex * 100}%)`, display: 'flex', transition: 'transform 0.5s ease-in-out' }}>
             {slides.map((slide, index) => (
@@ -268,9 +284,9 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <button className={styles.prev} onClick={prevSlide}>&#10094;</button>
-          <button className={styles.next} onClick={nextSlide}>&#10095;</button>
-        </div>
+          <button className="prev" onClick={prevSlide}>&#10094;</button>
+          <button className="next" onClick={nextSlide}>&#10095;</button>
+        </div> */}
       </section>
 
       <section className={styles.about} id="about">
@@ -342,6 +358,12 @@ const Home = () => {
                 <img src="/health.png" alt="Healthcare" />
                 <div className={styles.overlayText}><b><h3>Healthcare</h3></b></div>
               </div>
+              </Link>
+            <Link to="/disasterReleif">
+              <div className={styles.image-container}>
+                <img src="/disaster.png" alt='disaster'/>
+                <div className={styles.overlay-text}><b><h3>Disaster Relief</h3></b></div>
+              </div>
             </Link>
             <a href="#">
               <div className={styles.imageContainer}>
@@ -349,6 +371,7 @@ const Home = () => {
                 <div className={styles.overlayText}><b><h3>Disaster Relief</h3></b></div>
               </div>
             </a>
+            
             <a href="children.html">
               <div className={styles.imageContainer}>
                 <img src="/child.jpeg" alt="Children's Homes" />

@@ -34,9 +34,11 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <>
-            <a href="#" className={styles.logo}>
-                <img src="/logo.jpg" alt="Logo"/>
-            </a>
+            <Link to="home">
+                <div class="logo">
+                    <img src="/logo.jpg" alt="" />
+                </div>
+            </Link>
             <i className={`bx bx-menu ${styles.menuIcon}`} id="menu-icon"></i>
             <ul className={styles.navbar}>
                 <li><Link to="home">Home</Link></li>
