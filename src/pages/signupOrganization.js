@@ -64,10 +64,16 @@
 // };
 
 // export default SignupOrganization;
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../styles/signup.module.css';
 
 const SignupOrganization = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [id, setID] = useState('');
+    const [mobile, setMobile] = useState('');
+    
     return (
         <section className={styles.signup_container}>
             <div className={styles.form_box}>
@@ -77,13 +83,13 @@ const SignupOrganization = () => {
                         
                         <div className={styles.inputbox}>
                             <ion-icon name="letter-outline"></ion-icon>
-                            <input type="text" id="name" required />
+                            <input type="text" id="name" required onChange={(e) => setName(e.target.value)}/>
                             <label htmlFor="name">Name</label>
                         </div>
 
                         <div className={styles.inputbox}>
                             <ion-icon name="card-outline"></ion-icon>
-                            <input type="number" id="org-id" required />
+                            <input type="number" id="org-id" required onChange={(e) => setID(e.target.value)}/>
                             <label htmlFor="org-id">Organization ID</label>
                         </div>
 
@@ -97,19 +103,19 @@ const SignupOrganization = () => {
 
                         <div className={styles.inputbox}>
                             <ion-icon name="call-outline"></ion-icon>
-                            <input type="number" id="mobile" required />
+                            <input type="number" id="mobile" required onChange={(e) => setMobile(e.target.value)}/>
                             <label htmlFor="mobile">Mobile Number</label>
                         </div>
 
                         <div className={styles.inputbox}>
                             <ion-icon name="mail-outline"></ion-icon>
-                            <input type="email" id="email" required />
+                            <input type="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
                             <label htmlFor="email">Email</label>
                         </div>
 
                         <div className={styles.inputbox}>
                             <ion-icon name="lock-closed-outline"></ion-icon>
-                            <input type="password" id="password" required />
+                            <input type="password" id="password" required onChange={(e) => setPassword(e.target.value)} />
                             <label htmlFor="password">Password</label>
                         </div>
 

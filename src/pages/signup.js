@@ -104,6 +104,9 @@
 // export default Signup;
 import React, {useState} from 'react';
 import styles from '../styles/signup.module.css';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth ,db } from '../firebase'; 
+import { setDoc, doc } from 'firebase/firestore';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -112,12 +115,24 @@ const Signup = () => {
     const [nic, setNIC] = useState('');
     const [mobile, setMobile] = useState('');
     
+    const handleRegister = async(e) => {
+        e.preventDefault();
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            const user = auth.currentUser;
+            console.log(user);
+            console.log("User registered successfully");
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
 
     return (
         <section className={styles.signup_container}>
             <div className={styles.form_box}>
                 <div className={styles.form_value}>
-                    <form>
+                    <form onSubmit={handleRegister}>
                         <h2>Sign Up</h2>
                         
                         <div className={styles.inputbox}>
@@ -157,7 +172,7 @@ const Signup = () => {
                             </label>
                         </div>
 
-                        <button className={styles.submit} type="button" onClick={() => window.location.href = 'index.html'}>Sign Up</button>
+                        <button className={styles.submit} type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>
