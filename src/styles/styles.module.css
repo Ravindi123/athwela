@@ -1,34 +1,4 @@
-*{
-    font-family: calibri;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-padding-top: 4rem;
-    scroll-behavior: smooth;
-    list-style: none;
-    text-decoration: none;
-}
 
-:root{
-    --main-color:#5b85b6;
-    --secondary-color: black;
-    --text-color: #1b1b1b;
-    --bg-color: #fff;
-
-    --box-shadow: 2px 2px 10px 14px rgb(14 55 54 / 15%)
-  
-}
-section{
-    padding: 50px 100px;
-}
-
-img{
-    width: 100%;
-}
-
-body{
-    color: var(--text-color);
-}
 header{
     position: fixed;
     width: 100%;
@@ -49,7 +19,6 @@ header{
     cursor: pointer;
     display: none;
 }
-
 
 .logo img{
     width: 120px;
@@ -73,7 +42,7 @@ header{
     
 }
 
-.search-container {
+.searchContainer {
     display: flex;
     align-items: center;
     border: 2px solid var(--secondary-color);
@@ -99,7 +68,7 @@ header{
     border-radius: 50%;
 }
 
-.search-container i{
+.searchContainer i{
     color: var(--secondary-color);
 }
 
@@ -122,14 +91,14 @@ header{
     gap: 1.5rem;
 }
 
-.home-text h1{
+.homeText h1{
     font-size: 3.4rem;
     color: var(--bg-color);
     text-transform: capitalize;
     letter-spacing: 1px;
 }
 
-.home-text p{
+.homeText p{
     font-size: 0.938rem;
     color: var(--bg-color);
     margin: 0.5rem;
@@ -149,7 +118,7 @@ header{
 }
 
 /*sliding projects */
-.slider-container {
+.sliderContainer {
     position: relative;
     width: 80%;
     max-width: 500px;
@@ -229,7 +198,7 @@ header{
 .about img{
     border-radius: 1.8rem;
 }
-.about-text{
+.aboutText{
     padding-top: 40px;
 }
 .about h2{
@@ -248,21 +217,21 @@ header{
     gap: 1.5rem;
 }
 /* stat bar */
-.stats-bar {
+.statsBar {
     position: relative;
     text-align: center;
     color: white;
     background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
 }
 
-.stats-bar img {
+.statsBar img {
     width: 100%;
     height: 300px;
     display: block;
     border-radius: 0;
 }
 
-.stats-bar .overlay {
+.statsBar .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -277,16 +246,16 @@ header{
 .project{
     background-color: var(--main-color);
 }
-.project-container{
+.projectContainer{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(280px,auto));
     gap: 1.5rem;
     margin-top: 2rem;
 }
-.project .project-text{
+.project .projectText{
     text-align: center;
 }
-.image-container {
+.imageContainer {
     position: relative;
     display: inline-block;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -297,14 +266,14 @@ header{
     margin:10px;
 }
 
-.image-container img {
+.imageContainer img {
     object-fit: cover;
     width: 200px;
     height: 250px;
     border-radius: 16px;
 }
 
-.overlay-text {
+.overlayText {
     position: absolute;
     top: 85%;
     left: 50%;
@@ -318,13 +287,13 @@ header{
     border-radius: 4px;
 }
 
-.image-container:hover{
+.imageContainer:hover{
     transform: scale(1.05);
 }
 
 /* review section */
 
-.customer-container{
+.customerContainer{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(280px,auto));
     gap: 1.5rem;
@@ -333,22 +302,22 @@ header{
 .title {
     text-align: center;
 }
-.customer-container .box{
+.customerContainer .box{
     padding: 20px;
     box-shadow: var(--box-shadow);
     border-radius: 0.5rem;
     text-align: center;
 }
 
-.customer-container .box p{
+.customerContainer .box p{
     font-size: 0.938rem;
 }
-.customer-container .box h2{
+.customerContainer .box h2{
     font-size: 1.2rem;
     font-weight: 600;
     margin: 0.5rem 1rem;
 }
-.customer-container .box img{
+.customerContainer .box img{
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -356,7 +325,7 @@ header{
 }
 
 
-.customer-container .box:hover{
+.customerContainer .box:hover{
     background-color: var(--main-color);
     transform: scale(105%);
     transition-property: background-color;
@@ -372,7 +341,7 @@ header{
     padding-left: 200px;
     padding-right: 200px;
 }
-.footer-box h3{
+.footer_box h3{
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 10px;
@@ -380,7 +349,7 @@ header{
 .footer img{
     width: 150px;
 }
-.footer-box p{
+.footer_box p{
     font-size: 0.938rem;
     margin-bottom: 10px;
 }
@@ -403,10 +372,10 @@ header{
     color: var(--main-color);
     border-color: var(--main-color);
 }
-.footer-box li a{
+.footer_box li a{
     color: var(--text-color);
 }
-.footer-box li a:hover{
+.footer_box li a:hover{
     color: var(--main-color);
 }
 .contact{

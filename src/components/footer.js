@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from '../styles/styles.module.css';
 
 const Footer = () => {
     return (
         <>
-        <section class="footer">
-                <div class="footer-box">
+        <section className={styles.footer}>
+                <div className={styles.footer_box}>
                     <img src="logo.jpg" alt="" />
                     <p>
                         Supporting Our Community <br />
@@ -15,17 +16,17 @@ const Footer = () => {
 
                 </div>
 
-                <div class="footer-box">
+                <div className={styles.footer_box}>
                     <h3>Follow us</h3>
-                    <div class="social">
-                        <li><a href="#"><i class='bx bxl-facebook-circle'></i>Facebook</a></li>
-                        <li><a href="#"><i class='bx bxl-twitter'></i>Twitter</a></li>
-                        <li><a href="#"><i class='bx bxl-instagram' ></i>Instagram</a></li>
-                        <li><a href="#"><i class='bx bxl-blogger'></i>Blog</a></li>
+                    <div className={styles.social}>
+                        <li><a href="#"><i className='bx bxl-facebook-circle'></i>Facebook</a></li>
+                        <li><a href="#"><i className='bx bxl-twitter'></i>Twitter</a></li>
+                        <li><a href="#"><i className='bx bxl-instagram' ></i>Instagram</a></li>
+                        <li><a href="#"><i className='bx bxl-blogger'></i>Blog</a></li>
                     </div>
                 </div>
 
-                <div class="footer-box">
+                <div className={styles.footer_box}>
                     <h3>View guide</h3>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#about">About Us</a></li>
@@ -34,19 +35,19 @@ const Footer = () => {
                     <li><a href="#">Review</a></li>
                 </div>
 
-                <div class="footer-box">
+                <div className={styles.footer_box}>
                     <h3>Contact</h3>
-                    <div class="contact">
-                        <span><i class='bx bx-map'></i>335, Ruwan Maga, Dodangoda</span>
-                        <span><i class='bx bxs-phone' ></i>+94 70 781 4534</span>
-                        <span><i class='bx bx-envelope' ></i>athwela@gmail.com</span>
+                    <div className={styles.contact}>
+                        <span><i className='bx bx-map'></i>335, Ruwan Maga, Dodangoda</span>
+                        <span><i className='bx bxs-phone' ></i>+94 70 781 4534</span>
+                        <span><i className='bx bx-envelope' ></i>athwela@gmail.com</span>
                     </div>
                 </div>
 
             </section>
-            <section class="copyright">
+            <section className={styles.copyright}>
                 <h3>................................................................................................................</h3>
-                <h3>Copyright <i class='bx bxs-copyright'></i> Athwela 2024</h3>
+                <h3>Copyright <i className='bx bxs-copyright'></i> Athwela 2024</h3>
             </section>
            
             </>

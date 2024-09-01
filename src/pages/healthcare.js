@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
 import { collection,onSnapshot,doc} from "firebase/firestore";
-import '../styles/healthcare.css';
+import styles from '../styles/healthcare.module.css';
 
 const Healthcare = () => {
     const {db }= useFirebase(); // Access Firestore instance from context
@@ -31,32 +31,32 @@ const Healthcare = () => {
 
     return (
         <div>
-            <section class="title">
+            <section className={styles.title}>
                 <h2>Raise Funds To Save A Life</h2>
             </section>
 
-            <section class="card_container">
+            <section className={styles.card_container}>
                 {projects.map((project) => (
-                    <div class="project_card" key={project.id}>
-                        <div class="image_container">
-                            <img src="/images/verified.jpg"  class="verified_icon" />
-                            <img src="/images/kidneyPatient.jpg" class="project_image" />
+                    <div className={styles.project_card} key={project.id}>
+                        <div className={styles.image_container}>
+                            <img src="/images/verified.jpg"  className={styles.verified_icon} />
+                            <img src="/images/kidneyPatient.jpg" className={styles.project_image} />
                         </div>
 
-                        <div class="project_info">
-                            <span class="category">Healthcare</span>
-                            <a href="project-details.html" class="project_title">
+                        <div className={styles.project_info}>
+                            <span className={styles.category}>Healthcare</span>
+                            <a href="project-details.html" className={styles.project_title}>
                                 <h3>{project.name}</h3>
                             </a>
-                            <p class="description">{project.description}</p>
-                            <div class="progress_bar">
-                                <div class="progress" style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
+                            <p className={styles.description}>{project.description}</p>
+                            <div className={styles.progress_bar}>
+                                <div className={styles.progress} style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
                             </div>
-                            <p class="status">{((project.raised / project.need) * 100).toFixed(0)}% funded</p>
-                            <p class="funding">Raised: LKR {project.raised}</p>
-                            <p class="needed">Need: LKR {project.need}</p>
+                            <p className={styles.status}>{((project.raised / project.need) * 100).toFixed(0)}% funded</p>
+                            <p className={styles.funding}>Raised: LKR {project.raised}</p>
+                            <p className={styles.needed}>Need: LKR {project.need}</p>
                         </div>
-                        <button class="donate_button" onclick="window.location.href='donation-page.html'">Donate</button>
+                        <button className={styles.donate_button} onclick="window.location.href='donation-page.html'">Donate</button>
                     </div>
                 ))}
             </section>

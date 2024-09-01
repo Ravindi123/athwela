@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/select.css';
+import styles from '../styles/select.module.css';
 
 const Select = () => {
     const navigate = useNavigate();
@@ -9,15 +9,15 @@ const Select = () => {
         navigate(path);
     };
     return (
-        <section class="select_container">
-        <div class="form_box_select">
-            <div class="form_value">
+        <section className={styles.select_container}>
+        <div className={styles.form_box_select}>
+            <div className={styles.form_value}>
                 <form>
                     <h2>Are you an;</h2>
                     
-                    <div class="buttons_select">
-                        <button class="submit" type="button_s" onClick={() => handleNavigate('/signupOrganization')}>Organization</button>
-                        <button class="submit" type="button_s" onClick={() => handleNavigate('/signup')}>Individual</button>
+                    <div className={styles.buttons_select}>
+                        <button className = {styles.submit} type="button" onClick={() => handleNavigate('/signupOrganization')}>Organization</button>
+                        <button className={styles.submit} type="button" onClick={() => handleNavigate('/signup')}>Individual</button>
                     </div>
                 </form>
             </div>

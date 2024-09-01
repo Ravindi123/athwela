@@ -1,26 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-    box-sizing: border-box;
-}
-
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(/public/mission.jpg) no-repeat center center/cover;
-} */
 
 .select_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
     width: 100%;
     height: 100%;
-    min-height: 100vh;
-    background: url(/public/mission.jpg) no-repeat center center/cover;
+    background: url(/public/statbar-img.jpg) no-repeat center center/cover;
 }
 
 .form_box_select {
@@ -43,26 +29,26 @@ h2 {
     margin-bottom: 20px;
 }
 
-.form_group {
+/* .form_value {
     width: 100%;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
 }
 
-.form_group label {
+.form_value label {
     color: #fff;
     margin-bottom: 5px;
 }
 
-.form_group input {
+.form_value input {
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
-}
+} */
 
 .buttons_select {
     display: flex;
@@ -70,21 +56,24 @@ h2 {
     align-items: center;
     width: 100%;
     margin-top: 20px;
+    flex-direction: column;
 }
 
-.submit {
-    width: 60%;
-    height: 40px;
-    border-radius: 20px;
+
+.buttons_select .submit {
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
     background-color: #fff;
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.4em;
     font-weight: 600;
     transition: background-color 0.3s, transform 0.3s;
-    padding:10px;
-    margin: 10px;
+    padding:5px;
+    margin: 10px 0;
 }
 
 .submit:hover {

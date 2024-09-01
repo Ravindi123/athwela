@@ -46,54 +46,117 @@
 // };
 
 // export default Signup;
+// import React from 'react';
+// import styles from '../styles/signup.module.css';
+
+// const Signup = () => {
+//     return (
+//         <section className="signup_container">
+//             <div className="form_box">
+//                 <div className="form_value">
+//                     <form>
+//                         <h2>Sign Up</h2>
+                        
+//                         <div className="inputbox">
+//                             <ion-icon name="letter-outline"></ion-icon>
+//                             <input type="text" id="name" required />
+//                             <label htmlFor="name">Name</label>
+//                         </div>
+
+//                         <div className="inputbox">
+//                             <ion-icon name="card-outline"></ion-icon>
+//                             <input type="number" id="nic" required />
+//                             <label htmlFor="nic">NIC Number</label>
+//                         </div>
+
+//                         <div className="inputbox">
+//                             <ion-icon name="call-outline"></ion-icon>
+//                             <input type="number" id="mobile" required />
+//                             <label htmlFor="mobile">Mobile Number</label>
+//                         </div>
+
+//                         <div className="inputbox">
+//                             <ion-icon name="mail-outline"></ion-icon>
+//                             <input type="email" id="email" required />
+//                             <label htmlFor="email">Email</label>
+//                         </div>
+
+//                         <div className="inputbox">
+//                             <ion-icon name="lock-closed-outline"></ion-icon>
+//                             <input type="password" id="password" required />
+//                             <label htmlFor="password">Password</label>
+//                         </div>
+
+//                         <div className="forget">
+//                             <label>
+//                                 <input type="checkbox" id="remember-me" /> I Agree to <a href="#">All Terms and Conditions</a>.
+//                             </label>
+//                         </div>
+
+//                         <button className="submit" type="button" onClick={() => window.location.href = 'index.html'}>Sign Up</button>
+//                     </form>
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// };
+
+// export default Signup;
 import React from 'react';
-import '../styles/signup.css';
+import styles from '../styles/signup.module.css';
 
 const Signup = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [nic, setNIC] = useState('');
+    const [mobile, setMobile] = useState('');
+    
+
     return (
-        <section className="signup_container">
-            <div className="form_box">
-                <div className="form_value">
+        <section className={styles.signup_container}>
+            <div className={styles.form_box}>
+                <div className={styles.form_value}>
                     <form>
                         <h2>Sign Up</h2>
                         
-                        <div className="inputbox">
+                        <div className={styles.inputbox}>
                             <ion-icon name="letter-outline"></ion-icon>
-                            <input type="text" id="name" required />
+                            <input type="text" id="name" required onChange={(e) => setName(e.target.value)} />
                             <label htmlFor="name">Name</label>
                         </div>
 
-                        <div className="inputbox">
+                        <div className={styles.inputbox}>
                             <ion-icon name="card-outline"></ion-icon>
-                            <input type="number" id="nic" required />
+                            <input type="number" id="nic" required onChange={(e) => setNIC(e.target.value)}/>
                             <label htmlFor="nic">NIC Number</label>
                         </div>
 
-                        <div className="inputbox">
+                        <div className={styles.inputbox}>
                             <ion-icon name="call-outline"></ion-icon>
-                            <input type="number" id="mobile" required />
+                            <input type="number" id="mobile" required onChange={(e) => setMobile(e.target.value)} />
                             <label htmlFor="mobile">Mobile Number</label>
                         </div>
 
-                        <div className="inputbox">
+                        <div className={styles.inputbox}>
                             <ion-icon name="mail-outline"></ion-icon>
-                            <input type="email" id="email" required />
+                            <input type="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
                             <label htmlFor="email">Email</label>
                         </div>
 
-                        <div className="inputbox">
+                        <div className={styles.inputbox}>
                             <ion-icon name="lock-closed-outline"></ion-icon>
-                            <input type="password" id="password" required />
+                            <input type="password" id="password" required onChange={(e) => setPassword(e.target.value)} />
                             <label htmlFor="password">Password</label>
                         </div>
 
-                        <div className="forget">
+                        <div className={styles.forget}>
                             <label>
                                 <input type="checkbox" id="remember-me" /> I Agree to <a href="#">All Terms and Conditions</a>.
                             </label>
                         </div>
 
-                        <button className="submit" type="button" onClick={() => window.location.href = 'index.html'}>Sign Up</button>
+                        <button className={styles.submit} type="button" onClick={() => window.location.href = 'index.html'}>Sign Up</button>
                     </form>
                 </div>
             </div>
