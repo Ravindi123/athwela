@@ -102,7 +102,7 @@
 // };
 
 // export default Signup;
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../styles/signup.module.css';
 
 const Signup = () => {

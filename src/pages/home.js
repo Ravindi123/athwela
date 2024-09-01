@@ -1,5 +1,5 @@
 // import React, { useState, useEffect } from 'react';
-import '../styles/styles.css';
+//import '../styles/styles.module.css';
 // import React, { useState, useEffect } from 'react';
 // import styles from '../styles/styles.module.css';
 // import { Link } from 'react-router-dom';
@@ -359,12 +359,6 @@ const Home = () => {
                 <div className={styles.overlayText}><b><h3>Healthcare</h3></b></div>
               </div>
               </Link>
-            <Link to="/disasterReleif">
-              <div className={styles.image-container}>
-                <img src="/disaster.png" alt='disaster'/>
-                <div className={styles.overlay-text}><b><h3>Disaster Relief</h3></b></div>
-              </div>
-            </Link>
             <a href="#">
               <div className={styles.imageContainer}>
                 <img src="/disaster.png" alt="Disaster Relief" />

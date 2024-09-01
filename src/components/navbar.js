@@ -35,7 +35,7 @@ const Navbar = () => {
     return (
         <>
             <Link to="home">
-                <div class="logo">
+                <div className={styles.logo}>
                     <img src="/logo.jpg" alt="" />
                 </div>
             </Link>
