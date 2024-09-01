@@ -204,6 +204,7 @@ header{
 .about h2{
     font-size: 1.8rem;
     text-transform: uppercase;
+    color:black
 }
 
 .about p{
@@ -229,6 +230,11 @@ header{
     height: 300px;
     display: block;
     border-radius: 0;
+}
+
+.statsBar h2 {
+    color:#fff;
+    align-items: justify;
 }
 
 .statsBar .overlay {
