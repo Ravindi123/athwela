@@ -40,6 +40,8 @@
 import React, {useState} from 'react';
 import styles from '../styles/login.module.css';
 import { Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 
 
@@ -48,11 +50,22 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            console.log("User logged in successfully");
+            window.location.href = "/home";
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <section className={styles.container}>
             <div className={styles.form_box}>
                 <div className={styles.form_value}>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <h2>Login</h2>
                         <div className={styles.inputbox}>
                             <ion-icon name="mail-outline"></ion-icon>
@@ -68,7 +81,7 @@ const Login = () => {
                             <label><input type="checkbox" id="remember-me" /> Remember Me</label>
                             <a href="#">Forgot Password</a>
                         </div>
-                        <button className={styles.submit} type="button" onClick={() => window.location.href='projectRegistration.html'}>Log In</button>
+                        <button className={styles.submit} type="submit">Log In</button>
                         {/* <button type="submit">Log In</button> */}
                         <div className={styles.register}>
                             <p>Don't have an account? <Link to="select">Sign Up</Link></p>
