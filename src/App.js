@@ -9,7 +9,9 @@ import Healthcare from './pages/healthcare';
 import Signup from './pages/signup';
 import SignupOrganization from './pages/signupOrganization';
 import Select from './pages/select';
-import ProjectRegistration from './pages/projectRegistration'
+import ProjectRegistration from './pages/projectRegistration';
+import HomeRegistration from './pages/homeRegistration';
+import SelectProject from './pages/selectProject';
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
         <Route path="/login" element={<div><Login/></div>} />
         <Route path="/signup" element={<div><Signup/></div>} />
         <Route path="/signupOrganization" element={<div><SignupOrganization/></div>} />
+        <Route path="/selectProject" element={<div><SelectProject/></div>}/>
+        <Route path="/projectRegistration" element={<div><ProjectRegistration/></div>}/>
+        <Route path="/homeRegistration" element={<div><HomeRegistration/></div>}/>
       </Routes>
 
       
