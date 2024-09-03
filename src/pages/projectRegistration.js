@@ -52,11 +52,11 @@ const ProjectRegistration = () => {
                 <div className={styles.radioGroup}>
                     <div className={styles.form_group_tick}>
                         <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"  />
-                        <label className={styles.form_check_label} htmlFor="inlineRadio1">Children's Home</label>
+                        <label className={styles.form_check_label} htmlFor="inlineRadio1">Health Care</label>
                     </div>
                     <div className={styles.form_group_tick}>
                         <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                        <label className={styles.form_check_label} htmlFor="inlineRadio2">Adult's Home</label>
+                        <label className={styles.form_check_label} htmlFor="inlineRadio2">Disaster Relief</label>
                     </div>
                 </div>
 
