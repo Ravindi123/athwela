@@ -14,6 +14,7 @@ import HomeRegistration from './pages/homeRegistration';
 import SelectProject from './pages/selectProject';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserProfile from './pages/userProfile';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       <Routes>
         
         <Route path="/" element={<>
-          <div><Home/></div>
+          <div><UserProfile/></div>
           <footer><Footer/></footer></>} />
           <Route path="/home" element={<>
           <div><Home/></div>
