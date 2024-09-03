@@ -396,3 +396,41 @@ header{
     padding-top: 0;
 }
 
+/* #menu_icon{
+    display: none;
+    color: var(--secondary-color);
+    font-size: 24px;
+    z-index: 100001;
+    cursor: pointer;
+} */
+
+/* media queries */
+/* media queries for navigation bar */
+@media(max-width:1050px){
+    header{
+        padding: 12px 4%;
+    }
+    /* #menu_icon{
+        display: initial;
+    } */
+    .navbar{
+        position: absolute;
+        top: -570px;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--secondary-color);
+        row-gap: 1.4rem;
+        padding: 20px;
+        transition: 0.3s;
+        text-align: center;
+    }
+    .navbar a{
+        color: var(--text-color);
+    }
+    .navbar.active{
+        top: 100%;
+    }
+}
+ 

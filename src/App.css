@@ -55,7 +55,7 @@ header{
   font-size: 24px;
   z-index: 100001;
   cursor: pointer;
-  display: none;
+   display: none; 
 }
 #search_input {
   border: none;
@@ -76,3 +76,9 @@ header{
 #search_btn:hover {
   background-color: var(--main-color);
 }
+@media(max-width:1050px){
+  #menu_icon{
+      display: initial;
+  }
+}
+
