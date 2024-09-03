@@ -9,6 +9,7 @@ import Healthcare from './pages/healthcare';
 import Signup from './pages/signup';
 import SignupOrganization from './pages/signupOrganization';
 import Select from './pages/select';
+import ProjectRegistration from './pages/projectRegistration'
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

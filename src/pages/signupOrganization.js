@@ -20,6 +20,13 @@ const SignupOrganization = () => {
             toast.error("Mobile number must be exactly 10 digits long",{position: "top-center", hideProgressBar: true});
             return;
         }
+
+        var isChecked = document.getElementById("checkbox").checked;
+
+        if (isChecked == false) {
+            toast.error("You must agree to the terms and conditions before signing up.", {position: "top-center", hideProgressBar: true});
+            return;
+        }
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             const user = auth.currentUser;
@@ -94,7 +101,7 @@ const SignupOrganization = () => {
 
                         <div className={styles.forget}>
                             <label>
-                                <input type="checkbox" id="remember-me" /> I Agree to All Terms and Conditions.
+                                <input type="checkbox" id="checkbox" /> I Agree to All Terms and Conditions.
                             </label>
                         </div>
 

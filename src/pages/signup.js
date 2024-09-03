@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styles from '../styles/signup.module.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase'; 
@@ -21,7 +21,9 @@ const Signup = () => {
             return;
         }
 
-        if (checkbox.checked == false) {
+        var isChecked = document.getElementById("checkbox").checked;
+
+        if (isChecked == false) {
             toast.error("You must agree to the terms and conditions before signing up.");
             return;
         }
@@ -86,11 +88,11 @@ const Signup = () => {
                         <div className={styles.forget}>
                             <label>
                                 {/* Should go to a terms and conditions page. To be updated later */}
-                                <input type="checkbox" id="remember-me" onClick = "handleRegister()" /> I Agree to All Terms and Conditions.
+                                <input type="checkbox" id="checkbox" /> I Agree to All Terms and Conditions.
                             </label>
                         </div>
 
-                        <button className={styles.submit} type="submit" disabled={!isChecked}>Sign Up</button>
+                        <button className={styles.submit} type="submit" >Sign Up</button>
                     </form>
                 </div>
             </div>

@@ -50,14 +50,14 @@ header{
   transition: 0.5s linear;
 }
 
-#menu-icon{
-  color: var(--bg-color);
+#menu_icon{
+  color: var(--secondary-color);
   font-size: 24px;
   z-index: 100001;
   cursor: pointer;
   display: none;
 }
-#search-input {
+#search_input {
   border: none;
   outline: none;
   padding: 8px;
@@ -66,13 +66,13 @@ header{
   width: 200px;
 }
 
-#search-btn {
+#search_btn {
   background-color: white;
   border: none;
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
 }
-#search-btn:hover {
+#search_btn:hover {
   background-color: var(--main-color);
 }
