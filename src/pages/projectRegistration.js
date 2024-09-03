@@ -6,6 +6,17 @@ const ProjectRegistration = () => {
         <section className={styles.form_container}>
             <h2>Register Your Fundraising Project</h2>
             <form action="#" method="post" enctype="multipart/form-data">
+                <div className={styles.radioGroup}>
+                    <div className={styles.form_group_tick}>
+                        <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                        <label className={styles.form_check_label} htmlFor="inlineRadio1">Children's Home</label>
+                    </div>
+                    <div className={styles.form_group_tick}>
+                        <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                        <label className={styles.form_check_label} htmlFor="inlineRadio2">Adult's Home</label>
+                    </div>
+                </div>
+
                 <div className={styles.form_group}>
                     <label htmlFor="project-name">Project Name:</label>
                     <input type="text" id="project-name" name="project-name" required />

@@ -91,9 +91,41 @@ textarea {
     display: flex;
     align-items: center; /* This vertically centers the label with the checkbox */
     margin-bottom: 5%;
+    font-size: 18px;
 }
 
 
 .form_check_input {
     margin-right: 10px; /* Optional: Adds some space between the checkbox and the label */
+}
+
+.radioGroup {
+    display: flex;
+    align-items: center; /* Vertically centers the content within each radio button group */
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+
+.form_group, .form_group_tick {
+    display: flex;
+    align-items: center; /* Vertically centers the label with the radio button */
+     /* Adds space between each radio button group */
+    flex: 1;
+    font-size: 18px;
+}
+
+.form_group {
+    flex-direction: column;
+    text-align: left;
+
+}
+
+label{
+    display: block;
+    text-align: left;
+}
+
+.form_check_label {
+    display: block;
 }
