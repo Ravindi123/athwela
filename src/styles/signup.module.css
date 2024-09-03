@@ -81,6 +81,7 @@ input:valid ~ label {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    text-decoration: underline;
 }
 
 .forget label input {

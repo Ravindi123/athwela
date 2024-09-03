@@ -88,7 +88,7 @@ const Signup = () => {
                         <div className={styles.forget}>
                             <label>
                                 {/* Should go to a terms and conditions page. To be updated later */}
-                                <input type="checkbox" id="checkbox" /> I Agree to All Terms and Conditions.
+                                <input type="checkbox" id="checkbox" /> <a >I Agree to All Terms and Conditions.</a>
                             </label>
                         </div>
 

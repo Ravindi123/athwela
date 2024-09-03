@@ -101,7 +101,7 @@ const SignupOrganization = () => {
 
                         <div className={styles.forget}>
                             <label>
-                                <input type="checkbox" id="checkbox" /> I Agree to All Terms and Conditions.
+                                <input type="checkbox" id="checkbox" /> <a>I Agree to All Terms and Conditions.</a>
                             </label>
                         </div>
 
