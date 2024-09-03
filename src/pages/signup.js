@@ -12,7 +12,7 @@ const Signup = () => {
     const [name, setName] = useState('');
     const [nic, setNIC] = useState('');
     const [mobile, setMobile] = useState('');
-    // const [isChecked, setIsChecked] = useState(false);
+    
     
     const handleRegister = async(e) => {
         e.preventDefault();

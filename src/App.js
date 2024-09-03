@@ -15,6 +15,7 @@ import SelectProject from './pages/selectProject';
 import Project from './pages/project';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserProfile from './pages/userProfile';
 
 function App() {
   return (
@@ -27,7 +28,11 @@ function App() {
       <Routes>
         
         <Route path="/" element={<>
+<<<<<<< HEAD
           <div><Project/></div>
+=======
+          <div><UserProfile/></div>
+>>>>>>> 620f19d382e3d7c04f1d7a886e4235a8d63d9626
           <footer><Footer/></footer></>} />
           <Route path="/home" element={<>
           <div><Home/></div>
