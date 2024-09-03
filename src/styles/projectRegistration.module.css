@@ -46,11 +46,7 @@ h2 {
     margin-bottom: 15px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-}
+
 
 input[type="text"],
 input[type="number"],
