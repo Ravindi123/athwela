@@ -16,7 +16,7 @@ const Signup = () => {
     
     const handleRegister = async(e) => {
         e.preventDefault();
-        console.log("Checkbox checked:", isChecked);
+        // console.log("Checkbox checked:", isChecked);
         if (!/^\d{10}$/.test(mobile)) {
             toast.error("Mobile number must be exactly 10 digits long", { position: "top-center", hideProgressBar: true });
             return;
@@ -24,7 +24,7 @@ const Signup = () => {
 
         var isChecked = document.getElementById("checkbox").checked;
 
-        if (isChecked == false) {
+        if (isChecked === false) {
             toast.error("You must agree to the terms and conditions before signing up.");
             return;
         }
@@ -89,7 +89,7 @@ const Signup = () => {
                         <div className={styles.forget}>
                             <label>
                                 {/* Should go to a terms and conditions page. To be updated later */}
-                                <input type="checkbox" id="checkbox" /> <a >I Agree to All Terms and Conditions.</a>
+                                <input type="checkbox" id="checkbox" /> <span>I Agree to All Terms and Conditions.</span>
                             </label>
                         </div>
 

@@ -23,7 +23,7 @@ const SignupOrganization = () => {
 
         var isChecked = document.getElementById("checkbox").checked;
 
-        if (isChecked == false) {
+        if (isChecked === false) {
             toast.error("You must agree to the terms and conditions before signing up.", {position: "top-center", hideProgressBar: true});
             return;
         }
@@ -101,7 +101,7 @@ const SignupOrganization = () => {
 
                         <div className={styles.forget}>
                             <label>
-                                <input type="checkbox" id="checkbox" /> <a>I Agree to All Terms and Conditions.</a>
+                                <input type="checkbox" id="checkbox" /> <span>I Agree to All Terms and Conditions.</span>
                             </label>
                         </div>
 

@@ -38,8 +38,32 @@ const HomeRegistration = () => {
                     <div className={styles.form_group}>
                         <label for="inputState" class="form-label">District</label>
                         <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option>...</option>
+                            <option selected disabled>Choose...</option>
+                            <option>Colombo</option>
+                            <option>Galle</option>
+                            <option>Kalutara</option>
+                            <option>Gampaha</option>
+                            <option>Hambanthota</option>
+                            <option>Matara</option>
+                            <option>Badulla</option>
+                            <option>Monaragala</option>
+                            <option>Ratnapura</option>
+                            <option>Kagalle</option>
+                            <option>Madakalapuwa</option>
+                            <option>Ampara</option>
+                            <option>Trincomalee</option>
+                            <option>Anuradhapura</option>
+                            <option>Polonnaruwa</option>
+                            <option>Matale</option>
+                            <option>Kandy</option>
+                            <option>Nuwaraeliya</option>
+                            <option>Puttalam</option>
+                            <option>Kurunegala</option>
+                            <option>Jaffna</option>
+                            <option>Mannar</option>
+                            <option>Vavuniya</option>
+                            <option>Kilinochchi</option>
+                            <option>Mullaitivu</option>
                         </select>
                     </div>
 
