@@ -42,6 +42,7 @@ import styles from '../styles/login.module.css';
 import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { toast } from 'react-toastify';
 
 
 
@@ -56,8 +57,10 @@ const Login = () => {
             await signInWithEmailAndPassword(auth, email, password);
             console.log("User logged in successfully");
             window.location.href = "/home";
+            toast.success("User logged in successfully", {position: "top-center", hideProgressBar: true});
         } catch (error) {
             console.log(error);
+            toast.error("Login failed: Invalid credentials", {position: "bottom-center", hideProgressBar: true});
         }
     }
 
