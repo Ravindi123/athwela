@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { toast } from 'react-toastify';
+import 'boxicons';
 
 
 
@@ -32,12 +33,12 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                         <h2>Login</h2>
                         <div className={styles.inputbox}>
-                            <ion-icon name="mail-outline"></ion-icon>
+                            <box-icon  name='envelope' color="#fff"></box-icon>
                             <input type="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
                             <label htmlFor="email">Email</label>
                         </div>
                         <div className={styles.inputbox}>
-                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <box-icon name='lock-alt' color="#fff"></box-icon>
                             <input type="password" id="password" required  onChange={(e) => setPassword(e.target.value)}/>
                             <label htmlFor="password">Password</label>
                         </div>

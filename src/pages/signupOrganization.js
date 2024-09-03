@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth ,db } from '../firebase'; 
 import { setDoc, doc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-
+import 'boxicons';
 
 const SignupOrganization = () => {
     const [email, setEmail] = useState('');
@@ -67,7 +67,7 @@ const SignupOrganization = () => {
                         </div>
 
                         <div className={styles.inputbox}>
-                            <ion-icon name="card-outline"></ion-icon>
+                        <box-icon name='id-card' type='solid' color="#fff" ></box-icon>
                             <input type="number" id="org-id" required onChange={(e) => setID(e.target.value)} />
                             <label htmlFor="org-id">Organization ID</label>
                         </div>
@@ -82,19 +82,19 @@ const SignupOrganization = () => {
                         </div>
 
                         <div className={styles.inputbox}>
-                            <ion-icon name="call-outline"></ion-icon>
+                            <box-icon name='phone' color="#fff" ></box-icon>
                             <input type="number" id="mobile" required pattern="\d{10}" title="Mobile number must be 10 digits" onChange={(e) => setMobile(e.target.value)} />
                             <label htmlFor="mobile">Mobile Number</label>
                         </div>
 
                         <div className={styles.inputbox}>
-                            <ion-icon name="mail-outline"></ion-icon>
+                            <box-icon  name='envelope' color="#fff"></box-icon>
                             <input type="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
                             <label htmlFor="email">Email</label>
                         </div>
 
                         <div className={styles.inputbox}>
-                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <box-icon name='lock-alt' color="#fff"></box-icon>
                             <input type="password" id="password" required onChange={(e) => setPassword(e.target.value)} />
                             <label htmlFor="password">Password</label>
                         </div>
