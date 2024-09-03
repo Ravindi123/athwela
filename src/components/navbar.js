@@ -39,7 +39,7 @@ const Navbar = () => {
                     <img src="/logo.jpg" alt="" />
                 </div>
             </Link>
-            <i className={`bx bx-menu ${styles.menuIcon}`} id="menu-icon"></i>
+            <i className={`bx bx-menu ${styles.menuIcon}`} id="menu_icon"></i>
             <ul className={styles.navbar}>
                 <li><Link to="home">Home</Link></li>
                 <li><a href="/home#about">About us</a></li>
@@ -48,9 +48,9 @@ const Navbar = () => {
                 <li><Link to="login">Log In</Link></li>
             </ul>
             <div className={styles.searchContainer}>
-                <input type="text" id="search-input" placeholder="Search.." />
-                <button id="search-btn">
-                    <i className={`bx bx-search-alt ${styles.searchIcon}`} id="search-icon"></i>
+                <input type="text" id="search_input" placeholder="Search.." />
+                <button id="search_btn">
+                    <i className={`bx bx-search-alt ${styles.searchIcon}`} id="search_icon"></i>
                 </button>
             </div>
         </>
