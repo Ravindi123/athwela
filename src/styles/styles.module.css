@@ -265,6 +265,10 @@ header{
 .project .projectText{
     text-align: center;
 }
+.projectContainer a {
+    display: flex;
+    justify-content: center;
+}
 .imageContainer {
     position: relative;
     display: inline-block;
@@ -274,6 +278,7 @@ header{
     width: 200px;
     height: 250px;
     margin:10px;
+    
 }
 
 .imageContainer img {
@@ -281,6 +286,7 @@ header{
     width: 200px;
     height: 250px;
     border-radius: 16px;
+    
 }
 
 .overlayText {
