@@ -91,7 +91,8 @@ textarea {
     display: flex;
     align-items: center; /* This vertically centers the label with the checkbox */
     margin-bottom: 5%;
-    font-size: 18px;
+    font-size: 20px;
+    color: #333;
 }
 
 
@@ -103,22 +104,29 @@ textarea {
     display: flex;
     align-items: center; /* Vertically centers the content within each radio button group */
     width: 100%;
-    margin-top: 5%;
+    margin-top: 20px;
     margin-bottom: 1%;
 }
 
 .form_group, .form_group_tick {
     display: flex;
-    align-items: center; /* Vertically centers the label with the radio button */
+    align-items: left; /* Vertically centers the label with the radio button */
      /* Adds space between each radio button group */
     flex: 1;
-    font-size: 18px;
+    
 }
 
 .form_group {
     flex-direction: column;
     text-align: left;
+    color: #333;
+    font-size: 18px;
+}
 
+.form_group_tick{
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 2.5%;
 }
 
 label{
@@ -127,5 +135,5 @@ label{
 }
 
 .form_check_label {
-    display: block;
+    font-family: Arial;
 }
