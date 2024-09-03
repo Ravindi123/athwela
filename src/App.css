@@ -81,4 +81,9 @@ header{
       display: initial;
   }
 }
-
+@media(max-width:780px){
+  section{
+    padding: 25px 50px;
+  }
+  
+}

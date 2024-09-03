@@ -258,6 +258,10 @@ header{
     gap: 1.5rem;
     margin-top: 2rem;
 }
+.projectContainer a{
+    justify-content: center;
+    display: flex;
+}
 .project .projectText{
     text-align: center;
 }
@@ -405,8 +409,9 @@ header{
 } */
 
 /* media queries */
-/* media queries for navigation bar */
+
 @media(max-width:1050px){
+    /* media queries for navigation bar */
     header{
         padding: 12px 4%;
     }
@@ -432,5 +437,19 @@ header{
     .navbar.active{
         top: 100%;
     }
+    /* stat bar */
+    .statsBar{
+        height: 250px;
+    }
+    .statsBar img{
+        height: 250px;
+    }
+    .statsBar h2{
+        size: 1.5rem;
+    }
+}
+
+@media(max-width:780px){
+
 }
  
