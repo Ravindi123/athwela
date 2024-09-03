@@ -444,12 +444,130 @@ header{
     .statsBar img{
         height: 250px;
     }
+
+}
+
+
+@media (max-width: 680px) {
     .statsBar h2{
-        size: 1.5rem;
+        font-size: 1.5rem;
+    }
+    .aboutImg img{
+        display: none;
+    }
+    .missionImg img{
+        display: none;
+    }
+    .projectContainer {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .imageContainer {
+        width: 160px;
+        height: 200px;
+        margin: 5px;
+    }
+
+    .imageContainer img {
+        width: 160px;
+        height: 200px;
+    }
+
+    .overlayText {
+        top: 80%;
+        font-size: 14px;
+        padding: 4px;
+        margin-top: 10px;
+    }
+
+    .project .projectText {
+        text-align: left;
+        padding: 0 10px;
+    }
+    .about h2{
+        font-size: 1.2rem;
     }
 }
 
-@media(max-width:780px){
 
+@media (max-width: 530px) {
+    /* home section */
+    .home {
+        grid-template-columns: 1fr; 
+        gap: 1rem; 
+        padding: 1rem; 
+    }
+
+    .homeText h1 {
+        font-size: 2.4rem; 
+        text-align: center;
+        margin: 0.5rem 0; 
+    }
+
+    .homeText p {
+        font-size: 1rem; 
+        text-align: center; 
+        margin: 0.5rem; 
+        padding-bottom: 10px;
+    }
+
+    .btn {
+        padding: 8px 20px; 
+        margin: 10px auto; 
+        display: block; 
+        width: fit-content; 
+    }
+    /* stat bar */
+    .statsBar {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7); 
+        height: 350px;
+    }
+
+    .statsBar img {
+        object-fit: cover;
+        height: 350px;
+    }
+
+    .statsBar h2 {
+        font-size: 18px;
+        margin: 0 10px; 
+    }
+
+    .statsBar .overlay {
+        flex-direction: column;
+        justify-content: center; 
+        background: rgba(91, 133, 182, 0.8);
+        padding: 10px; 
+    }
+    /* projects */
+    .projectContainer {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 0.9fr));
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .imageContainer {
+        width: 160px;
+        height: 210px;
+        margin: 5px;
+    }
+
+    .imageContainer img {
+        width: 160px;
+        height: 210px;
+    }
+
+    .overlayText {
+        top: 75%;
+        font-size: 12px;
+        padding: 3px;
+    }
+
+    .project .projectText {
+        text-align: left;
+        padding: 0 5px;
+    }
 }
- 
+
