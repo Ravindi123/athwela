@@ -12,6 +12,7 @@ import Select from './pages/select';
 import ProjectRegistration from './pages/projectRegistration';
 import HomeRegistration from './pages/homeRegistration';
 import SelectProject from './pages/selectProject';
+import Project from './pages/project';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,7 +27,7 @@ function App() {
       <Routes>
         
         <Route path="/" element={<>
-          <div><Home/></div>
+          <div><Project/></div>
           <footer><Footer/></footer></>} />
           <Route path="/home" element={<>
           <div><Home/></div>
