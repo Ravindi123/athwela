@@ -1,13 +1,20 @@
+/*import React, { useState } from 'react';
+import styles from '../styles/homeRegistration.module.css';
+import { doc, setDoc, getFirestore } from "firebase/firestore"; // Import Firestore
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage
+import { auth, db } from '../firebase';// Adjust the path as needed
+*/
+
 import React, { useState } from 'react';
 import styles from '../styles/projectRegistration.module.css';
-import {  db,app, storage } from '../firebase';
+import { auth, db,app } from '../firebase';
 import { doc, setDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 
 /* // Initialize Firebase app
 const db = getFirestore(app); // Initialize Firestore*/
-// const storage = getStorage(app); // Initialize Firebase Storage
+const storage = getStorage(app); // Initialize Firebase Storage
 //const app = initializeApp(firebaseConfig);
 
 const HomeRegistration = () => {
@@ -36,7 +43,7 @@ const HomeRegistration = () => {
             // Upload images to Firebase Storage
             const imageUrls = await Promise.all(
                 [...images].map(async (image) => {
-                    const imageRef = ref(storage, 'images/${image.name}');
+                    const imageRef = ref(storage, `images/${image.name}`);
                     await uploadBytes(imageRef, image);
                     return await getDownloadURL(imageRef);
                 })
