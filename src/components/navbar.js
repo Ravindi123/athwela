@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React from 'react';
 // import styles from '../styles/styles.module.css'
 // import { Link } from 'react-router-dom';
@@ -28,6 +29,9 @@
 
 // export default Navbar;
 import React, { useEffect, useState, useRef } from 'react';
+=======
+import React from 'react';
+>>>>>>> 56eb5dbb217d304fcd48350140dbae5f26c3afe9
 import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
 

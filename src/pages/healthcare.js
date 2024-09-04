@@ -40,8 +40,8 @@ const Healthcare = () => {
                 
                     <div className={styles.project_card} key={project.id}>
                         <div className={styles.image_container}>
-                            <img src="/images/verified.jpg"  className={styles.verified_icon} />
-                            <img src="/images/kidneyPatient.jpg" className={styles.project_image} />
+                            <img src="/images/verified.jpg" alt="verified"  className={styles.verified_icon} />
+                            <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} />
                         </div>
 
                         <div className={styles.project_info}>
