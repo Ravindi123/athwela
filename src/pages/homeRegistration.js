@@ -4,12 +4,6 @@ import {  db,app, storage } from '../firebase';
 import { doc, setDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-
-/* // Initialize Firebase app
-const db = getFirestore(app); // Initialize Firestore*/
-// const storage = getStorage(app); // Initialize Firebase Storage
-//const app = initializeApp(firebaseConfig);
-
 const HomeRegistration = () => {
     const [projectName, setName] = useState('');
     const [tel, setTel] = useState('');
@@ -36,7 +30,7 @@ const HomeRegistration = () => {
             // Upload images to Firebase Storage
             const imageUrls = await Promise.all(
                 [...images].map(async (image) => {
-                    const imageRef = ref(storage, 'images/${image.name}');
+                    const imageRef = ref(storage, `images/${image.name}`);
                     await uploadBytes(imageRef, image);
                     return await getDownloadURL(imageRef);
                 })
