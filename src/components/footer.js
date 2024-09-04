@@ -18,6 +18,12 @@ const Footer = () => {
 
                 <div className={styles.footer_box}>
                     <h3>Follow us</h3>
+                    <div className={styles.social}>
+                        <li><span><i className='bx bxl-facebook-circle'></i>Facebook</span></li>
+                        <li><span><i className='bx bxl-twitter'></i>Twitter</span></li>
+                        <li><span><i className='bx bxl-instagram' ></i>Instagram</span></li>
+                        <li><span><i className='bx bxl-blogger'></i>Blog</span></li>
+                    </div>
                     {/* <div className={styles.social}>
                         <li><a href="#"><i className='bx bxl-facebook-circle'></i>Facebook</a></li>
                         <li><a href="#"><i className='bx bxl-twitter'></i>Twitter</a></li>
@@ -31,8 +37,8 @@ const Footer = () => {
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="payment.html">Donate</a></li>
-                    {/* <li><a href="#">Fundraise</a></li>
-                    <li><a href="#">Review</a></li> */}
+                    <li><a href="#projects">Fundraise</a></li>
+                    <li><a href="#review">Review</a></li>
                 </div>
 
                 <div className={styles.footer_box}>
