@@ -37,11 +37,23 @@ header{
     background-color: var(--main-color);
     border-radius: 0.2rem;
     transition-property: background-color;
-    transition-duration: 0.5s;
+    transition-duration: 0.1s;
     transition-timing-function: linear;
     
 }
+.userprof{
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+}
+/* .userprof:hover{
+    background-color: var(--main-color);
+} */
+.userproficon{
+    font-size: 50px;
+}
 
+/*
 .searchContainer {
     display: flex;
     align-items: center;
@@ -75,6 +87,7 @@ header{
 #search_btn:hover {
     background-color: var(--main-color);
 }
+*/
 
 /*home css*/
 
@@ -348,8 +361,9 @@ header{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(240px,auto));
     gap: 1.5rem;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
+    
 }
 .footer_box h3{
     font-size: 1.2rem;
@@ -432,8 +446,10 @@ header{
         text-align: center;
         z-index: 5;
     }
+    
     .navbar a{
         color: var(--text-color);
+        width: 100%;
     }
     .navbar.active{
         top: 100%;
@@ -569,6 +585,11 @@ header{
     .project .projectText {
         text-align: left;
         padding: 0 5px;
+    }
+    /* footer */
+    .footer{
+        padding-left: 50px;
+        padding-right: 50px;
     }
 }
 

@@ -70,11 +70,14 @@ const Navbar = () => {
                 <li><Link to="select">Sign Up</Link></li>
                 <li><Link to="login">Log In</Link></li>
             </ul>
-            <div className={styles.searchContainer} style={{zIndex : 10}}>
+            {/* <div className={styles.searchContainer} style={{zIndex : 10}}>
                 <input type="text" id="search_input" placeholder="Search.." />
                 <button id="search_btn">
                     <i className={`bx bx-search-alt ${styles.searchIcon}`} id="search_icon"></i>
                 </button>
+            </div> */}
+            <div className={styles.userprof}>
+                <span className={styles.userproficon}><i class='bx bx-user-circle'></i></span>
             </div>
         </>
     );
