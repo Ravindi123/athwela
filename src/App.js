@@ -13,33 +13,29 @@ import ProjectRegistration from './pages/projectRegistration';
 import HomeRegistration from './pages/homeRegistration';
 import SelectProject from './pages/selectProject';
 import Project from './pages/project';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
 
 function App() {
   return (
     <FirebaseProvider>
-    <div className="App">
-      <Router>
+      <div className="App">
+        <Router>
       <header><Navbar/></header>
 
-    
-      <Routes>
-        
-        <Route path="/" element={<>
-<<<<<<< HEAD
-          <div><Project/></div>
-=======
-          <div><UserProfile/></div>
->>>>>>> 620f19d382e3d7c04f1d7a886e4235a8d63d9626
-          <footer><Footer/></footer></>} />
-          <Route path="/home" element={<>
+
+          <Routes>
+
+            <Route path="/" element={<>
+              <div><Project /></div>
+              <footer><Footer /></footer></>} />
+            <Route path="/home" element={<>
           <div><Home/></div>
           <footer><Footer/></footer></>} />
-          <Route path="/select" element={
+            <Route path="/select" element={
           <div><Select/></div>}/>
-          <Route path="/healthcare" element={<>
+            <Route path="/healthcare" element={<>
           <div><Healthcare/></div>
           <footer><Footer/></footer></>} />
         <Route path="/login" element={<div><Login/></div>} />
@@ -48,18 +44,18 @@ function App() {
         <Route path="/selectProject" element={<div><SelectProject/></div>}/>
         <Route path="/projectRegistration" element={<div><ProjectRegistration/></div>}/>
         <Route path="/homeRegistration" element={<div><HomeRegistration/></div>}/>
-      </Routes>
-      <ToastContainer />
-      
+          </Routes>
+          <ToastContainer />
 
-      
-    </Router>
 
-      
-    </div>
+
+        </Router>
+
+
+      </div>
     </FirebaseProvider>
 
-    
+
   );
 }
 

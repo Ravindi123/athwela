@@ -6,8 +6,6 @@ import { auth } from '../firebase';
 import { toast } from 'react-toastify';
 import 'boxicons';
 
-
-
 const Login = () => {
 
     const [email, setEmail] = useState('');
