@@ -1,21 +1,8 @@
-/*import React, { useState } from 'react';
-import styles from '../styles/homeRegistration.module.css';
-import { doc, setDoc, getFirestore } from "firebase/firestore"; // Import Firestore
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage
-import { auth, db } from '../firebase';// Adjust the path as needed
-*/
-
 import React, { useState } from 'react';
 import styles from '../styles/projectRegistration.module.css';
-import { auth, db,app } from '../firebase';
+import { db,app,storage } from '../firebase';
 import { doc, setDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-
-/* // Initialize Firebase app
-const db = getFirestore(app); // Initialize Firestore*/
-const storage = getStorage(app); // Initialize Firebase Storage
-//const app = initializeApp(firebaseConfig);
 
 const HomeRegistration = () => {
     const [projectName, setName] = useState('');

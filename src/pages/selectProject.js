@@ -18,8 +18,8 @@ const SelectProject = () => {
                     <h2>Are you Registering;</h2>
                     
                     <div className={styles.buttons_select}>
-                        <button className = {styles.submit} type="button" onClick={() => handleNavigate('/homeRegistration')} >A Children's/ Elder's Home</button>
-                        <button className={styles.submit} type="button" onClick={() => handleNavigate('/projectRegistration')}>A Single Project</button>
+                        <button className = {styles.submit} type="button" onClick={() => handleNavigate('/homeRegistration')} >Children's / Elder's Home</button>
+                        <button className={styles.submit} type="button" onClick={() => handleNavigate('/projectRegistration')}>Single Project</button>
                     </div>
                 </form>
             </div>
