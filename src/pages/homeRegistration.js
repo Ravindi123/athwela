@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/projectRegistration.module.css';
+import styles from '../styles/homeRegistration.module.css';
 import {  db,app, storage } from '../firebase';
 import { doc, setDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
