@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+
 
 const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
@@ -47,7 +49,7 @@ const Navbar = () => {
                     <i className={`bx bx-search-alt ${styles.searchIcon}`} id="search_icon"></i>
                 </button>
             </div> */}
-            <div className={styles.userprof}>
+            <div className={styles.userprof} >
                 <span className={styles.userproficon}><i class='bx bx-user-circle'></i></span>
             </div>
         </>
