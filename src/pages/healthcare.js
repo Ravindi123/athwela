@@ -32,7 +32,7 @@ const Healthcare = () => {
     return (
         <div>
             <section className={styles.title}>
-                <h2>Raise Funds To Save A Life</h2>
+                <h2>Raise Funds To Save A Life...</h2>
             </section>
 
             <section className={styles.card_container}>
