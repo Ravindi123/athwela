@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/userProfile.css';
 import { auth, db } from '../firebase';
-import { collection, getDoc, doc } from 'firebase/firestore';
+import {  getDoc, doc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 const UserProfile = () => {
