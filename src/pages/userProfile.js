@@ -49,7 +49,7 @@ const UserProfile = () => {
             <h1 className="dashboard_heading">My Dashboard</h1>
             {userDetails ? (
                 <div className="main_content">
-                    <section className="left_panel">
+                    <div className="left_panel">
                         <div className="profile_container">
                             <div className="profile_picture">
                                 <img src="userprofile.jpg" alt="Profile" />
@@ -91,8 +91,8 @@ const UserProfile = () => {
                                 <canvas id="donationChart"></canvas>
                             </div>
                         </div>
-                    </section>
-                    <section className="right_panel">
+                    </div>
+                    <div className="right_panel">
                         <h2>Donation History</h2>
                         <div className="donation_made">
                             <img src="boy.jpg" alt="Trey's Surgery" className="donation_project_image" />
@@ -124,7 +124,7 @@ const UserProfile = () => {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             ) : (
                 <p>Loading...</p>
