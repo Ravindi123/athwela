@@ -110,8 +110,8 @@ const UserProfile = () => {
                                 <canvas id="donationChart"></canvas>
                             </div> */}
                         </div>
-                    </section>
-                    <section className="right_panel">
+                    </div>
+                    <div className="right_panel">
                         <div className="part">
                             <h2>Donation History</h2>
                             {donationHistory.length > 0 ? (
