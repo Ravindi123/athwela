@@ -48,7 +48,7 @@ const Login = () => {
                         </div>
                         <button className={styles.submit} type="submit" >Log In</button>
                         <div className={styles.register}>
-                            <p>Don't have an account? <Link to="select">Sign Up</Link></p>
+                            <p>Don't have an account? <Link to="/select">Sign Up</Link></p>
                         </div>
                     </form>
                 </div>
