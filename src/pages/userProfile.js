@@ -52,7 +52,7 @@ const UserProfile = () => {
                     <section className="left_panel">
                         <div className="profile_container">
                             <div className="profile_picture">
-                                <img src="profile_pic.jpg" alt="Profile" />
+                                <img src="userprofile.jpg" alt="Profile" />
                             </div>
                             <p className="name_of_user">{userDetails.name}</p>
                             <hr className="styled_line" />

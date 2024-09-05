@@ -91,6 +91,12 @@ const SignupOrganization = () => {
                             <input type="password" id="password" required onChange={(e) => setPassword(e.target.value)} />
                             <label htmlFor="password">Password</label>
                         </div>
+                        <div className={styles.forget}>
+                            <label>
+                                {/* Should go to a terms and conditions page. To be updated later */}
+                                <input type="checkbox" id="checkbox" onClick = {handleRegister} /> I Agree to All Terms and Conditions.
+                            </label>
+                        </div>
 
                         <button className={styles.submit} type="submit">Sign Up</button>
                     </form>

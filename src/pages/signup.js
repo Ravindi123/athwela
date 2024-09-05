@@ -83,7 +83,7 @@ const Signup = () => {
                         <div className={styles.forget}>
                             <label>
                                 {/* Should go to a terms and conditions page. To be updated later */}
-                                <input type="checkbox" id="checkbox" onClick = "handleRegister()" /> I Agree to All Terms and Conditions.
+                                <input type="checkbox" id="checkbox" onClick = {handleRegister} /> I Agree to All Terms and Conditions.
                             </label>
                         </div>
 
