@@ -13,9 +13,12 @@ body {
 
 .card_container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three projects per row */
+    /* grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
-    row-gap: 40px; /* Increased gap between rows */
+    row-gap: 40px;  */
+    grid-template-columns: repeat(auto-fit,minmax(280px,auto));
+    gap: 1.5rem;
+    margin-top: 2rem;
     background-image: url(/public/about_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -166,4 +169,18 @@ body {
 
 .donate_button:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+@media(max-width:900px){
+    .card_container{
+        grid-template-columns: repeat(auto-fit,minmax(180px,auto));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    .project_card{
+        padding-bottom: 25px;
+    }
+    .project_image{
+        height: 100px;
+    }
 }
