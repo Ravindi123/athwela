@@ -12,7 +12,7 @@ import Select from './pages/select';
 import ProjectRegistration from './pages/projectRegistration';
 import HomeRegistration from './pages/homeRegistration';
 import SelectProject from './pages/selectProject';
-import Project from './pages/project';
+// import Project from './pages/project';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
@@ -20,7 +20,7 @@ import {auth} from './firebase';
 import {useState, useEffect} from 'react';
 
 function App() {
-  const [ user, setUser] = useState();
+  const [user , setUser] = useState();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);

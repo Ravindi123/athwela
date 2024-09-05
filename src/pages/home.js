@@ -31,7 +31,7 @@ const Home = () => {
   // const nextSlide = () => {
   //   setSlideIndex(prevIndex => (prevIndex + 1) % slides.length);
   // };
-  
+
   // const prevSlide = () => {
   //   setSlideIndex(prevIndex => (prevIndex - 1 + slides.length) % slides.length);
   // };
@@ -148,14 +148,14 @@ const Home = () => {
                 <img src="/health.png" alt="Healthcare" />
                 <div className={styles.overlayText}><b><h3>Healthcare</h3></b></div>
               </div>
-              </Link>
+            </Link>
             <a href="/home">
               <div className={styles.imageContainer}>
                 <img src="/disaster.png" alt="Disaster Relief" />
                 <div className={styles.overlayText}><b><h3>Disaster Relief</h3></b></div>
               </div>
             </a>
-            
+
             <a href="children.html">
               <div className={styles.imageContainer}>
                 <img src="/child.jpeg" alt="Children's Homes" />
@@ -180,30 +180,30 @@ const Home = () => {
             <div className={styles.box}>
               <h2>Sameera Silva</h2>
               <img src="/customer1.jpg" alt="Dinara de Silva" />
-              <p>After my mother was diagnosed with a serious illness, we were struggling to cover her medical expenses. 
-                Halcyon gave us hope when we needed it most. Through the platform, we were able to quickly set up a fundraiser 
-                and share our story. We were able to afford the treatment, with the support we received from donors. My mother 
+              <p>After my mother was diagnosed with a serious illness, we were struggling to cover her medical expenses.
+                Halcyon gave us hope when we needed it most. Through the platform, we were able to quickly set up a fundraiser
+                and share our story. We were able to afford the treatment, with the support we received from donors. My mother
                 is now on her way to recovery. Thanks to Halcyon and everyone who donated!
               </p>
             </div>
             <div className={styles.box}>
               <h2>Ramesh Perera</h2>
               <img src="/customer2.jpg" alt="Ramesh Perera" />
-              <p>I was always hesitant to donate online because of concerns about where my money would actually go. 
-                But Halcyon completely changed my perspective! The verification process for medical cases gave me 
-                confidence, and the platform’s transparency ensured I could see exactly how my contributions were making 
-                a difference. I love how easy it is to make even small donations, knowing they will collectively have a 
+              <p>I was always hesitant to donate online because of concerns about where my money would actually go.
+                But Halcyon completely changed my perspective! The verification process for medical cases gave me
+                confidence, and the platform’s transparency ensured I could see exactly how my contributions were making
+                a difference. I love how easy it is to make even small donations, knowing they will collectively have a
                 big impact. Halcyon has made giving so much more accessible and meaningful!
               </p>
             </div>
             <div className={styles.box}>
               <h2>Amasha Fernando</h2>
               <img src="/customer3.jpg" alt="Amasha Fernando" />
-              <p>What I appreciate most about Halcyon is the ease of use and the sense of trust it builds. 
-                The secure payment gateway and real-time updates make me feel like I am truly a part of every 
+              <p>What I appreciate most about Halcyon is the ease of use and the sense of trust it builds.
+                The secure payment gateway and real-time updates make me feel like I am truly a part of every
                 campaign I support. It’s amazing to see the progress of each fundraiser and know that my donations,
-                 no matter how small, are contributing to someone's well-being. I would recommend this platform to anyone 
-                 looking to make a positive impact in our community.
+                no matter how small, are contributing to someone's well-being. I would recommend this platform to anyone
+                looking to make a positive impact in our community.
               </p>
             </div>
           </div>

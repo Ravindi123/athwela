@@ -126,7 +126,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: auto;
+    font-size: 16px;
 }
 
 .url_text{

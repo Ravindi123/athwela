@@ -22,13 +22,18 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     background-image: url(/public/about_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
 }
 
 .form_container {
     /* margin-top: 400px; */
     /* margin-left: 50px;
     margin-right: 50px; */
-    width: 50%;
+    /* width: 50%; */
+    width: 630px;
     margin: 130px auto;
     padding: 20px;
     padding-top: 50px;
@@ -37,7 +42,7 @@ body {
     border-radius: 8px;
 }
 
-h2 {
+.form_container h2 {
     text-align: center;
     color: #333;
 }
@@ -127,4 +132,23 @@ textarea {
 
 .form_check_label {
     font-family: Arial;
+}
+
+@media(max-width:700px){
+    .form_container{
+        width: 90%;
+    }
+    .form_group{
+        font-size: 16px;
+    }
+    .form_group_tick{
+        font-size: 17px;
+    }
+    .checkboxContainer{
+        font-size: 17px;
+    }
+    .form_container h2{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
 }

@@ -1,46 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
-import { collection,onSnapshot,doc} from "firebase/firestore";
+import { collection, onSnapshot, doc } from "firebase/firestore";
 import styles from '../styles/healthcare.module.css';
 
 const Healthcare = () => {
-    const {db }= useFirebase(); // Access Firestore instance from context
+    const { db } = useFirebase(); // Access Firestore instance from context
     const [projects, setProjects] = useState([]);
 
 
-   useEffect(() => {
-    const unsubscribe = onSnapshot(
-        collection(doc(db, "projects", "yjCSMLeRdUI87BGSlxOQ"), "healthcare"),
-        (snapshot) => {
-            const projectsArray = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                name: doc.data().name,
-                description: doc.data().description,
-                need: doc.data().need,
-                raised: doc.data().raised,
-            }));
+    useEffect(() => {
+        const unsubscribe = onSnapshot(
+            collection(doc(db, "projects", "yjCSMLeRdUI87BGSlxOQ"), "healthcare"),
+            (snapshot) => {
+                const projectsArray = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    need: doc.data().need,
+                    raised: doc.data().raised,
+                }));
 
-            setProjects(projectsArray);
-            console.log(projectsArray);
-        }
-    );
+                setProjects(projectsArray);
+                console.log(projectsArray);
+            }
+        );
 
-    // Cleanup function to unsubscribe from the listener when the component unmounts
-    return () => unsubscribe();
-}, [db]);
+        // Cleanup function to unsubscribe from the listener when the component unmounts
+        return () => unsubscribe();
+    }, [db]);
 
     return (
         <div>
             <section className={styles.title}>
-                <h2>Raise Funds To Save A Life</h2>
+                <h2>Raise Funds To Save A Life...</h2>
             </section>
 
             <section className={styles.card_container}>
                 {projects.map((project) => (
-                
+
                     <div className={styles.project_card} key={project.id}>
                         <div className={styles.image_container}>
-                            <img src="/images/verified.jpg" alt="verified"  className={styles.verified_icon} />
+                            <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
                             <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} />
                         </div>
 
