@@ -70,7 +70,7 @@ const Project = () => {
                         <div className={styles.story_updates}>
                             <div className={styles.tabs}>
                                 <button className={`${styles.story_tab} ${styles.active}`}>Story</button>
-                                <button className={styles.story_tab}><a>Updates</a></button>
+                                <button className={styles.story_tab}>Updates</button>
                                 <div className={styles.line}></div>
                             </div>
                             <div className={styles.content}>

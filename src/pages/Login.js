@@ -43,7 +43,8 @@ const Login = () => {
                         </div>
                         <div className={styles.forget}>
                             <label><input type="checkbox" id="remember-me" /> Remember Me</label>
-                            <a href="#">Forgot Password</a>
+                            {/* Later should add a anchor */}
+                            <span>Forgot Password</span>
                         </div>
                         <button className={styles.submit} type="submit" >Log In</button>
                         <div className={styles.register}>
