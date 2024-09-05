@@ -23,7 +23,7 @@ const Signup = () => {
             return;
         }
 
-        if (checkbox == false) {
+        if (checkbox === false) {
             toast.error("You must agree to the terms and conditions before signing up.");
             return;
         }

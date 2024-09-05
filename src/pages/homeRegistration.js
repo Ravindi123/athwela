@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import styles from '../styles/homeRegistration.module.css';
-import {  db,app, storage } from '../firebase';
+// import {app} from '../firebase';
+import {  db, storage } from '../firebase';
 import { doc, setDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { getStorage } from "firebase/storage";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 const HomeRegistration = () => {
     const [projectName, setName] = useState('');
     const [tel, setTel] = useState('');
-    const [description, setDescription] = useState('');
+    const [description] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
@@ -90,6 +92,10 @@ const HomeRegistration = () => {
                     <label htmlFor="description">Telephone</label>
                     <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} />
                 </div>
+                <div className={styles.form_group}>
+                    <label htmlFor="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
                 <div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputAddress" className="form-label">Address</label>
@@ -102,8 +108,34 @@ const HomeRegistration = () => {
                     <div className={styles.form_group}>
                         <label htmlFor="inputState" className="form-label">District</label>
                         <select id="inputState" className="form-select" onChange={(e) => setDistrict(e.target.value)}>
-                            <option selected>Choose...</option>
+                        <option selected>Choose...</option>
                             <option>...</option>
+                            <option selected disabled>Choose...</option>
+                            <option>Colombo</option>
+                            <option>Galle</option>
+                            <option>Kalutara</option>
+                            <option>Gampaha</option>
+                            <option>Hambanthota</option>
+                            <option>Matara</option>
+                            <option>Badulla</option>
+                            <option>Monaragala</option>
+                            <option>Ratnapura</option>
+                            <option>Kagalle</option>
+                            <option>Madakalapuwa</option>
+                            <option>Ampara</option>
+                            <option>Trincomalee</option>
+                            <option>Anuradhapura</option>
+                            <option>Polonnaruwa</option>
+                            <option>Matale</option>
+                            <option>Kandy</option>
+                            <option>Nuwaraeliya</option>
+                            <option>Puttalam</option>
+                            <option>Kurunegala</option>
+                            <option>Jaffna</option>
+                            <option>Mannar</option>
+                            <option>Vavuniya</option>
+                            <option>Kilinochchi</option>
+                            <option>Mullaitivu</option>
                         </select>
                     </div>
                     <div className={styles.form_group}>
