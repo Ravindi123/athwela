@@ -20,12 +20,7 @@ import {auth} from './firebase';
 import {useState, useEffect} from 'react';
 
 function App() {
-  const [user , setUser] = useState();
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-  });
+
   return (
     <FirebaseProvider>
       <div className="App">
