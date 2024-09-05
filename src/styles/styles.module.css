@@ -369,6 +369,8 @@ header{
     gap: 1.5rem;
     padding-left: 100px;
     padding-right: 100px;
+    background-color: #fff;
+    font-size: 1.3rem; 
     
 }
 .footer_box h3{
@@ -383,13 +385,15 @@ header{
     font-size: 0.938rem;
     margin-bottom: 10px;
 }
-/* .social{
+.social{
     display: flex;
-    align-items: center;
-    column-gap: 0.5rem;   
-} */
+    flex-direction: column;
+    align-items: left;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem; 
+     
+}
 .social span .bx{
-    font-size: 1.5rem;
     color: var(--text-color);
     padding: 8px;
     /* background: var(--secondary-color); */
@@ -418,6 +422,7 @@ header{
     text-align: center;
     color: rgb(128, 128, 128);
     padding-top: 0;
+    background-color: #fff;
 }
 
 /* #menu_icon{
