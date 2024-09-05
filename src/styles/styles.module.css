@@ -60,20 +60,6 @@ header{
     box-shadow: none; /* Remove box-shadow */
 }
 
-/* .userprof{
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 50%;
-} */
-/* .userprof:hover{
-    background-color: var(--main-color);
-} */
-/* .userproficon{
-    font-size: 50px;
-    outline: none;
-    box-shadow: none;
-
-} */
 
 .userproficon:disabled {
     cursor: not-allowed;

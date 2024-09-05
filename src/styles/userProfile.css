@@ -7,16 +7,17 @@ body {
 }
 
 .main_content {
-    padding: 20px;
+    padding: 10px;
     display:flex;
     flex-direction: row;
+    align-items: stretch;
     
 }
 
 .dashboard_heading {
     text-align: center;
     font-size: 50px;
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: 20px;
     color: #333;
 }
@@ -26,7 +27,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 50px;
-    margin-bottom: 40px;
+    
     margin: 20px;
 }
 
@@ -34,13 +35,13 @@ body {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 10px;
     flex: 1;
     min-width: 300px;
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
     transition: transform 0.6s ease-in-out, box-shadow 0.3s;
+    min-height: 650px;
 }
 
 /* .left_panel:hover ,
@@ -49,7 +50,11 @@ body {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 } */
 
-
+.left_panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .profile_container {
     text-align: center;
     margin: 10
@@ -133,9 +138,9 @@ body {
 .chart_info_wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin: 10px;
-    /* justify-content: space-between; */
-    /* margin-top: 50px; */
+    grid-template-rows: repeat(2, 1fr);
+    margin: 30px;
+    gap: 30px;
 }
 
 .chart_info {
@@ -161,31 +166,44 @@ body {
     margin: 0 auto;
 }
 
-.right_panel h2 {
-    text-align: center;
-    font-size: 35px;
-    margin-bottom: 20px;
+.right_panel {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
 }
 
-.donation_made {
+.part{
+    display: flex;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    border-radius: 10px;
+    max-height: 300px; 
+    overflow-y: auto;
+
+}
+.part h2{
+    margin: 10px;
+    text-align: center;
+}
+.project {
     display: flex;
     align-items: center;
     background-color: #f9f9f9;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
     
 }
-.donation_made:hover {
+.project:hover {
     transform: scale(1.02);
     opacity: 0.9;
     background-color: #8fbeed;
 }
 
 
-.donation_project_image {
+.project_image {
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -193,31 +211,38 @@ body {
     margin-right: 15px;
 }
 
-.donation_project_info {
+.project_info {
     flex: 1;
 }
 
-.donation_project_title {
+.project_title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.donation_details {
+.details {
     display: flex;
     justify-content: space-between;
 }
 
-.donated_date, .donated_amount {
+.project_date, .project_amount {
     font-size: 16px;
     color: #333;
 }
 
-.donated_amount {
+.project_amount {
     font-size: 18px;
     font-weight: bold;
 }
 
+.no_content {
+    text-align: center;
+    font-size: 25px;
+    color: #a09a9a;
+    margin-top: 20px;
+
+}
 @media (max-width: 768px) {
     .dashboard_wrapper {
         flex-direction: column;
