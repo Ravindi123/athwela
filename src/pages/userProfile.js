@@ -60,7 +60,7 @@ const UserProfile = () => {
             <h1 className="dashboard_heading">My Dashboard</h1>
             {userDetails ? (
                 <div className="main_content">
-                    <section className="left_panel">
+                    <div className="left_panel">
                         <div className="profile_container">
                             <div className="profile_picture">
                                 <img src="userprofile.jpg" alt="Profile" />
@@ -150,7 +150,7 @@ const UserProfile = () => {
                                 <p className="no_content">No campaigns created.</p>
                             )}
                         </div>
-                    </section>
+                    </div>
                 </div>
             ) : (
                 <p>Loading...</p>
