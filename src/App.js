@@ -20,7 +20,7 @@ import {auth} from './firebase';
 import {useState, useEffect} from 'react';
 
 function App() {
-  const [ setUser] = useState();
+  const [user , setUser] = useState();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
