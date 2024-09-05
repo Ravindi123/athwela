@@ -39,18 +39,47 @@ header{
     transition-property: background-color;
     transition-duration: 0.1s;
     transition-timing-function: linear;
-    
+   
 }
-.userprof{
+
+/* user profile icon */
+.userproficon {
+    font-size: 50px;
+    outline: none;
+    box-shadow: none;
+    border: none; /* Remove any default border */
+    background: none; /* Remove background color */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+}
+.userprof {
+    cursor: pointer;
+    padding: 4px; /* You can adjust or remove padding */
+    border-radius: 50%; /* Ensures the div remains rounded if it's affecting the button shape */
+    background: none; /* Remove background color if any */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+/* .userprof{
     cursor: pointer;
     padding: 4px;
     border-radius: 50%;
-}
+} */
 /* .userprof:hover{
     background-color: var(--main-color);
 } */
-.userproficon{
+/* .userproficon{
     font-size: 50px;
+    outline: none;
+    box-shadow: none;
+
+} */
+
+.userproficon:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; 
+    outline: none; 
+    box-shadow: none; 
 }
 
 /*
@@ -369,6 +398,7 @@ header{
     gap: 1.5rem;
     padding-left: 100px;
     padding-right: 100px;
+    background-color: #fff;
     
 }
 .footer_box h3{
@@ -383,13 +413,15 @@ header{
     font-size: 0.938rem;
     margin-bottom: 10px;
 }
-/* .social{
+.social{
     display: flex;
-    align-items: center;
-    column-gap: 0.5rem;   
-} */
+    flex-direction: column;
+    align-items: left;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem; 
+     
+}
 .social span .bx{
-    font-size: 1.5rem;
     color: var(--text-color);
     padding: 8px;
     /* background: var(--secondary-color); */
@@ -418,6 +450,7 @@ header{
     text-align: center;
     color: rgb(128, 128, 128);
     padding-top: 0;
+    background-color: #fff;
 }
 
 /* #menu_icon{

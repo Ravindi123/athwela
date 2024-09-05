@@ -35,7 +35,7 @@ function App() {
       <Routes>
         
         <Route path="/" element={<>
-          <div><Project/></div>
+          <div><Home/></div>
           <footer><Footer/></footer></>} />
           <Route path="/home" element={<>
           <div><Home/></div>
@@ -51,6 +51,7 @@ function App() {
         <Route path="/selectProject" element={<div><SelectProject/></div>}/>
         <Route path="/projectRegistration" element={<div><ProjectRegistration/></div>}/>
         <Route path="/homeRegistration" element={<div><HomeRegistration/></div>}/>
+        <Route path="/userProfile" element={<div><UserProfile/></div>}/>
           </Routes>
           <ToastContainer />
 
