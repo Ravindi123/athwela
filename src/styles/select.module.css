@@ -13,7 +13,9 @@
     position: relative;
     width: 400px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    /* background: rgba(255, 255, 255, 0.1); */
+    /* background: var(--main-color); */
+    background: #5b86b654;
     border-radius: 20px;
     backdrop-filter: blur(15px) brightness(80%);
     display: flex;
@@ -66,7 +68,7 @@
     height:50px;
     /* padding: 10px; */
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #ffffffc5;
     border: none;
     outline: none;
     cursor: pointer;
@@ -78,8 +80,9 @@
 }
 
 .submit:hover {
-    background-color: #4e65a1;
+    background-color: var(--main-color);
     transform: scale(1.05);
+    color: white;
 }
 
 .submit:focus {

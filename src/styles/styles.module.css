@@ -128,7 +128,7 @@ header{
 }
 
 .homeText p{
-    font-size: 0.938rem;
+    font-size: 1.2rem;
     color: var(--bg-color);
     margin: 0.5rem;
     padding-bottom: 20px;
@@ -136,14 +136,16 @@ header{
 .btn{
     padding: 10px 40px;
     border-radius: 0.3rem;
-    background: var(--bg-color);
-    color: var(--text-color);
-    font-weight: 500;
+    /* background: var(--bg-color); */
+    background: rgba(255, 255, 255, 0.714);
+    color: var(--secondary-color); 
+    font-weight: 600;
     margin-right: 20px;
     opacity: 75%;
 }
 .btn:hover{
     background: var(--main-color);
+    color: white;
 }
 
 /*sliding projects */
