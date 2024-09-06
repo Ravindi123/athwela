@@ -12,20 +12,43 @@ body{
     min-height: 100vh;
     
 } */
+:root{
+    --main-color:#5b85b6;
+    --secondary-color: black;
+    --text-color: #1b1b1b;
+    --bg-color: #fff;
+  
+    --box-shadow: 2px 2px 10px 14px rgb(14 55 54 / 15%)
+}
+
+.help{
+    background: url(/public/about_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .faqContainer{
-    margin: 0 40px;
-    max-width: 600px;
+    /* margin: 0 40px; */
+    /* max-width: 600px; */
+    margin-top: 100px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: #5b86b6a3;
+    border-radius: 20px;
+    align-items: center;
 }
-
+.faqContainer h1{
+    font-size: 2rem;
+}
 
 .faqContainer .tab{
     position: relative;
-    background: white; /*add a color*/
+    background: rgba(255, 255, 255, 0.929); /*add a color*/
     padding: 0 20px 20px;
-    box-shadow: 0 15px 25px blue;
+    box-shadow: 0 15px 25px #243549;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -47,7 +70,7 @@ body{
 }
 
 .faqContainer .tab:hover label::after{
-    color: green;  /*color of + mark, change accordingly*/   
+    color: var(--main-color);  /*color of + mark, change accordingly*/   
 }
 .faqContainer .tab input:checked ~ label::after{
     transform: rotate(135deg);
@@ -55,21 +78,22 @@ body{
 .faqContainer .tab label h2{
     width: 40px;
     height: 40px;
-    background: aqua;  /*change this*/
+    background: var(--main-color);  /*change this*/
     display: flex;
     justify-content: center;
     align-items: center;
-    color: blueviolet;  /*change*/
+    color: white;  /*change*/
     font-size: 1.25rem;
     border-radius: 5px;
     margin-right: 10px;
 }
 
-.faqContainer.tab label h3{
+.faqContainer.tab h3{
     position: relative;
     font-weight: 500;
     color: black;
     z-index: 10;   /*zIndex karann wewi*/
+    font-size: 1.5rem;
 }
 
 .faqContainer .tab .answer{
@@ -86,24 +110,26 @@ body{
     padding: 10px 0;
     color: black; /*chenge*/
     z-index: 10;
+
 }
 
 /* contact us */
 .form_overlay {
     position:relative;
     margin: auto;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.622);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     width: 30%;
     margin-bottom: 100px;
-    
 }
 
 .form_overlay h2 {
     margin-bottom: 20px;
-    color:  rgb(33, 67, 92);
+    color:  black;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .form_overlay form {
@@ -126,7 +152,7 @@ body{
 }
 
 .form_overlay button {
-    background-color: rgb(33, 67, 92);
+    background-color: var(--main-color);
     color: white;
     padding: 10px 20px;
     border: none;
