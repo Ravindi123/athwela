@@ -1,30 +1,50 @@
 import React, { useState } from 'react';
 import styles from '../styles/homeRegistration.module.css';
 // import {app} from '../firebase';
-import {  db, storage } from '../firebase';
-import { doc, setDoc } from "firebase/firestore";
+import { db, storage } from '../firebase';
+// import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from 'firebase/firestore';
 // import { getStorage } from "firebase/storage";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { toast } from 'react-toastify';
 
 const HomeRegistration = () => {
-    const [projectName, setName] = useState('');
+    const [homeName, setName] = useState('');
     const [tel, setTel] = useState('');
-    const [description] = useState('');
+    const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
     const [email, setEmail] = useState('');
-    const [facebook, setFacebook] = useState([]);
-    const [instagram, setInstagram] = useState(null);
+    const [facebook, setFacebook] = useState('');
+    const [instagram, setInstagram] = useState('');
     const [socialmedia, setSocialMedia] = useState('');
     const [images, setImages] = useState('');
     const [homeType, setHomeType] = useState(''); // State to track selected home type
+    const [checkbox, setCheckbox] = useState(false);
 
     const handleHome = async (e) => {
         e.preventDefault();
 
         if (!homeType) {
             console.log("Please select a home type (Children's Home or Adults Home).");
+            toast.error("Select a home type");
+            return;
+        }
+
+        if (district === ""){
+            console.log("Please select a valid district");
+            toast.error("Please select a district");
+            return;
+        }
+
+        if (checkbox === false) {
+            toast.error("You must agree to the terms and conditions before signing up.");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(tel)) {
+            toast.error("Mobile number must be exactly 10 digits long");
             return;
         }
 
@@ -39,24 +59,38 @@ const HomeRegistration = () => {
             );
 
             // Determine the collection name based on selected home type
-            const collectionName = homeType === 'option1' ? "Children's Home" : "Adults Home";
+            const collectionName = homeType === 'childHome' ? "Children's Home" : "Adults Home";
 
             // Store project details in the correct Firestore collection
-            await setDoc(doc(db, collectionName, projectName), {
-                projectName,
-                description,
-                address,
-                email,
-                city,
-                tel,
-                images: imageUrls,
-                district,
-                facebook,
-                instagram,
-                socialmedia,
+            // await addDoc(doc(db, collectionName, projectName), {
+            //     projectName,
+            //     description,
+            //     address,
+            //     email,
+            //     city,
+            //     tel,
+            //     images: imageUrls,
+            //     district,
+            //     facebook,
+            //     instagram,
+            //     socialmedia,
+            // });
+            const docRef = await addDoc(collection(db, collectionName), {
+                homeName: homeName,
+                telephone: tel,
+                description: description,
+                address: address,
+                city: city,
+                district: district,
+                email: email,
+                facebook: facebook,
+                instagram: instagram,
+                socialmedia: socialmedia,
             });
+            console.log("Document written with ID: ", docRef.id);
 
-            console.log("Project registered and data stored successfully in", collectionName);
+            console.log("Home registered and data stored successfully in", collectionName);
+            toast.success("Home "+ homeName+ " registered successfully");
         } catch (error) {
             console.log("Error:", error.message);
         }
@@ -76,66 +110,64 @@ const HomeRegistration = () => {
             <form onSubmit={handleHome}>
                 <div className={styles.radioGroup}>
                     <div className={styles.form_group_tick}>
-                        <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onChange={handleHomeTypeChange} />
+                        <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="childHome" onChange={handleHomeTypeChange} />
                         <label className={styles.form_check_label} htmlFor="inlineRadio1">Children's Home</label>
                     </div>
                     <div className={styles.form_group_tick}>
-                        <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onChange={handleHomeTypeChange} />
+                        <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="parentHome" onChange={handleHomeTypeChange} />
                         <label className={styles.form_check_label} htmlFor="inlineRadio2">Adult's Home</label>
                     </div>
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="project-name">Home Name:</label>
-                    <input type="text" id="project-name" name="project-name" required onChange={(e) => setName(e.target.value)} />
+                    <input type="text" id="project-name" name="project-name" required onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="description">Telephone</label>
-                    <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} />
+                    <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} required/>
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="description">Description:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <textarea id="description" name="description" rows="4" onChange={(e) => setDescription(e.target.value)} required></textarea>
                 </div>
                 <div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputAddress" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} />
+                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required/>
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputCity" className="form-label">City</label>
-                        <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} />
+                        <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required/>
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputState" className="form-label">District</label>
                         <select id="inputState" className="form-select" onChange={(e) => setDistrict(e.target.value)}>
-                        <option selected>Choose...</option>
-                            <option>...</option>
-                            <option selected disabled>Choose...</option>
-                            <option>Colombo</option>
-                            <option>Galle</option>
-                            <option>Kalutara</option>
-                            <option>Gampaha</option>
-                            <option>Hambanthota</option>
-                            <option>Matara</option>
-                            <option>Badulla</option>
-                            <option>Monaragala</option>
-                            <option>Ratnapura</option>
-                            <option>Kagalle</option>
-                            <option>Madakalapuwa</option>
-                            <option>Ampara</option>
-                            <option>Trincomalee</option>
-                            <option>Anuradhapura</option>
-                            <option>Polonnaruwa</option>
-                            <option>Matale</option>
-                            <option>Kandy</option>
-                            <option>Nuwaraeliya</option>
-                            <option>Puttalam</option>
-                            <option>Kurunegala</option>
-                            <option>Jaffna</option>
-                            <option>Mannar</option>
-                            <option>Vavuniya</option>
-                            <option>Kilinochchi</option>
-                            <option>Mullaitivu</option>
+                            <option value="invalid" selected disabled>Choose...</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Kalutara">Kalutara</option>
+                            <option value="Gampaha">Gampaha</option>
+                            <option value="Hambanthota">Hambanthota</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Badulla">Badulla</option>
+                            <option value="Monaragala">Monaragala</option>
+                            <option value="Ratnapura">Ratnapura</option>
+                            <option value="Kagalle">Kagalle</option>
+                            <option value="Madakalapuwa">Madakalapuwa</option>
+                            <option value="Ampara">Ampara</option>
+                            <option value="Trincomalee">Trincomalee</option>
+                            <option value="Anuradhapura">Anuradhapura</option>
+                            <option value="Polonnaruwa">Polonnaruwa</option>
+                            <option value="Matale">Matale</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Nuwaraeliya">Nuwaraeliya</option>
+                            <option value="Puttalam">Puttalam</option>
+                            <option value="Kurunegala">Kurunegala</option>
+                            <option value="Jaffna">Jaffna</option>
+                            <option value="Mannar">Mannar</option>
+                            <option value="Vavuniya">Vavuniya</option>
+                            <option value="Kilinochchi">Kilinochchi</option>
+                            <option value="Mullaitivu">Mullaitivu</option>
                         </select>
                     </div>
                     <div className={styles.form_group}>
@@ -156,7 +188,7 @@ const HomeRegistration = () => {
                     </div>
                     <div className={styles.form_group}>
                         <div className={styles.checkboxContainer}>
-                            <input className={styles.form_check_input} type="checkbox" value="" id="flexCheckCheckedDisabled" />
+                            <input className={styles.form_check_input} type="checkbox" id="checkbox" checked={checkbox} onChange={(e) => setCheckbox(e.target.checked)} />
                             <label className={styles.form_check_label} htmlFor="flexCheckCheckedDisabled">
                                 I hereby declare that the information provided is accurate.
                             </label>
