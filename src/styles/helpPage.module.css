@@ -121,7 +121,8 @@ body{
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    width: 30%;
+    /* width: 30%; */
+    max-width: 450px;
     margin-bottom: 100px;
 }
 
@@ -161,6 +162,69 @@ body{
     font-weight: bold;
     text-transform: uppercase;
 }
+
+/* @media(max-width:450px){
+    .faqContainer h1{
+        font-size: 1.5rem;
+    }
+    .form_overlay h2 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+    .faqContainer{
+        gap: 2px;
+    }
+    .faqContainer.tab{
+        padding: 0;
+    }
+    
+} */
+
+@media (max-width: 450px) {
+    .faqContainer {
+        margin: 0 ; 
+        margin-top: 100px;
+        margin-bottom: 30px; 
+        gap: 10px; 
+        padding: 10px; 
+        border-radius: 5px;
+    }
+
+    .faqContainer h1 {
+        font-size: 1.5rem; 
+        text-align: center; 
+    }
+
+    .faqContainer .tab {
+        padding: 0 10px 10px; 
+    }
+
+    .faqContainer .tab label h2 {
+        width: 30px; 
+        height: 30px;
+        font-size: 1rem; 
+        margin-right: 5px; 
+    }
+
+    .faqContainer .tab label h3 {
+        font-size: 1.2rem;
+    }
+
+    .faqContainer .tab label::after {
+        font-size: 1.5em; 
+        right: 10px; 
+    }
+
+    .faqContainer .tab .answer p {
+        font-size: 0.9rem; 
+    }
+
+    .form_overlay h2 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+}
+
 
 
 
