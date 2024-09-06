@@ -61,7 +61,7 @@ const Navbar = () => {
                 <li><Link to="home">Home</Link></li>
                 <li><a href="/home#about">About us</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><Link to="select">FAQ</Link></li>
+                <li><Link to="helpPage">Help</Link></li>
                 <li><Link to="login">Log In</Link></li>
             </ul>
 
