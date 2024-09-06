@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styles from '../styles/homeRegistration.module.css';
 // import {app} from '../firebase';
-import { db, storage } from '../firebase';
+import { db, storage, auth } from '../firebase';
 // import { doc, setDoc } from "firebase/firestore";
 import { collection, addDoc } from 'firebase/firestore';
 // import { getStorage } from "firebase/storage";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
+
 
 const HomeRegistration = () => {
     const [homeName, setName] = useState('');
@@ -23,6 +24,7 @@ const HomeRegistration = () => {
     const [homeType, setHomeType] = useState(''); // State to track selected home type
     const [checkbox, setCheckbox] = useState(false);
 
+
     const handleHome = async (e) => {
         e.preventDefault();
 
@@ -32,7 +34,7 @@ const HomeRegistration = () => {
             return;
         }
 
-        if (district === ""){
+        if (district === "") {
             console.log("Please select a valid district");
             toast.error("Please select a district");
             return;
@@ -48,53 +50,54 @@ const HomeRegistration = () => {
             return;
         }
 
-        try {
-            // Upload images to Firebase Storage
-            const imageUrls = await Promise.all(
-                [...images].map(async (image) => {
-                    const imageRef = ref(storage, `images/${image.name}`);
-                    await uploadBytes(imageRef, image);
-                    return await getDownloadURL(imageRef);
-                })
-            );
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                try {
+                    // Upload images to Firebase Storage
+                    const imageUrls = await Promise.all(
+                        [...images].map(async (image) => {
+                            const imageRef = ref(storage, `images/${image.name}`);
+                            await uploadBytes(imageRef, image);
+                            return await getDownloadURL(imageRef);
+                        })
+                    );
 
-            // Determine the collection name based on selected home type
-            const collectionName = homeType === 'childHome' ? "Children's Home" : "Adults Home";
+                    // Determine the collection name based on selected home type
+                    const collectionName = homeType === 'childHome' ? "Children's Home Project" : "Adults Home Project";
 
-            // Store project details in the correct Firestore collection
-            // await addDoc(doc(db, collectionName, projectName), {
-            //     projectName,
-            //     description,
-            //     address,
-            //     email,
-            //     city,
-            //     tel,
-            //     images: imageUrls,
-            //     district,
-            //     facebook,
-            //     instagram,
-            //     socialmedia,
-            // });
-            const docRef = await addDoc(collection(db, collectionName), {
-                homeName: homeName,
-                telephone: tel,
-                description: description,
-                address: address,
-                city: city,
-                district: district,
-                email: email,
-                facebook: facebook,
-                instagram: instagram,
-                socialmedia: socialmedia,
-            });
-            console.log("Document written with ID: ", docRef.id);
+                    const docRef = await addDoc(collection(db, collectionName), {
+                        owner: user.uid,
+                        homeName: homeName,
+                        telephone: tel,
+                        description: description,
+                        address: address,
+                        city: city,
+                        district: district,
+                        email: email,
+                        facebook: facebook,
+                        instagram: instagram,
+                        socialmedia: socialmedia,
+                    });
 
-            console.log("Home registered and data stored successfully in", collectionName);
-            toast.success("Home "+ homeName+ " registered successfully");
-        } catch (error) {
-            console.log("Error:", error.message);
-        }
+                    // const userDocRef = doc(db, "users", user.uid);
+
+                    // await updateDoc(userDocRef, {
+                    //     campaign: arrayUnion(docRef.id),
+                    // });
+                    console.log("Document written with ID: ", docRef.id);
+
+                    console.log("Home registered and data stored successfully in", collectionName);
+                    toast.success("Home " + homeName + " registered successfully");
+                } catch (error) {
+                    console.log("Error:", error.message);
+                }
+            } else {
+                toast.error('No user is logged in');
+            }
+        });
     };
+
+  
 
     const handleImageChange = (e) => {
         setImages(e.target.files);

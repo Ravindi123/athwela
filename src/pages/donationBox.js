@@ -4,7 +4,6 @@ import styles from '../styles/donationBox.module.css';
 const DonationBox = () => {
 
     return (
-
         <section>
         <div className={styles.donation_container} >
             <div className={styles.donation_header}>
