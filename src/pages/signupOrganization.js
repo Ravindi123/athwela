@@ -17,10 +17,19 @@ const SignupOrganization = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
+
+        var isChecked = document.getElementById("checkbox").checked;
+
         if (!/^\d{10}$/.test(mobile)) {
             toast.error("Mobile number must be exactly 10 digits long",{position: "top-center", hideProgressBar: true});
             return;
         }
+
+        if (isChecked === false) {
+            toast.error("You must agree to the terms and conditions before signing up.",{position: "top-center", hideProgressBar: true});
+            return;
+        }
+
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             const user = auth.currentUser;

@@ -18,17 +18,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
 import { auth } from './firebase';
 import { useState, useEffect } from 'react';
-
-import HelpPage from './pages/helpPage';  // Ensure the correct path
+import HelpPage from './pages/helpPage';  
 
 
 function App() {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-  });
+ 
   return (
     <FirebaseProvider>
       <div className="App">
