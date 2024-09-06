@@ -1,0 +1,140 @@
+/* *{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;  
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+} */
+.faqContainer{
+    margin: 0 40px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.faqContainer .tab{
+    position: relative;
+    background: white; /*add a color*/
+    padding: 0 20px 20px;
+    box-shadow: 0 15px 25px blue;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.faqContainer .tab input{
+    appearance: none;
+}
+.faqContainer .tab label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.faqContainer .tab label::after{
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    color: black;  /*color*/
+    transition: transform 1s;
+}
+
+.faqContainer .tab:hover label::after{
+    color: green;  /*color of + mark, change accordingly*/   
+}
+.faqContainer .tab input:checked ~ label::after{
+    transform: rotate(135deg);
+}
+.faqContainer .tab label h2{
+    width: 40px;
+    height: 40px;
+    background: aqua;  /*change this*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blueviolet;  /*change*/
+    font-size: 1.25rem;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.faqContainer.tab label h3{
+    position: relative;
+    font-weight: 500;
+    color: black;
+    z-index: 10;   /*zIndex karann wewi*/
+}
+
+.faqContainer .tab .answer{
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+.faqContainer .tab input:checked ~ .answer{
+    max-height: 100vh;
+}
+
+.faqContainer .tab .answer p{
+    position: relative;
+    padding: 10px 0;
+    color: black; /*chenge*/
+    z-index: 10;
+}
+
+/* contact us */
+.form_overlay {
+    position:relative;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    width: 30%;
+    margin-bottom: 100px;
+    
+}
+
+.form_overlay h2 {
+    margin-bottom: 20px;
+    color:  rgb(33, 67, 92);
+}
+
+.form_overlay form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_overlay label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+.form_overlay input,
+.form_overlay textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form_overlay button {
+    background-color: rgb(33, 67, 92);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
