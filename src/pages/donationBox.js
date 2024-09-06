@@ -1,40 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/donationBox.module.css';
+import { auth, db } from '../firebase';
+import moment from 'moment';
+import { doc, updateDoc } from 'firebase/firestore';
 
-const DonationBox = () => {
+const DonationBox = ({projectName}) => {
+    const [amount, setAmount] = useState(null);
+    const [name, setName] = useState('');
+    const today = moment().format('YYYY-MM-DD');
+
+    const handleDonation = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                const userDocRef = doc(db, "users", user.uid);
+
+                try {
+                    await updateDoc(userDocRef, {
+                        donations: [...(user.donations || []), { amount:amount, date: today, name:projectName }]
+                    });
+                    console.log('Donation recorded successfully');
+                } catch (error) {
+                    console.error('Error recording donation: ', error);
+                }
+            } else {
+                console.log('No user is logged in');
+            }
+        });
+    };
 
     return (
         <section>
-        <div className={styles.donation_container} >
-            <div className={styles.donation_header}>
-                <h1>Secure Donation</h1>
-            </div>
-            <div className={styles.donation_options}>
-                <button className={styles.active}>Give once</button>
-                <button>Monthly</button>
-            </div>
-            <div className={styles.amount_options}>
-                <button>Rs 12K</button>
-                <button>Rs 6,000</button>
-                <button>Rs 3,500</button>
-                <button>Rs 3,000</button>
-                <button>Rs 2,500</button>
-                <button className={styles.active}>Rs 2,000</button>
-            </div>
-            <div className={styles.custom_amount}>
-                <input type="text" placeholder="Rs.2000"/>
-                <select>
-                    <option value="LKR">LKR</option>
-                    <option value="LKR">Dollars</option>
-                </select>
-            </div>
-            <div className={styles.dedicate_option}>
-                <input type="checkbox"/>
-                <label>Dedicate this donation</label>
-            </div>
-            <button className={styles.donate_button}>DONATE NOW</button>
-        </div>
-    </section>
+            <form className={styles.donation_container} onSubmit={handleDonation}>
+                <div className={styles.donation_header}>
+                    <h1>Secure Donation</h1>
+                </div>
+                <div className={styles.donation_options}>
+                    <button type="button" className={styles.active}>Give once</button>
+                    <button type="button">Monthly</button>
+                </div>
+                <div className={styles.amount_options}>
+                    <button type="button" onClick={() => setAmount(12000)}>Rs 12K</button>
+                    <button type="button" onClick={() => setAmount(6000)}>Rs 6,000</button>
+                    <button type="button" onClick={() => setAmount(3500)}>Rs 3,500</button>
+                    <button type="button" onClick={() => setAmount(3000)}>Rs 3,000</button>
+                    <button type="button" onClick={() => setAmount(2500)}>Rs 2,500</button>
+                    <button type="button" className={styles.active} onClick={() => setAmount(2000)}>Rs 2,000</button>
+                </div>
+                <div className={styles.custom_amount}>
+                    <input type="number" placeholder="Rs.2000" onChange={(e) => setAmount(parseInt(e.target.value, 10))} />
+                    <select>
+                        <option value="LKR">LKR</option>
+                        <option value="USD">Dollars</option>
+                    </select>
+                </div>
+                <div className={styles.dedicate_option}>
+                    <input type="checkbox" id="dedicate"/>
+                    <label htmlFor="dedicate">Dedicate this donation</label>
+                </div>
+                <button className={styles.donate_button} type="submit">DONATE NOW</button>
+            </form>
+        </section>
     );
 };
 
