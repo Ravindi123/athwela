@@ -29,8 +29,8 @@ const HelpPage = () => {
                     Frequently asked questions?
                 </h1>
                 <div className={styles.tab}>
-                    <input type="radio" name="acc" id="acc1" />
-                    <label for="acc1">
+                    <input type="checkbox" name="acc" />
+                    <label >
                         <h2>01</h2>
                         <h3>Question 1?</h3>
                     </label>
@@ -44,8 +44,8 @@ const HelpPage = () => {
                 </div>
 
                 <div className={styles.tab}>
-                    <input type="radio" name="acc" id="acc2" />
-                    <label for="acc2">
+                    <input type="checkbox" name="acc" />
+                    <label >
                         <h2>02</h2>
                         <h3>Question 2?</h3>
                     </label>
@@ -59,8 +59,8 @@ const HelpPage = () => {
                 </div>
 
                 <div className={styles.tab}>
-                    <input type="radio" name="acc" id="acc3" />
-                    <label for="acc3">
+                    <input type="checkbox" name="acc" />
+                    <label >
                         <h2>03</h2>
                         <h3>Question 3?</h3>
                     </label>
@@ -74,8 +74,8 @@ const HelpPage = () => {
                 </div>
 
                 <div className={styles.tab}>
-                    <input type="radio" name="acc" id="acc4" />
-                    <label for="acc4">
+                    <input type="checkbox" name="acc"  />
+                    <label >
                         <h2>04</h2>
                         <h3>Question 4?</h3>
                     </label>
