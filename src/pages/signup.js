@@ -12,11 +12,12 @@ const Signup = () => {
     const [name, setName] = useState('');
     const [nic, setNIC] = useState('');
     const [mobile, setMobile] = useState('');
+    const [checkbox, setCheckbox] = useState(false);
 
     const handleRegister = async(e) => {
         e.preventDefault();
 
-        const checkbox = document.getElementById('checkbox');
+        // const checkbox = document.getElementById('checkbox');
 
         if (!/^\d{10}$/.test(mobile)) {
             toast.error("Mobile number must be exactly 10 digits long", { position: "top-center", hideProgressBar: true });
@@ -83,7 +84,7 @@ const Signup = () => {
                         <div className={styles.forget}>
                             <label>
                                 {/* Should go to a terms and conditions page. To be updated later */}
-                                <input type="checkbox" id="checkbox" onClick = {handleRegister} /> I Agree to All Terms and Conditions.
+                                <input type="checkbox" id="checkbox" checked={checkbox} onChange={(e) => setCheckbox(e.target.checked)} /> I Agree to All Terms and Conditions.
                             </label>
                         </div>
 
