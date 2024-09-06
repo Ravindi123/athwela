@@ -16,15 +16,16 @@ const Signup = () => {
     const handleRegister = async(e) => {
         e.preventDefault();
 
-        const checkbox = document.getElementById('checkbox');
+        var isChecked = document.getElementById("checkbox").checked;
+
 
         if (!/^\d{10}$/.test(mobile)) {
             toast.error("Mobile number must be exactly 10 digits long", { position: "top-center", hideProgressBar: true });
             return;
         }
 
-        if (checkbox === false) {
-            toast.error("You must agree to the terms and conditions before signing up.");
+        if (isChecked === false) {
+            toast.error("You must agree to the terms and conditions before signing up.", {position: "top-center", hideProgressBar: true});
             return;
         }
 
