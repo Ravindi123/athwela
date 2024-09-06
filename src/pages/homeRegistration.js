@@ -123,11 +123,11 @@ const HomeRegistration = () => {
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="project-name">Home Name:</label>
-                    <input type="text" id="project-name" name="project-name" required onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" id="project-name" name="project_name" required onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="description">Telephone</label>
-                    <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} required/>
+                    <input type="text" className="form_control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} required/>
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="description">Description:</label>
@@ -135,16 +135,16 @@ const HomeRegistration = () => {
                 </div>
                 <div>
                     <div className={styles.form_group}>
-                        <label htmlFor="inputAddress" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required/>
+                        <label htmlFor="inputAddress" className="form_label">Address</label>
+                        <input type="text" className="form_control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required/>
                     </div>
                     <div className={styles.form_group}>
-                        <label htmlFor="inputCity" className="form-label">City</label>
+                        <label htmlFor="inputCity" className="form_label">City</label>
                         <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required/>
                     </div>
                     <div className={styles.form_group}>
-                        <label htmlFor="inputState" className="form-label">District</label>
-                        <select id="inputState" className="form-select" onChange={(e) => setDistrict(e.target.value)}>
+                        <label htmlFor="inputState" className="form_label">District</label>
+                        <select id="inputState" className="form_select" onChange={(e) => setDistrict(e.target.value)}>
                             <option value="invalid" selected disabled>Choose...</option>
                             <option value="Colombo">Colombo</option>
                             <option value="Galle">Galle</option>

@@ -31,7 +31,7 @@ const DonationBox = ({projectName}) => {
     };
 
     return (
-        <section>
+        <section className={styles.donationBox}>
             <form className={styles.donation_container} onSubmit={handleDonation}>
                 <div className={styles.donation_header}>
                     <h1>Secure Donation</h1>
@@ -49,8 +49,8 @@ const DonationBox = ({projectName}) => {
                     <button type="button" className={styles.active} onClick={() => setAmount(2000)}>Rs 2,000</button>
                 </div>
                 <div className={styles.custom_amount}>
-                    <input type="number" placeholder="Rs.2000" onChange={(e) => setAmount(parseInt(e.target.value, 10))} />
-                    <select>
+                    <input classname={styles.value} type="number" placeholder="Rs.2000" onChange={(e) => setAmount(parseInt(e.target.value, 10))} />
+                    <select className='currency'>
                         <option value="LKR">LKR</option>
                         <option value="USD">Dollars</option>
                     </select>

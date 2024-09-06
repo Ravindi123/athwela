@@ -19,6 +19,7 @@ import UserProfile from './pages/userProfile';
 import { auth } from './firebase';
 import { useState, useEffect } from 'react';
 import HelpPage from './pages/helpPage';  
+import DonationBox from './pages/donationBox';
 
 
 function App() {
@@ -31,9 +32,9 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={<>
-              <div><Home /></div>
-              <footer><Footer /></footer></>} />
+            <Route path="/" element={
+              <div><DonationBox /></div>}/>
+              {/* <footer><Footer /></footer></>} /> */}
             <Route path="/home" element={<>
               <div><Home /></div>
               <footer><Footer /></footer></>} />
