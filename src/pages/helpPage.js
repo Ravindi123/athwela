@@ -11,7 +11,7 @@ import styles from '../styles/helpPage.module.css';
   };
   
   export default HelpPage;*/
-  
+
 
 const HelpPage = () => {
 
@@ -23,14 +23,14 @@ const HelpPage = () => {
 
     return (
 
-            <section className={styles.help}>
+        <section className={styles.help}>
             <section className={styles.faqContainer}>
                 <h1>
                     Frequently asked questions?
                 </h1>
                 <div className={styles.tab}>
-                    <input type="checkbox" name="acc" />
-                    <label >
+                    <input type="checkbox" name="acc" id="acc1" />
+                    <label for="acc1">
                         <h2>01</h2>
                         <h3>Question 1?</h3>
                     </label>
@@ -44,8 +44,8 @@ const HelpPage = () => {
                 </div>
 
                 <div className={styles.tab}>
-                    <input type="checkbox" name="acc" />
-                    <label >
+                    <input type="checkbox" name="acc" id="acc2" />
+                    <label for="acc2">
                         <h2>02</h2>
                         <h3>Question 2?</h3>
                     </label>
@@ -59,8 +59,8 @@ const HelpPage = () => {
                 </div>
 
                 <div className={styles.tab}>
-                    <input type="checkbox" name="acc" />
-                    <label >
+                    <input type="checkbox" name="acc" id="acc3" />
+                    <label for="acc3">
                         <h2>03</h2>
                         <h3>Question 3?</h3>
                     </label>
@@ -74,8 +74,8 @@ const HelpPage = () => {
                 </div>
 
                 <div className={styles.tab}>
-                    <input type="checkbox" name="acc"  />
-                    <label >
+                    <input type="checkbox" name="acc" id="acc4" />
+                    <label for="acc4">
                         <h2>04</h2>
                         <h3>Question 4?</h3>
                     </label>
@@ -88,7 +88,6 @@ const HelpPage = () => {
                     </div>
                 </div>
             </section>
-
 
             <section className={styles.form_overlay} id="contact">
                 <h2>Contact Us</h2>
@@ -108,7 +107,7 @@ const HelpPage = () => {
                     <button type="submit">Send Message</button>
                 </form>
             </section>
-            </section>
+        </section>
         // </div>
     );
 };
