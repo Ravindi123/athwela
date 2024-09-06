@@ -1,21 +1,20 @@
-//import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
 
 const Home = () => {
-//   const [user, setUser] = useState(null);
-//   useEffect(() => {
-//     const unsubscribe = auth.onAuthStateChanged((user) => {
-//         if (user) {
-//             setUser(user);  
-//         } else {
-//             setUser(null);  
-//         }
-//     });
-
-//     return () => unsubscribe(); 
-// }, []);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+            setUser(user);  
+        } else {
+            setUser(null);  
+        }
+    });
+    return () => unsubscribe(); 
+}, []);
   // const [slideIndex, setSlideIndex] = useState(0);
 
   // const slides = [
@@ -71,13 +70,12 @@ const Home = () => {
             every act of generosity makes a significant impact.
           </p>
           <div className={styles.buttons}>
-          <Link to="/selectProject" className={styles.btn}>Start Fundraising</Link>
-            {/* if (user) {
+            {(user) ? (
               <Link to="/selectProject" className={styles.btn}>Start Fundraising</Link>
-            } else {
+            ) : (
               <Link to="/login" className={styles.btn}>Start Fundraising</Link>
-            }
-            <a href="#projects" className={styles.btn}>Donate Now</a> */}
+            )}
+            <a href="#projects" className={styles.btn}>Donate Now</a>
           </div>
         </div>
 
