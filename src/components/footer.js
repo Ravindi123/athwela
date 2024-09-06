@@ -20,7 +20,7 @@ const Footer = () => {
                     <h3>Follow us</h3>
                     <div className={styles.social}>
                         <li><span><i className='bx bxl-facebook-circle'></i>Facebook</span></li>
-                        <li><span><i class='bx bxl-youtube'></i>You Tube</span></li>
+                        <li><span><i className='bx bxl-youtube'></i>You Tube</span></li>
                         <li><span><i className='bx bxl-instagram' ></i>Instagram</span></li>
                         <li><span><i className='bx bxl-blogger'></i>Blog</span></li>
                     </div>
