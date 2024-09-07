@@ -4,7 +4,7 @@ import styles from '../styles/homeRegistration.module.css';
 import { db, storage, auth } from '../firebase';
 // import { doc, setDoc } from "firebase/firestore";
 import { collection, addDoc } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
 
 
@@ -80,6 +80,7 @@ const HomeRegistration = () => {
                         facebook: facebook,
                         instagram: instagram,
                         socialmedia: socialmedia,
+                        images: imageUrls,
                     });
 
                     // const userDocRef = doc(db, "users", user.uid);

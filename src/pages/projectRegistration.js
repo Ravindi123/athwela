@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styles from '../styles/projectRegistration.module.css';
 // import {app} from '../firebase';
-import { db, storage } from '../firebase';
-import { doc, setDoc } from "firebase/firestore";
+import { db, storage, auth } from '../firebase';
+// import { doc, setDoc } from "firebase/firestore";
 import { collection, addDoc } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
 
 const ProjectRegistration = () => {
@@ -43,50 +43,59 @@ const ProjectRegistration = () => {
             return;
         }
 
-        setLoading(true);
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
 
-        try {
-            const imageUrls = await Promise.all(
-                [...images].map(async (image) => {
-                    const imageRef = ref(storage, `images/${image.name}`);
-                    await uploadBytes(imageRef, image);
-                    return await getDownloadURL(imageRef);
-                })
-            );
+                setLoading(true);
 
-            const evidenceUrls = await Promise.all(
-                [...evidence].map(async (evidence) => {
-                    const evidenceRef = ref(storage, `evidence/${evidence.name}`);
-                    await uploadBytes(evidenceRef, evidence);
-                    return await getDownloadURL(evidenceRef);
-                })
-            );
+                try {
+                    const imageUrls = await Promise.all(
+                        [...images].map(async (image) => {
+                            const imageRef = ref(storage, `images/${image.name}`);
+                            await uploadBytes(imageRef, image);
+                            return await getDownloadURL(imageRef);
+                        })
+                    );
 
-            const collectionName = projectType === 'healthCare' ? "Health Care" : "Disaster Relief";
+                    const evidenceUrls = await Promise.all(
+                        [...evidence].map(async (evidence) => {
+                            const evidenceRef = ref(storage, `evidence/${evidence.name}`);
+                            await uploadBytes(evidenceRef, evidence);
+                            return await getDownloadURL(evidenceRef);
+                        })
+                    );
 
-            const docRef = await addDoc(collection(db, collectionName), {
-                projectName: projectName,
-                description: description,
-                amount: amount,
-                raised: raised,
-                deadline: deadline,
-                phone: phone,
-                images: imageUrls,
-                evidence: evidenceUrls,
-                bankDetails: bankDetails,
-                projectType: projectType
-            });
+                    const collectionName = projectType === 'healthCare' ? "Health Care" : "Disaster Relief";
 
-            console.log("Document written with ID: ", docRef.id);
-            toast.success('Project registered successfully');
+                    const docRef = await addDoc(collection(db, collectionName), {
+                        projectName: projectName,
+                        description: description,
+                        amount: amount,
+                        raised: raised,
+                        deadline: deadline,
+                        phone: phone,
+                        images: imageUrls,
+                        evidence: evidenceUrls,
+                        bankDetails: bankDetails,
+                        projectType: projectType
+                    });
 
-        } catch (error) {
-            console.error('Error uploading images:', error);
-            toast.error('Failed to upload images');
-            return;
-        } finally {
-            setLoading(false);
-        }
+                    console.log("Document written with ID: ", docRef.id);
+                    toast.success('Project registered successfully');
+
+                } catch (error) {
+                    console.error('Error uploading images:', error);
+                    toast.error('Failed to upload images');
+                    return;
+                } finally {
+                    setLoading(false);
+                }
+            } else {
+                toast.error("No user is logged in");
+            }
+        });
+
+
     }
 
     const handleProjectTypeChange = (e) => {
