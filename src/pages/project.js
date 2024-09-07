@@ -11,6 +11,7 @@ const Project = () => {
     console.log(project);
     console.log(project.owner);
     const [ownerName, setOwnerName] = useState(''); // State to store the owner's name
+    const [imageUrls, setImageUrl] = useState([]); // State to store the image URL
 
     useEffect(() => {
         // Fetch the owner's name when the component loads
@@ -31,8 +32,26 @@ const Project = () => {
             }
         };
 
+        const fetchImageUrl = async () => {
+            try {
+                const docRef = doc(db, "Health Care", project.id); // Replace with the correct collection and project id
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const url = docSnap.data().images; // Assuming 'imageUrl' is the field name
+                    setImageUrl(url); // Set the image URL state
+                } else {
+                    console.log("No such document!");
+                }
+            } catch (error) {
+                console.error("Error fetching image URL:", error);
+            }
+        };
+
         fetchOwnerName();
-    }, [project.owner]); 
+        fetchImageUrl();
+
+    }, [project.owner]);
 
     let currentImageIndex = 0;
     const images = document.querySelectorAll('.carousel img');
@@ -99,8 +118,10 @@ const Project = () => {
                     <div className={styles.project}>
                         <div className={styles.carousel}>
                             <button className={styles.arrow} onClick={prevImage}></button>
-                            <img src="1000_iStock-481073846.jpg" alt="img1" className={styles.active} />
-                            <img src="patient_589302497_1000.jpg" alt="img2" />
+                            {/* <img src="1000_iStock-481073846.jpg" alt="img1" className={styles.active} /> */}
+                            {imageUrls.map((url, index) => (
+                                <img key={index} src={url} alt={`Project Image ${index + 1}`} className={styles.active} />
+                            ))}
                             <button className={styles.arrow} onClick={nextImage}></button>
                         </div>
                         <div className={styles.story_updates}>
