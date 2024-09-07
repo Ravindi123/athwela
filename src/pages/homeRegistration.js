@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import styles from '../styles/homeRegistration.module.css';
 // import {app} from '../firebase';
 import { db, storage } from '../firebase';
-// import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { collection, addDoc } from 'firebase/firestore';
-// import { getStorage } from "firebase/storage";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
 
 const HomeRegistration = () => {
@@ -23,6 +22,8 @@ const HomeRegistration = () => {
     const [homeType, setHomeType] = useState(''); // State to track selected home type
     const [checkbox, setCheckbox] = useState(false);
 
+    const [loading, setLoading] = useState(false);
+
     const handleHome = async (e) => {
         e.preventDefault();
 
@@ -32,7 +33,7 @@ const HomeRegistration = () => {
             return;
         }
 
-        if (district === ""){
+        if (district === "") {
             console.log("Please select a valid district");
             toast.error("Please select a district");
             return;
@@ -48,7 +49,26 @@ const HomeRegistration = () => {
             return;
         }
 
+        // const storage = getStorage();
+        // const storageRef = ref(storage, 'images');
+
+        setLoading(true);
+
         try {
+
+            // const url = async () => {
+            //     if (!image) {
+            //         alert("Please select an image first!");
+            //         return;
+            //     }
+
+            //     const storageRef = ref(getStorage(), `images/${image.name}`);  // Create a storage reference
+
+            //     // Start the file upload
+            //     const uploadTask = uploadBytes(storageRef, image);
+
+            //     return await getDownloadURL(uploadTask.snapshot.ref);
+            // }
             // Upload images to Firebase Storage
             const imageUrls = await Promise.all(
                 [...images].map(async (image) => {
@@ -59,7 +79,7 @@ const HomeRegistration = () => {
             );
 
             // Determine the collection name based on selected home type
-            const collectionName = homeType === 'childHome' ? "Children's Home" : "Adults Home";
+            const collectionName = homeType === 'childHome' ? "Children's Home" : "Adults' Home";
 
             // Store project details in the correct Firestore collection
             // await addDoc(doc(db, collectionName, projectName), {
@@ -86,19 +106,28 @@ const HomeRegistration = () => {
                 facebook: facebook,
                 instagram: instagram,
                 socialmedia: socialmedia,
+                images: imageUrls,
             });
             console.log("Document written with ID: ", docRef.id);
 
             console.log("Home registered and data stored successfully in", collectionName);
-            toast.success("Home "+ homeName+ " registered successfully");
+            toast.success("Home " + homeName + " registered successfully");
         } catch (error) {
             console.log("Error:", error.message);
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleImageChange = (e) => {
         setImages(e.target.files);
     };
+
+    // const handleImageChange = (e) => {
+    //     if (e.target.files[0]) {
+    //         setImage(e.target.files[0]);
+    //     }
+    // };
 
     const handleHomeTypeChange = (e) => {
         setHomeType(e.target.value);
@@ -107,7 +136,10 @@ const HomeRegistration = () => {
     return (
         <section className={styles.form_container}>
             <h2>Register a Children's/ Adults' home</h2>
-            <form onSubmit={handleHome}>
+            {loading ? (
+                <p>Loading...</p>
+            ):(
+                <form onSubmit={handleHome}>
                 <div className={styles.radioGroup}>
                     <div className={styles.form_group_tick}>
                         <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="childHome" onChange={handleHomeTypeChange} />
@@ -120,11 +152,11 @@ const HomeRegistration = () => {
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="project-name">Home Name:</label>
-                    <input type="text" id="project-name" name="project-name" required onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" id="project-name" name="project-name" required onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="description">Telephone</label>
-                    <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} required/>
+                    <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} required />
                 </div>
                 <div className={styles.form_group}>
                     <label htmlFor="description">Description:</label>
@@ -133,11 +165,11 @@ const HomeRegistration = () => {
                 <div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputAddress" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required/>
+                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputCity" className="form-label">City</label>
-                        <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required/>
+                        <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="inputState" className="form-label">District</label>
@@ -183,7 +215,7 @@ const HomeRegistration = () => {
                     <div className={styles.form_group}>
                         <label htmlFor="inputAddress" className="form-label">Images</label>
                         <div>
-                            <input type="file" className="form-control" id="inputGroupFile02" onChange={handleImageChange} />
+                            <input type="file" className="form-control" id="inputGroupFile02" onChange={handleImageChange} multiple />
                         </div>
                     </div>
                     <div className={styles.form_group}>
@@ -197,6 +229,8 @@ const HomeRegistration = () => {
                     <button className={styles.button} type="submit">Submit</button>
                 </div>
             </form>
+            )}
+            
         </section>
     );
 }
