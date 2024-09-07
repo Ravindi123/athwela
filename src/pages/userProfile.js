@@ -121,7 +121,7 @@ const UserProfile = () => {
                                         <div className="project_info">
                                             <p className="project_title">{donation.name}</p>
                                             <div className="details">
-                                                <p className="date">{donation.date}</p>
+                                                <p className="project_date">{donation.date}</p>
                                                 <p className="amount">Rs.{donation.amount}</p>
                                             </div>
                                         </div>

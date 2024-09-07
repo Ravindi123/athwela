@@ -18,17 +18,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
 import { auth } from './firebase';
 import { useState, useEffect } from 'react';
-
-import HelpPage from './pages/helpPage';  // Ensure the correct path
+import HelpPage from './pages/helpPage';  
+import DonationBox from './pages/donationBox';
 
 
 function App() {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-  });
+ 
   return (
     <FirebaseProvider>
       <div className="App">
@@ -37,9 +32,9 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={<>
-              <div><Home /></div>
-              <footer><Footer /></footer></>} />
+            <Route path="/" element={
+              <div><DonationBox /></div>}/>
+              {/* <footer><Footer /></footer></>} /> */}
             <Route path="/home" element={<>
               <div><Home /></div>
               <footer><Footer /></footer></>} />
