@@ -100,3 +100,27 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.donate_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 36px;
+    width: 100px;
+    border-radius: 18px;
+    border-width: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.8s, box-shadow 0.3s;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, doc } from "firebase/firestore";
 import styles from '../styles/healthcare.module.css';
 import { useNavigate } from 'react-router-dom';
 
