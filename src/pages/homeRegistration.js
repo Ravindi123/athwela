@@ -68,7 +68,7 @@ const HomeRegistration = () => {
                     );
 
                     // Determine the collection name based on selected home type
-                    const collectionName = homeType === 'childHome' ? "Children's Home Project" : "Adults Home Project";
+                    const collectionName = homeType === 'childHome' ? "Children's Home" : "Adults Home";
 
                     const docRef = await addDoc(collection(db, collectionName), {
                         owner: user.uid,

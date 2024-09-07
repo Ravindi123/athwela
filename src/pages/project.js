@@ -52,7 +52,7 @@ const Project = () => {
         fetchOwnerName();
         fetchImageUrl();
 
-    }, [project.owner]);
+    }, [project.owner , project.id]);
 
     const handleNavigate = (project) => {
         navigate('/donationBox', { state: { project } }); // Pass the project object in the state
@@ -125,7 +125,7 @@ const Project = () => {
                             <button className={styles.arrow} onClick={prevImage}></button>
                             {/* <img src="1000_iStock-481073846.jpg" alt="img1" className={styles.active} /> */}
                             {imageUrls.map((url, index) => (
-                                <img key={index} src={url} alt={`Project Image ${index + 1}`} className={styles.active} />
+                                <img key={index} src={url} alt={`${project.name} ${index + 1}`} className={styles.active} />
                             ))}
                             <button className={styles.arrow} onClick={nextImage}></button>
                         </div>

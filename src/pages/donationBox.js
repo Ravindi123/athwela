@@ -6,7 +6,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 
 const DonationBox = ({projectName}) => {
     const [amount, setAmount] = useState(null);
-    const [name, setName] = useState('');
+    // const [name, setName] = useState('');
     const today = moment().format('YYYY-MM-DD');
 
     const handleDonation = async (e) => {

@@ -20,8 +20,8 @@ import ProjectView from './pages/project';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
-import { auth } from './firebase';
-import { useState, useEffect } from 'react';
+// import { auth } from './firebase';
+// import { useState, useEffect } from 'react';
 import HelpPage from './pages/helpPage';  
 import DonationBox from './pages/donationBox';
 
