@@ -67,7 +67,7 @@ const Healthcare = () => {
                         <p className={styles.funding}>Raised: LKR {project.raised}</p>
                         <p className={styles.needed}>Need: LKR {project.need}</p>
                     </div>
-                    <button className={styles.donate_button} onclick={handleNavigate}>Donate</button>
+                    <button className={styles.donate_button}>Donate</button>
                 </div>
                 ))}
             </section>

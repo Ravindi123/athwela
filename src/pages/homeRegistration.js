@@ -3,9 +3,10 @@ import styles from '../styles/homeRegistration.module.css';
 // import {app} from '../firebase';
 import { db, storage, auth } from '../firebase';
 // import { doc, setDoc } from "firebase/firestore";
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
+import moment from 'moment';
 
 
 const HomeRegistration = () => {
@@ -22,7 +23,8 @@ const HomeRegistration = () => {
     const [images, setImages] = useState('');
     const [homeType, setHomeType] = useState(''); // State to track selected home type
     const [checkbox, setCheckbox] = useState(false);
-
+    const today = moment().format('YYYY-MM-DD');
+    const raised = 0;
     const [loading, setLoading] = useState(false);
 
     const handleHome = async (e) => {
@@ -81,13 +83,14 @@ const HomeRegistration = () => {
                         instagram: instagram,
                         socialmedia: socialmedia,
                         images: imageUrls,
+                        raised: raised,
                     });
 
-                    // const userDocRef = doc(db, "users", user.uid);
+                    const userDocRef = doc(db, "users", user.uid);
+                    await updateDoc(userDocRef, {
+                        campaigns: [...(user.campaigns || []), {amount:docRef.id.raised, date: today, name:homeName }]
+                    });
 
-                    // await updateDoc(userDocRef, {
-                    //     campaign: arrayUnion(docRef.id),
-                    // });
                     console.log("Document written with ID: ", docRef.id);
 
                     console.log("Home registered and data stored successfully in", collectionName);
