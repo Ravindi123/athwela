@@ -71,6 +71,7 @@ const ProjectRegistration = () => {
                     const collectionName = projectType === 'healthCare' ? "Health Care" : "Disaster Relief";
 
                     const docRef = await addDoc(collection(db, collectionName), {
+                        owner: user.uid,
                         projectName: projectName,
                         description: description,
                         amount: amount,

@@ -1,10 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/project.module.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { getDoc, doc } from "firebase/firestore";
+import { db } from '../firebase';
 
 const Project = () => {
 
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { project } = location.state || {}; // Extract the project from state
+    console.log(project);
+    console.log(project.owner);
+    const [ownerName, setOwnerName] = useState(''); // State to store the owner's name
+    const [imageUrls, setImageUrl] = useState([]); // State to store the image URL
+
+    useEffect(() => {
+        // Fetch the owner's name when the component loads
+        const fetchOwnerName = async () => {
+            try {
+                const docRef = doc(db, "users", project.owner);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const fieldValue = docSnap.data().name; // Fetch the 'name' field
+                    console.log("Document data:", fieldValue);
+                    setOwnerName(fieldValue); // Set the owner's name
+                } else {
+                    console.log("No such document!");
+                }
+            } catch (error) {
+                console.error("Error fetching document:", error);
+            }
+        };
+
+        const fetchImageUrl = async () => {
+            try {
+                const docRef = doc(db, "Health Care", project.id); // Replace with the correct collection and project id
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const url = docSnap.data().images; // Assuming 'imageUrl' is the field name
+                    setImageUrl(url); // Set the image URL state
+                } else {
+                    console.log("No such document!");
+                }
+            } catch (error) {
+                console.error("Error fetching image URL:", error);
+            }
+        };
+
+        fetchOwnerName();
+        fetchImageUrl();
+
+    }, [project.owner]);
+
+    const handleNavigate = (project) => {
+        navigate('/donationBox', { state: { project } }); // Pass the project object in the state
+    };
+
     let currentImageIndex = 0;
     const images = document.querySelectorAll('.carousel img');
+
 
     function showImage(index) {
         images.forEach((img, i) => {
@@ -52,19 +108,25 @@ const Project = () => {
         });
     });
 
+    if (!project) {
+        return <p>No project data found.</p>;
+    }
+
     return (
         <section>
             <section className={styles.heading}>
-                <h1>Help Rahul recover from a rare neurological disorder <i className={`${styles.fas} ${styles.fa_check_circle}`}></i></h1>
-                <p><b>Fundraising campaign by Ravindi Gunarathna</b></p>
+                <h1>{project.name}<i className={`${styles.fas} ${styles.fa_check_circle}`}></i></h1>
+                <p><b>Fundraising campaign by {ownerName}</b></p>
             </section>
             <div className={styles.container}>
                 <div className={styles.middle}>
                     <div className={styles.project}>
                         <div className={styles.carousel}>
                             <button className={styles.arrow} onClick={prevImage}></button>
-                            <img src="1000_iStock-481073846.jpg" alt="img1" className={styles.active} />
-                            <img src="patient_589302497_1000.jpg" alt="img2" />
+                            {/* <img src="1000_iStock-481073846.jpg" alt="img1" className={styles.active} /> */}
+                            {imageUrls.map((url, index) => (
+                                <img key={index} src={url} alt={`Project Image ${index + 1}`} className={styles.active} />
+                            ))}
                             <button className={styles.arrow} onClick={nextImage}></button>
                         </div>
                         <div className={styles.story_updates}>
@@ -75,19 +137,7 @@ const Project = () => {
                             </div>
                             <div className={styles.content}>
                                 <div className={`${styles.story} ${styles.active}`}></div>
-                                <p>Meet Rahul, a resilient soul from Galle whose life took an unexpected turn when she was diagnosed with
-                                    a rare neurological disorder. Overnight, everyday tasks became daunting challenges, and uncertainty
-                                    clouded her future. Yet, in the face of adversity, Rahul's spirit remained unyielding.</p>
-                                <p>Despite the physical and emotional toll of her condition, Rahul refused to let her illness define her.
-                                    With the unwavering support of her family and the compassionate care of her doctors, she
-                                    embarked on a journey of treatment and rehabilitation. Each day brought small victories — a smile regained,
-                                    a step forward in therapy, a moment of peace amidst the storm.</p>
-                                <p>Now, Rahul dreams of reclaiming her independence fully. Your donation can help turn her dreams into reality.
-                                    Your support will fund critical medical treatments, rehabilitation services, and assistive technologies that
-                                    will empower Rahul and others like her to live life to the fullest despite their challenges.</p>
-                                <p>Join us in rewriting stories of resilience and triumph. Your generosity will not only provide hope for
-                                    Rahul but also inspire countless others facing similar battles. Together, we can make a profound difference
-                                    in the lives of those bravely fighting against illness.</p>
+                                <p>{project.description}</p>
                             </div>
                             <div className={`${styles.story} ${styles.updates}`}>
                                 <p> No updates yet.</p>
@@ -104,13 +154,13 @@ const Project = () => {
                     </div>
                 </div>
                 <div className={styles.donation_box}>
-                    <h1>LKR.200,000.00</h1>
-                    <p><b>raised of LKR.200,000,000.00</b></p>
+                    <h1>{project.raised}</h1>
+                    <p><b>raised of {project.need}</b></p>
                     <div className={styles.progress_bar}>
-                        <div className={styles.progress} style={{ width: '11%' }}></div>
+                        <div className={styles.progress} style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
                     </div>
-                    <p className={styles.status}><b>10% funded</b></p>
-                    <button className={styles.donate}><h2>Donate Now</h2></button>
+                    <p className={styles.status}><b>{((project.raised / project.need) * 100).toFixed(0)}% funded</b></p>
+                    <button className={styles.donate} onClick={() => handleNavigate(project)}><h2>Donate Now</h2></button>
                     <button className={styles.share} >
                         <i className="fab fa-facebook"></i>
                         <i className="fab fa-instagram"></i>
