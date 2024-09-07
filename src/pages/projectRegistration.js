@@ -3,9 +3,10 @@ import styles from '../styles/projectRegistration.module.css';
 // import {app} from '../firebase';
 import { db, storage, auth } from '../firebase';
 // import { doc, setDoc } from "firebase/firestore";
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
+import moment from 'moment';
 
 const ProjectRegistration = () => {
     const [projectName, setProjectName] = useState('');
@@ -19,6 +20,8 @@ const ProjectRegistration = () => {
     const [bankDetails, setBankDetails] = useState('');
     const [projectType, setProjectType] = useState('');
     const [checkbox, setCheckbox] = useState(false);
+    const today = moment().format('YYYY-MM-DD');
+
 
     const [loading, setLoading] = useState(false);
 
@@ -83,6 +86,12 @@ const ProjectRegistration = () => {
 
                     console.log("Document written with ID: ", docRef.id);
                     toast.success('Project registered successfully');
+
+                    const userDocRef = doc(db, "users", user.uid);
+                    await updateDoc(userDocRef, {
+                        campaigns: [...(user.campaigns || []), { amount:docRef.id.raised, date: today, name:projectName }]
+                    });
+
 
                 } catch (error) {
                     console.error('Error uploading images:', error);

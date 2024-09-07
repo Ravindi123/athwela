@@ -28,6 +28,8 @@ const UserProfile = () => {
                             const campaignsArray = userDocSnap.data().campaigns || [];
                             setCampaignHistory(campaignsArray);
 
+                            
+
                         } else {
                             toast.error('User not found');
                         }
@@ -95,7 +97,7 @@ const UserProfile = () => {
                                 </div>
                                 <div className="chart_info">
                                     <p className="summary">Total Amount Donated</p>
-                                    <p className="amount">Rs {donationHistory.reduce((total, donation) => total + donation.amount, 0).toFixed(2)}</p>
+                                    <p className="amount">Rs {donationHistory.reduce((total, donation) => total + Number(donation.amount), 0).toFixed(2)}</p>
                                 </div>
                                 <div className="chart_info">
                                     <p className="summary">No.of campaigns created</p>
@@ -103,7 +105,7 @@ const UserProfile = () => {
                                 </div>
                                 <div className="chart_info">
                                     <p className="summary">Total Amount Raised</p>
-                                    <p className="amount">Rs {campaignHistory.reduce((total, campaign) => total + campaign.amount, 0).toFixed(2)}</p>
+                                    <p className="amount">Rs {campaignHistory.reduce((total, campaign) => total + Number(campaign.amount), 0).toFixed(2)}</p>
                                 </div>
                             </div>
                             {/* <div className="chart">
@@ -136,7 +138,7 @@ const UserProfile = () => {
                             {campaignHistory.length > 0 ? (
                                 campaignHistory.map((campaign, index) => (
                                     <div className="project" key={index}>
-                                        <img src="boy.jpg" alt={campaign.name} className="project_image" />
+                                        <img src={campaign.project.images} alt={campaign.name} className="project_image" />
                                         <div className="project_info">
                                             <p className="project_title">{campaign.name}</p>
                                             <div className="details">
