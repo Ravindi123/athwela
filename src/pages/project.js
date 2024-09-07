@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/project.module.css';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getDoc, doc } from "firebase/firestore";
 import { db } from '../firebase';
 
 const Project = () => {
 
     const location = useLocation();
+    const navigate = useNavigate();
     const { project } = location.state || {}; // Extract the project from state
     console.log(project);
     console.log(project.owner);
@@ -52,6 +53,10 @@ const Project = () => {
         fetchImageUrl();
 
     }, [project.owner]);
+
+    const handleNavigate = (project) => {
+        navigate('/donationBox', { state: { project } }); // Pass the project object in the state
+    };
 
     let currentImageIndex = 0;
     const images = document.querySelectorAll('.carousel img');
@@ -155,7 +160,7 @@ const Project = () => {
                         <div className={styles.progress} style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
                     </div>
                     <p className={styles.status}><b>{((project.raised / project.need) * 100).toFixed(0)}% funded</b></p>
-                    <button className={styles.donate}><h2>Donate Now</h2></button>
+                    <button className={styles.donate} onClick={() => handleNavigate(project)}><h2>Donate Now</h2></button>
                     <button className={styles.share} >
                         <i className="fab fa-facebook"></i>
                         <i className="fab fa-instagram"></i>

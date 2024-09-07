@@ -48,12 +48,17 @@ const Healthcare = () => {
                     <div className={styles.project_card} key={project.id}>
                         <div className={styles.image_container}>
                             <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
-                            <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} />
+                            {/* <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} /> */}
+                            {project.imageUrls && project.imageUrls.length > 0 ? (
+                                    <img src={project.imageUrls[0]} alt={`Project Image`} className={styles.project_image} />
+                            ) : (
+                                <img src="/images/default.jpg" alt="default_project_image" className={styles.project_image} />
+                            )}
                         </div>
 
                         <div className={styles.project_info}>
                             <span className={styles.category}>Healthcare</span>
-                            <a href="project-details.html" className={styles.project_title}>
+                            <a onClick={() => handleNavigate(project)} className={styles.project_title}>
                                 <h3>{project.name}</h3>
                             </a>
                             <p className={styles.description}>{project.description}</p>

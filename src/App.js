@@ -36,9 +36,9 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={
-              <div><DonationBox /></div>}/>
-              {/* <footer><Footer /></footer></>} /> */}
+            <Route path="/" element={<>
+              <div><Home /></div>
+              <footer><Footer /></footer></>} />
             <Route path="/home" element={<>
               <div><Home /></div>
               <footer><Footer /></footer></>} />
@@ -66,6 +66,7 @@ function App() {
             <Route path="/userProfile" element={<div><UserProfile /></div>} />
             
             <Route path="/helpPage" element={<div><HelpPage/></div>}/>
+            <Route path="/donationBox" element={<div><DonationBox/></div>}/>
           </Routes>
           <ToastContainer />
 
