@@ -7,14 +7,14 @@ const Home = () => {
   const [user, setUser] = useState(null);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-        if (user) {
-            setUser(user);  
-        } else {
-            setUser(null);  
-        }
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
     });
-    return () => unsubscribe(); 
-}, []);
+    return () => unsubscribe();
+  }, []);
   // const [slideIndex, setSlideIndex] = useState(0);
 
   // const slides = [
@@ -118,8 +118,14 @@ const Home = () => {
         <section className={styles.mission}>
           <div className={styles.missionText}>
             <h2>Our Mission</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil reiciendis incidunt veniam repudiandae,
-              facere nesciunt ad, accusantium at unde, voluptates esse. Sunt consequuntur distinctio pariatur id, impedit sapiente veniam quidem?</p>
+            <p>Our mission is to create a secure and transparent platform that bridges
+              the gap between generous donors and those in need, fostering a spirit of
+              giving and community support. We aim to empower individuals and organizations
+              by providing a reliable space to share their stories and raise funds for meaningful causes,
+              ensuring that every donation, no matter how small, contributes to making a significant impact.
+              Through innovation, trust, and compassion, we strive to build a more connected and
+              empathetic society where everyone has the opportunity to support and uplift one another.
+            </p>
           </div>
           <div className={styles.missionImg}>
             <img src="/mission.jpg" alt="Our Mission" />
