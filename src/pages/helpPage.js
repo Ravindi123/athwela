@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import styles from '../styles/helpPage.module.css';
 
 /*const HelpPage = () => {
@@ -15,11 +15,11 @@ import styles from '../styles/helpPage.module.css';
 
 const HelpPage = () => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleNavigate = (path) => {
-        navigate(path);
-    };
+    // const handleNavigate = (path) => {
+    //     navigate(path);
+    // };
 
     return (
 

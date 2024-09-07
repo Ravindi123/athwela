@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
-import { collection, onSnapshot, doc } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/elders.module.css';
 
 const ChildernHome = () => {
@@ -38,10 +38,14 @@ const ChildernHome = () => {
             <section className={styles.product_container}>
                 {projects.map((project) => (
                         <div className={styles.box} key={project.id}>
-                            <img src="children-images/item1.jpg" alt=""/>
+                            {project.imageUrls && project.imageUrls.length > 0 ? (
+                                    <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
+                            ) : (
+                                <img src="/child.jpeg" alt="default_project_image" className={styles.project_image} />
+                            )}
                                 <h3>{project.name}</h3>
                                 <div className={styles.content}>
-                                    <span className={`${styles.project_info} ${styles.description}`}><i class="fa fa-map-marker">{project.description}</i></span>
+                                    <span className={`${styles.project_info} ${styles.description}`}><i class="fa fa-map-marker">{project.address}</i></span>
 
                                 </div>
                                 <div className={styles.actions}>
