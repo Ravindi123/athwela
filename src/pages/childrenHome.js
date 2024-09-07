@@ -41,7 +41,7 @@ const ChildernHome = () => {
                             <img src="children-images/item1.jpg" alt=""/>
                                 <h3>&nbsp Bhakthiwedantha Child Center</h3>
                                 <div className={styles.content}>
-                                    <span className={project_info .description}><i class="fa fa-map-marker">&nbsp &nbsp Negombo Rd, Mobola, Wattala</i></span>
+                                    <span className={`${styles.project_info} ${styles.description}`}><i class="fa fa-map-marker">&nbsp &nbsp Negombo Rd, Mobola, Wattala</i></span>
 
                                 </div>
                                 <div className={styles.actions}>

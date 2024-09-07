@@ -11,7 +11,7 @@ body {
     text-align: center;
 }
 .products{
-    background-image: url(about_background.jpg);
+    background-image: url(/public/about_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -91,3 +91,12 @@ body {
     transition: opacity 0.3s, box-shadow 0.3s;
 }
 
+.project_info .description {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #454242;
+    flex-grow: 1;
+    height: 4em; /* Ensures consistent height */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
