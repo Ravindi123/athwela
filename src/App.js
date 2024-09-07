@@ -15,7 +15,8 @@ import Select from './pages/select';
 import ProjectRegistration from './pages/projectRegistration';
 import HomeRegistration from './pages/homeRegistration';
 import SelectProject from './pages/selectProject';
-// import Project from './pages/project';
+import ProjectView from './pages/project';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
@@ -61,6 +62,7 @@ function App() {
             <Route path="/selectProject" element={<div><SelectProject /></div>} />
             <Route path="/projectRegistration" element={<div><ProjectRegistration /></div>} />
             <Route path="/homeRegistration" element={<div><HomeRegistration /></div>} />
+            <Route path="/project" element={<div><ProjectView /></div>} />
             <Route path="/userProfile" element={<div><UserProfile /></div>} />
             
             <Route path="/helpPage" element={<div><HelpPage/></div>}/>
