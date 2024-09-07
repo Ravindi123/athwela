@@ -119,7 +119,7 @@ const UserProfile = () => {
                             {donationHistory.length > 0 ? (
                                 donationHistory.map((donation, index) => (
                                     <div className="project" key={index}>
-                                        <img src="boy.jpg" alt={donation.name} className="project_image" />
+                                        <img src="donated.jpeg" alt={donation.name} className="project_image" />
                                         <div className="project_info">
                                             <p className="project_title">{donation.name}</p>
                                             <div className="details">
@@ -138,7 +138,7 @@ const UserProfile = () => {
                             {campaignHistory.length > 0 ? (
                                 campaignHistory.map((campaign, index) => (
                                     <div className="project" key={index}>
-                                        <img src={campaign.project.images} alt={campaign.name} className="project_image" />
+                                        <img src="fundraising.jpeg" alt={campaign.name} className="project_image" />
                                         <div className="project_info">
                                             <p className="project_title">{campaign.name}</p>
                                             <div className="details">
