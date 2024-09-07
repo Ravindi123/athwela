@@ -6,6 +6,9 @@ import Login from './pages/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FirebaseProvider from './firebaseContext';
 import Healthcare from './pages/healthcare';
+import DisasterRelief from './pages/disasterRelief';
+import EldersHome from './pages/eldersHome';
+import ChildrenHome from './pages/childrenHome';
 import Signup from './pages/signup';
 import SignupOrganization from './pages/signupOrganization';
 import Select from './pages/select';
@@ -19,6 +22,7 @@ import UserProfile from './pages/userProfile';
 import { auth } from './firebase';
 import { useState, useEffect } from 'react';
 import HelpPage from './pages/helpPage';  
+import DonationBox from './pages/donationBox';
 
 
 function App() {
@@ -31,9 +35,9 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={<>
-              <div><Home /></div>
-              <footer><Footer /></footer></>} />
+            <Route path="/" element={
+              <div><DonationBox /></div>}/>
+              {/* <footer><Footer /></footer></>} /> */}
             <Route path="/home" element={<>
               <div><Home /></div>
               <footer><Footer /></footer></>} />
@@ -41,6 +45,15 @@ function App() {
               <div><Select /></div>} />
             <Route path="/healthcare" element={<>
               <div><Healthcare /></div>
+              <footer><Footer /></footer></>} />
+              <Route path="/disasterRelief" element={<>
+              <div><DisasterRelief /></div>
+              <footer><Footer /></footer></>} />
+              <Route path="/eldersHome" element={<>
+              <div><EldersHome /></div>
+              <footer><Footer /></footer></>} />
+              <Route path="/childrenHome" element={<>
+              <div><ChildrenHome /></div>
               <footer><Footer /></footer></>} />
             <Route path="/login" element={<div><Login /></div>} />
             <Route path="/signup" element={<div><Signup /></div>} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/userProfile.css';
 import { auth, db } from '../firebase';
-import {  getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 const UserProfile = () => {
@@ -122,7 +122,7 @@ const UserProfile = () => {
                                             <p className="project_title">{donation.name}</p>
                                             <div className="details">
                                                 <p className="project_date">{donation.date}</p>
-                                                <p className="project_amount">Rs.{donation.amount}</p>
+                                                <p className="amount">Rs.{donation.amount}</p>
                                             </div>
                                         </div>
                                     </div>

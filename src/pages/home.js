@@ -171,12 +171,12 @@ const Home = () => {
                 <div className={styles.overlayText}><b><h3>Healthcare</h3></b></div>
               </div>
             </Link>
-            <a href="/home">
+            <Link to="/disasterRelief">
               <div className={styles.imageContainer}>
                 <img src="/disaster.png" alt="Disaster Relief" />
                 <div className={styles.overlayText}><b><h3>Disaster Relief</h3></b></div>
               </div>
-            </a>
+            </Link>
 
             <a href="children.html">
               <div className={styles.imageContainer}>
