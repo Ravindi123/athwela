@@ -178,18 +178,18 @@ const Home = () => {
               </div>
             </Link>
 
-            <a href="children.html">
+            <Link to="/childrenHome">
               <div className={styles.imageContainer}>
                 <img src="/child.jpeg" alt="Children's Homes" />
                 <div className={styles.overlayText}><b><h3>Children's Homes</h3></b></div>
               </div>
-            </a>
-            <a href="elders.html">
+            </Link>
+            <Link to="/eldersHome">
               <div className={styles.imageContainer}>
                 <img src="/elder.jpeg" alt="Elders' Homes" />
                 <div className={styles.overlayText}><b><h3>Elders' Homes</h3></b></div>
               </div>
-            </a>
+            </Link>
           </div>
         </section>
 
