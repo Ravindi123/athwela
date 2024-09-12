@@ -17,7 +17,10 @@ const ProjectRegistration = () => {
     const [phone, setPhone] = useState('');
     const [images, setImages] = useState([]);
     const [evidence, setEvidence] = useState('');
-    const [bankDetails, setBankDetails] = useState('');
+    const [bankHolder, setBankHolder] = useState('');
+    const [bank, setBank] = useState('');
+    const [branch, setBranch] = useState('');
+    const [accNumber, setAccNumber] = useState('');
     const [projectType, setProjectType] = useState('');
     const [checkbox, setCheckbox] = useState(false);
     const today = moment().format('YYYY-MM-DD');
@@ -43,6 +46,12 @@ const ProjectRegistration = () => {
         if (!/^\d{10}$/.test(phone)) {
             console.log("Invalid phone number");
             toast.error("Invalid phone number");
+            return;
+        }
+
+        if (bank === "") {
+            console.log("Please select a valid bank");
+            toast.error("Please select a bank");
             return;
         }
 
@@ -80,7 +89,6 @@ const ProjectRegistration = () => {
                         phone: phone,
                         images: imageUrls,
                         evidence: evidenceUrls,
-                        bankDetails: bankDetails,
                         projectType: projectType
                     });
 
@@ -89,7 +97,7 @@ const ProjectRegistration = () => {
 
                     const userDocRef = doc(db, "users", user.uid);
                     await updateDoc(userDocRef, {
-                        campaigns: [...(user.campaigns || []), { amount:raised, date: today, name:projectName }]
+                        campaigns: [...(user.campaigns || []), { amount: raised, date: today, name: projectName }]
                     });
 
 
@@ -163,7 +171,17 @@ const ProjectRegistration = () => {
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="bank-details">Bank Details:</label>
-                        <textarea id="bank-details" name="bank-details" rows="2" required onChange={(e) => setBankDetails(e.target.value)}></textarea>
+                        <input className={styles.url_text} type="text" id="name" name="Name" placeholder="Account holder's name" onChange={(e) => setBankHolder(e.target.value)} required/>
+                        <select id="inputState" className={styles.url_text} title='Select a bank' onChange={(e) => setBank(e.target.value)}>
+                                    <option value="invalid" selected disabled>Choose...</option>
+                                    <option value="Bank of Ceylon">Bank of Ceylon</option>
+                                    <option value="Sampath Bank">Sampath Bank</option>
+                                    <option value="Commercial Bank">Commercial Bank</option>
+                                    <option value="Hatton National Bank">Hatton National Bank</option>
+                                    <option value="Nation's Trust Bank">Nation's Trust Bank</option>
+                                </select>
+                        <input className={styles.url_text} type="text" id="other-social-media" title='Enter the branch name' placeholder="Branch name" onChange={(e) => setBranch(e.target.value)} required/>
+                        <input className={styles.url_text} type="text" id="acc-number" placeholder="Account Number"/>
                     </div>
                     <div className={styles.form_check}>
                         <div className={styles.checkboxContainer}>
