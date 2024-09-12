@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
 import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/elders.module.css';
+import 'boxicons';
 
 const EldersHome = () => {
     const { db } = useFirebase(); // Access Firestore instance from context
@@ -42,7 +43,7 @@ const EldersHome = () => {
                             <img src="children-images/item1.jpg" alt=""/>
                                 <h3>{project.name}</h3>
                                 <div className={styles.content}>
-                                    <span className={`${styles.project_info} ${styles.description}`}><i class="fa fa-map-marker">{project.address}</i></span>
+                                    <span className={`${styles.project_info} ${styles.description}`}><box-icon type='solid' name='map'></box-icon>{project.address}</span>
 
                                 </div>
                                 <div className={styles.actions}>
