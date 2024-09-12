@@ -17,6 +17,10 @@ const HomeRegistration = () => {
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
     const [email, setEmail] = useState('');
+    const [bankHolder, setBankHolder] = useState('');
+    const [bank, setBank] = useState('');
+    const [branch, setBranch] = useState('');
+    const [accNumber, setAccNumber] = useState('');
     const [facebook, setFacebook] = useState('');
     const [instagram, setInstagram] = useState('');
     const [socialmedia, setSocialMedia] = useState('');
@@ -52,6 +56,12 @@ const HomeRegistration = () => {
             return;
         }
 
+        if (bank === "") {
+            console.log("Please select a valid bank");
+            toast.error("Please select a bank");
+            return;
+        }
+
         auth.onAuthStateChanged(async (user) => {
             if (user) {
 
@@ -79,16 +89,23 @@ const HomeRegistration = () => {
                         city: city,
                         district: district,
                         email: email,
+                        bankDetails: {
+                            bankHolder: bankHolder,
+                            bank: bank,
+                            branch: branch,
+                            accNumber: accNumber
+                        },
                         facebook: facebook,
                         instagram: instagram,
                         socialmedia: socialmedia,
                         images: imageUrls,
                         raised: raised,
+                        verified: false,
                     });
 
                     const userDocRef = doc(db, "users", user.uid);
                     await updateDoc(userDocRef, {
-                        campaigns: [...(user.campaigns || []), {amount:raised, date: today, name:homeName }]
+                        campaigns: [...(user.campaigns || []), { amount: raised, date: today, name: homeName }]
                     });
 
                     console.log("Document written with ID: ", docRef.id);
@@ -141,79 +158,95 @@ const HomeRegistration = () => {
                         <label htmlFor="description">Telephone</label>
                         <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setTel(e.target.value)} required />
                     </div>
+                    <div className={styles.form_group}>
+                        <label htmlFor="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" onChange={(e) => setDescription(e.target.value)} required></textarea>
+                    </div>
+                    <div>
                         <div className={styles.form_group}>
-                            <label htmlFor="description">Description:</label>
-                            <textarea id="description" name="description" rows="4" onChange={(e) => setDescription(e.target.value)} required></textarea>
+                            <label htmlFor="inputAddress" className="form-label">Address</label>
+                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required />
                         </div>
-                        <div>
-                            <div className={styles.form_group}>
-                                <label htmlFor="inputAddress" className="form-label">Address</label>
-                                <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required />
-                            </div>
-                            <div className={styles.form_group}>
-                                <label htmlFor="inputCity" className="form-label">City</label>
-                                <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required />
-                            </div>
-                            <div className={styles.form_group}>
-                                <label htmlFor="inputState" className="form_label">District</label>
-                                <select id="inputState" className="form_select" onChange={(e) => setDistrict(e.target.value)}>
-                                    <option value="invalid" selected disabled>Choose...</option>
-                                    <option value="Colombo">Colombo</option>
-                                    <option value="Galle">Galle</option>
-                                    <option value="Kalutara">Kalutara</option>
-                                    <option value="Gampaha">Gampaha</option>
-                                    <option value="Hambanthota">Hambanthota</option>
-                                    <option value="Matara">Matara</option>
-                                    <option value="Badulla">Badulla</option>
-                                    <option value="Monaragala">Monaragala</option>
-                                    <option value="Ratnapura">Ratnapura</option>
-                                    <option value="Kagalle">Kagalle</option>
-                                    <option value="Madakalapuwa">Madakalapuwa</option>
-                                    <option value="Ampara">Ampara</option>
-                                    <option value="Trincomalee">Trincomalee</option>
-                                    <option value="Anuradhapura">Anuradhapura</option>
-                                    <option value="Polonnaruwa">Polonnaruwa</option>
-                                    <option value="Matale">Matale</option>
-                                    <option value="Kandy">Kandy</option>
-                                    <option value="Nuwaraeliya">Nuwaraeliya</option>
-                                    <option value="Puttalam">Puttalam</option>
-                                    <option value="Kurunegala">Kurunegala</option>
-                                    <option value="Jaffna">Jaffna</option>
-                                    <option value="Mannar">Mannar</option>
-                                    <option value="Vavuniya">Vavuniya</option>
-                                    <option value="Kilinochchi">Kilinochchi</option>
-                                    <option value="Mullaitivu">Mullaitivu</option>
-                                </select>
-                            </div>
-                            <div className={styles.form_group}>
-                                <label htmlFor="exampleFormControlInput1" className="form-label">If you have a website, link for the website</label>
-                                <input type="email" className={styles.form_control} id="exampleFormControlInput1" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
-                            </div>
-                            <div className={styles.form_group}>
-                                <label htmlFor="social-media">Social Media Profiles:</label>
-                                <input className={styles.url_text} type="url" id="facebook" name="facebook" placeholder="Facebook" onChange={(e) => setFacebook(e.target.value)} />
-                                <input className={styles.url_text} type="url" id="instagram" name="instagram" placeholder="Instagram" onChange={(e) => setInstagram(e.target.value)} />
-                                <input className={styles.url_text} type="url" id="other-social-media" name="other-social-media" placeholder="Others" onChange={(e) => setSocialMedia(e.target.value)} />
-                            </div>
-                            <div className={styles.form_group}>
-                                <label htmlFor="inputAddress" className="form-label">Images</label>
-                                <div>
-                                    <input type="file" className="form-control" id="inputGroupFile02" onChange={handleImageChange} multiple />
-                                </div>
-                            </div>
-                            <div className={styles.form_group}>
-                                <div className={styles.checkboxContainer}>
-                                    <input className={styles.form_check_input} type="checkbox" id="checkbox" checked={checkbox} onChange={(e) => setCheckbox(e.target.checked)} />
-                                    <label className={styles.form_check_label} htmlFor="flexCheckCheckedDisabled">
-                                        I hereby declare that the information provided is accurate.
-                                    </label>
-                                </div>
-                            </div>
-                            <button className={styles.button} type="submit">Submit</button>
+                        <div className={styles.form_group}>
+                            <label htmlFor="inputCity" className="form-label">City</label>
+                            <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required />
                         </div>
+                        <div className={styles.form_group}>
+                            <label htmlFor="inputState" className="form_label">District</label>
+                            <select id="inputState" className="form_select" onChange={(e) => setDistrict(e.target.value)}>
+                                <option value="invalid" selected disabled>Choose...</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kalutara">Kalutara</option>
+                                <option value="Gampaha">Gampaha</option>
+                                <option value="Hambanthota">Hambanthota</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Badulla">Badulla</option>
+                                <option value="Monaragala">Monaragala</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Kagalle">Kagalle</option>
+                                <option value="Madakalapuwa">Madakalapuwa</option>
+                                <option value="Ampara">Ampara</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                                <option value="Anuradhapura">Anuradhapura</option>
+                                <option value="Polonnaruwa">Polonnaruwa</option>
+                                <option value="Matale">Matale</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Nuwaraeliya">Nuwaraeliya</option>
+                                <option value="Puttalam">Puttalam</option>
+                                <option value="Kurunegala">Kurunegala</option>
+                                <option value="Jaffna">Jaffna</option>
+                                <option value="Mannar">Mannar</option>
+                                <option value="Vavuniya">Vavuniya</option>
+                                <option value="Kilinochchi">Kilinochchi</option>
+                                <option value="Mullaitivu">Mullaitivu</option>
+                            </select>
+                        </div>
+
+                        <div className={styles.form_group}>
+                            <label htmlFor="bank-details">Bank Details:</label>
+                            <input className={styles.url_text} type="text" id="name" name="Name" placeholder="Account holder's name" onChange={(e) => setBankHolder(e.target.value)} required />
+                            <select id="inputState" className={styles.url_text} title='Select a bank' onChange={(e) => setBank(e.target.value)}>
+                                <option value="invalid" selected disabled>Choose...</option>
+                                <option value="Bank of Ceylon">Bank of Ceylon</option>
+                                <option value="Sampath Bank">Sampath Bank</option>
+                                <option value="Commercial Bank">Commercial Bank</option>
+                                <option value="Hatton National Bank">Hatton National Bank</option>
+                                <option value="Nation's Trust Bank">Nation's Trust Bank</option>
+                            </select>
+                            <input className={styles.url_text} type="text" id="other-social-media" title='Enter the branch name' placeholder="Branch name" onChange={(e) => setBranch(e.target.value)} required />
+                            <input className={styles.url_text} type="text" id="acc-number" placeholder="Account Number" onChange={(e) => setAccNumber(e.target.value)} />
+                        </div>
+
+                        <div className={styles.form_group}>
+                            <label htmlFor="exampleFormControlInput1" className="form-label">If you have a website, link for the website</label>
+                            <input type="email" className={styles.form_control} id="exampleFormControlInput1" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+                        <div className={styles.form_group}>
+                            <label htmlFor="social-media">Social Media Profiles:</label>
+                            <input className={styles.url_text} type="url" id="facebook" name="facebook" placeholder="Facebook" onChange={(e) => setFacebook(e.target.value)} />
+                            <input className={styles.url_text} type="url" id="instagram" name="instagram" placeholder="Instagram" onChange={(e) => setInstagram(e.target.value)} />
+                            <input className={styles.url_text} type="url" id="other-social-media" name="other-social-media" placeholder="Others" onChange={(e) => setSocialMedia(e.target.value)} />
+                        </div>
+                        <div className={styles.form_group}>
+                            <label htmlFor="inputAddress" className="form-label">Images</label>
+                            <div>
+                                <input type="file" className="form-control" id="inputGroupFile02" onChange={handleImageChange} multiple required />
+                            </div>
+                        </div>
+                        <div className={styles.form_group}>
+                            <div className={styles.checkboxContainer}>
+                                <input className={styles.form_check_input} type="checkbox" id="checkbox" checked={checkbox} onChange={(e) => setCheckbox(e.target.checked)} />
+                                <label className={styles.form_check_label} htmlFor="flexCheckCheckedDisabled">
+                                    I hereby declare that the information provided is accurate.
+                                </label>
+                            </div>
+                        </div>
+                        <button className={styles.button} type="submit">Submit</button>
+                    </div>
                 </form>
             )}
-            
+
         </section>
     );
 }

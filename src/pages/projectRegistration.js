@@ -89,7 +89,14 @@ const ProjectRegistration = () => {
                         phone: phone,
                         images: imageUrls,
                         evidence: evidenceUrls,
-                        projectType: projectType
+                        projectType: projectType,
+                        bankDetails: {
+                            bankHolder: bankHolder,
+                            bank: bank,
+                            branch: branch,
+                            accNumber: accNumber
+                        },
+                        verified: false,
                     });
 
                     console.log("Document written with ID: ", docRef.id);
@@ -181,7 +188,7 @@ const ProjectRegistration = () => {
                                     <option value="Nation's Trust Bank">Nation's Trust Bank</option>
                                 </select>
                         <input className={styles.url_text} type="text" id="other-social-media" title='Enter the branch name' placeholder="Branch name" onChange={(e) => setBranch(e.target.value)} required/>
-                        <input className={styles.url_text} type="text" id="acc-number" placeholder="Account Number"/>
+                        <input className={styles.url_text} type="text" id="acc-number" placeholder="Account Number" onChange={(e) => setAccNumber(e.target.value)}/>
                     </div>
                     <div className={styles.form_check}>
                         <div className={styles.checkboxContainer}>
