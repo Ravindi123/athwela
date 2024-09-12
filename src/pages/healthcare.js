@@ -21,6 +21,7 @@ const Healthcare = () => {
                     raised: doc.data().raised,
                     owner: doc.data().owner,
                     imageUrls: doc.data().images,
+                    verified: doc.data().verified,
                 }));
 
                 setProjects(projectsArray);
@@ -47,7 +48,9 @@ const Healthcare = () => {
                 {projects.map((project) => (
                     <div className={styles.project_card} key={project.id}>
                         <div className={styles.image_container}>
-                            <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
+                            {project.verified ? (
+                                <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
+                            ) : null}
                             {/* <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} /> */}
                             {project.imageUrls && project.imageUrls.length > 0 ? (
                                     <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
