@@ -1,17 +1,23 @@
 
 .title{
+    margin-top: 140px;
     display: flex;
-    padding-bottom: 0;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    background-color: var(--main-color);
+    /* align-items: center; */
 }
 .title h2{
     font-size: 2rem;
-    color: #1b1b1b;
-    margin-top: 80px;
+    color: white;
+    /* margin-top: 80px; */
+    text-align: center;
  
 }
 .card_container {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(240px,auto));
+    grid-template-columns: repeat(auto-fit,minmax(360px,auto));
     gap: 1.5rem;
     margin-top: 2rem;
     background-image: url(/public/about_background.jpg);
@@ -171,7 +177,7 @@
 
 @media(max-width:900px){
     .card_container{
-        grid-template-columns: repeat(auto-fit,minmax(180px,auto));
+        grid-template-columns: repeat(auto-fit,minmax(240px,auto));
         gap: 1.5rem;
         margin-top: 2rem;
     }
@@ -180,6 +186,12 @@
     }
     .project_image{
         height: 100px;
+    }
+    .title {
+        margin-top: 120px;
+    }
+    .title h2{
+        font-size: 1.5rem;
     }
 }
 
