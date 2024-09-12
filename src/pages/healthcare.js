@@ -50,7 +50,7 @@ const Healthcare = () => {
                             <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
                             {/* <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} /> */}
                             {project.imageUrls && project.imageUrls.length > 0 ? (
-                                    <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
+                                <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
                             ) : (
                                 <img src="/elder.jpeg" alt="default_project_image" className={styles.project_image} />
                             )}

@@ -34,29 +34,29 @@ const ChildernHome = () => {
     return (
         <div>
             <section className={styles.title}>
-                <h2>Registered Children's Homes</h2>
+                <h2>Every Child Deserves a Safe and Loving Home</h2>
             </section>
 
             <section className={styles.product_container}>
                 {projects.map((project) => (
-                        <div className={styles.box} key={project.id}>
-                            {project.imageUrls && project.imageUrls.length > 0 ? (
-                                    <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
-                            ) : (
-                                <img src="/child.jpeg" alt="default_project_image" className={styles.project_image} />
-                            )}
-                                <h3>{project.name}</h3>
-                                <div className={styles.content}>
-                                    <span className={`${styles.project_info} ${styles.description}`}><box-icon type='solid' name='map'></box-icon>{project.address}</span>
+                    <div className={styles.box} key={project.id}>
+                        {project.imageUrls && project.imageUrls.length > 0 ? (
+                            <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
+                        ) : (
+                            <img src="/child.jpeg" alt="default_project_image" className={styles.project_image} />
+                        )}
+                        <div className={styles.content}>
+                            <h3>{project.name}</h3>
+                            <span ><box-icon type='solid' name='map'></box-icon>{project.address}</span>
 
-                                </div>
-                                <div className={styles.actions}>
-
-                                    <span className={styles.donate_button}>Donate</span>
-                                </div>
                         </div>
+                        <div className={styles.actions}>
+
+                            <span className={styles.donate_button}>Donate</span>
+                        </div>
+                    </div>
                 ))}
-                    </section>
+            </section>
         </div>
     );
 };
