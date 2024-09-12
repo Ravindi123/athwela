@@ -39,7 +39,7 @@ const DisasterRelief = () => {
     return (
         <div>
             <section className={styles.title}>
-                <h2>Let's help the distressed...</h2>
+                <h2>Help Us Bring Relief to Those in Need...</h2>
             </section>
 
             <section className={styles.card_container}>
