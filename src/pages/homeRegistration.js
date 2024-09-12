@@ -4,7 +4,7 @@ import styles from '../styles/homeRegistration.module.css';
 const HomeRegistration = () => {
     return (
         <section className={styles.form_container}>
-            <h2>Register  Children's/ Adults' home</h2>
+            <h2>Register a Children's/ Adults' home</h2>
 
 
             <form>
