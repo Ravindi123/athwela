@@ -11,7 +11,6 @@
 .title h2{
     font-size: 2rem;
     color: white;
-    /* margin-top: 80px; */
     text-align: center;
  
 }
@@ -164,8 +163,6 @@
 }
 
 .donate_button:hover {
-    /* opacity: 0.8; */
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
     background-color: var(--main-color);
     transform: translateX(-50%);
     box-shadow: 0 0 1rem var(--main-color);
