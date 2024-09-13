@@ -153,6 +153,7 @@
     position: sticky; 
     top: 120px;
     height: 320px;
+    margin-top: 15px;
 
 }
 
@@ -229,7 +230,7 @@
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin: 12px;
+    margin: 10px;
 
 }
 
@@ -259,6 +260,14 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    
+}
+
+.comment_form {
+    display: flex;
+    flex-direction: column; 
 }
 
 .comment_form button:hover {
@@ -292,7 +301,7 @@
 .none {
     text-align: center;
     color: #6e6a6a;
-    font-size: 25px;
+    font-size: 23px;
     opacity: 0.5;
 }
 
