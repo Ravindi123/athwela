@@ -80,6 +80,9 @@ input:valid ~ label {
     font-size: 1.2em;
     top: 20px;
 }
+.showPassword:hover {
+    cursor: pointer;
+}
 
 .forget {
     margin: -10px 0 17px;

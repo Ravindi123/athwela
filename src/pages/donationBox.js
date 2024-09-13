@@ -3,11 +3,15 @@ import styles from '../styles/donationBox.module.css';
 import { auth, db } from '../firebase';
 import moment from 'moment';
 import { doc, updateDoc } from 'firebase/firestore';
+import {useLocation } from 'react-router-dom';
 
-const DonationBox = ({projectName}) => {
+const DonationBox = () => {
     const [amount, setAmount] = useState(null);
     // const [name, setName] = useState('');
     const today = moment().format('YYYY-MM-DD');
+    const location = useLocation();
+    const { project } = location.state || {}; 
+
 
     const handleDonation = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -17,8 +21,9 @@ const DonationBox = ({projectName}) => {
                 const userDocRef = doc(db, "users", user.uid);
 
                 try {
+
                     await updateDoc(userDocRef, {
-                        donations: [...(user.donations || []), { amount:amount, date: today, name:projectName }]
+                        donations: [...(user.donations || []), { amount:amount, date: today, name:project.projectName }]
                     });
                     console.log('Donation recorded successfully');
                 } catch (error) {
