@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
 import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/elders.module.css';
+import 'boxicons';
+
 
 const EldersHome = () => {
     const { db } = useFirebase(); // Access Firestore instance from context
@@ -33,25 +35,26 @@ const EldersHome = () => {
     return (
         <div>
             <section className={styles.title}>
-                <h2>Registered Elder's Homes</h2>
+                <h2>Caring for Those Who Once Cared for Us</h2>
             </section>
 
             <section className={styles.product_container}>
                 {projects.map((project) => (
-                        <div className={styles.box} key={project.id}>
-                            <img src="children-images/item1.jpg" alt=""/>
-                                <h3>{project.name}</h3>
-                                <div className={styles.content}>
-                                    <span className={`${styles.project_info} ${styles.description}`}><i class="fa fa-map-marker">{project.address}</i></span>
+                    <div className={styles.box} key={project.id}>
+                        <img src="children-images/item1.jpg" alt="" />
 
-                                </div>
-                                <div className={styles.actions}>
-
-                                    <span className={styles.donate_button}>Donate</span>
-                                </div>
+                        <div className={styles.content}>
+                            <h3>{project.name}</h3>
+                            <span >
+                                <box-icon name='map' ></box-icon>{project.address}
+                            </span>
                         </div>
+                        <div className={styles.actions}>
+                            <span className={styles.donate_button}>Donate</span>
+                        </div>
+                    </div>
                 ))}
-                    </section>
+            </section>
         </div>
     );
 };

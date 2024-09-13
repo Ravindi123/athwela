@@ -39,7 +39,7 @@ const DisasterRelief = () => {
     return (
         <div>
             <section className={styles.title}>
-                <h2>Let's help the distressed...</h2>
+                <h2>Help Us Bring Relief to Those in Need...</h2>
             </section>
 
             <section className={styles.card_container}>
@@ -47,9 +47,11 @@ const DisasterRelief = () => {
 
                     <div className={styles.project_card} key={project.id}>
                         <div className={styles.image_container}>
-                            <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
+                            {project.verified ? (
+                                <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
+                            ) : null}
                             {project.imageUrls && project.imageUrls.length > 0 ? (
-                                    <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
+                                <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
                             ) : (
                                 <img src="/images/default.jpg" alt="default_project_image" className={styles.project_image} />
                             )}

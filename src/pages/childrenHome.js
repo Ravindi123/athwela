@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useFirebase } from '../firebaseContext';
 import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/elders.module.css';
+import 'boxicons';
 
 const ChildernHome = () => {
     const { db } = useFirebase(); // Access Firestore instance from context
@@ -15,6 +16,7 @@ const ChildernHome = () => {
                 const projectsArray = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     name: doc.data().homeName,
+                    address: doc.data().address,
                     description: doc.data().description,
                     owner: doc.data().owner,
                     imageUrls: doc.data().images,
@@ -32,29 +34,29 @@ const ChildernHome = () => {
     return (
         <div>
             <section className={styles.title}>
-                <h2>Registered Children's Homes</h2>
+                <h2>Every Child Deserves a Safe and Loving Home</h2>
             </section>
 
             <section className={styles.product_container}>
                 {projects.map((project) => (
-                        <div className={styles.box} key={project.id}>
-                            {project.imageUrls && project.imageUrls.length > 0 ? (
-                                    <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
-                            ) : (
-                                <img src="/child.jpeg" alt="default_project_image" className={styles.project_image} />
-                            )}
-                                <h3>{project.name}</h3>
-                                <div className={styles.content}>
-                                    <span className={`${styles.project_info} ${styles.description}`}><i class="fa fa-map-marker">{project.address}</i></span>
+                    <div className={styles.box} key={project.id}>
+                        {project.imageUrls && project.imageUrls.length > 0 ? (
+                            <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
+                        ) : (
+                            <img src="/child.jpeg" alt="default_project_image" className={styles.project_image} />
+                        )}
+                        <div className={styles.content}>
+                            <h3>{project.name}</h3>
+                            <span ><box-icon type='solid' name='map'></box-icon>{project.address}</span>
 
-                                </div>
-                                <div className={styles.actions}>
-
-                                    <span className={styles.donate_button}>Donate</span>
-                                </div>
                         </div>
+                        <div className={styles.actions}>
+
+                            <span className={styles.donate_button}>Donate</span>
+                        </div>
+                    </div>
                 ))}
-                    </section>
+            </section>
         </div>
     );
 };
