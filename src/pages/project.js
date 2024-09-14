@@ -102,6 +102,7 @@ const Project = () => {
 
     // Function to navigate to the donation box
     const handleNavigate = (project) => {
+        const docRef = doc(db, "Health Care", project.id); 
         navigate('/donationBox', { state: { docRef, collectionName:"Health Care" } });
     };
 
@@ -195,6 +196,25 @@ const Project = () => {
                         <i class='bx bxl-whatsapp' ></i>
                         <b> Share with Friends</b>
                     </button>
+                </div>
+                <div class="sidebar-content">
+                    <div class="home-project-info">
+                        <h2>CONTACT DETAILS</h2>
+                        <div class="profile_content">
+                            <p class="info_title">Address</p>
+                            <p class="info">95,<br />W.A. de Silva Mawatha,<br />Colombo 6,<br />Sri Lanka</p>
+                        </div>
+                        <hr class="styled-line" />
+                        <div class="profile_content">
+                            <p class="info_title">Telephone Number</p>
+                            <p class="info">+94112588838</p>
+                        </div>
+                        <hr class="styled-line" />
+                        <div class="profile_content">
+                            <p class="info_title">Email Address</p>
+                            <p class="info">info@srilankadhara.org</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

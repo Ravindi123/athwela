@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -15,6 +16,17 @@ const Home = () => {
     });
     return () => unsubscribe();
   }, []);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
   // const [slideIndex, setSlideIndex] = useState(0);
 
   // const slides = [

@@ -16,6 +16,7 @@ import ProjectRegistration from './pages/projectRegistration';
 import HomeRegistration from './pages/homeRegistration';
 import SelectProject from './pages/selectProject';
 import ProjectView from './pages/project';
+import SingleHome from './pages/singleHome';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,6 +38,7 @@ function App() {
           <Routes>
 
             <Route path="/" element={<>
+              {/* <div><SingleHome /></div> */}
               <div><Home /></div>
               <footer><Footer /></footer></>} />
             <Route path="/home" element={<>
@@ -63,6 +65,7 @@ function App() {
             <Route path="/projectRegistration" element={<div><ProjectRegistration /></div>} />
             <Route path="/homeRegistration" element={<div><HomeRegistration /></div>} />
             <Route path="/project" element={<div><ProjectView /></div>} />
+            <Route path="/singleHome" element={<div><SingleHome /></div>} />
             <Route path="/userProfile" element={<div><UserProfile /></div>} />
             
             <Route path="/helpPage" element={<div><HelpPage/></div>}/>
