@@ -104,7 +104,7 @@ const ProjectRegistration = () => {
 
                     const userDocRef = doc(db, "users", user.uid);
                     await updateDoc(userDocRef, {
-                        campaigns: [...(user.campaigns || []), { amount: raised, date: today, name: projectName }]
+                        campaigns: [...(user.campaigns || []), { amount:docRef.id.raised, date: today, name:projectName }]
                     });
 
 

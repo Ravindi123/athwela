@@ -57,6 +57,15 @@ const SignupOrganization = () => {
         }
     };
 
+    const togglePassword = () => {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+
     return (
         <section className={styles.signup_container}>
             <div className={styles.form_box}>
@@ -96,7 +105,7 @@ const SignupOrganization = () => {
                             <label htmlFor="email">Email</label>
                         </div>
                         <div className={styles.inputbox}>
-                            <box-icon name='lock-alt' color="#fff"></box-icon>
+                            <box-icon name='show-alt' color="#fff" className={styles.showPassword} onClick={togglePassword} title="Show Password"></box-icon>
                             <input type="password" id="password" required onChange={(e) => setPassword(e.target.value)} />
                             <label htmlFor="password">Password</label>
                         </div>

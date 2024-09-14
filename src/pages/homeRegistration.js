@@ -105,7 +105,7 @@ const HomeRegistration = () => {
 
                     const userDocRef = doc(db, "users", user.uid);
                     await updateDoc(userDocRef, {
-                        campaigns: [...(user.campaigns || []), { amount: raised, date: today, name: homeName }]
+                        campaigns: [...(user.campaigns || []), {amount:docRef.id.raised, date: today, name:homeName }]
                     });
 
                     console.log("Document written with ID: ", docRef.id);
