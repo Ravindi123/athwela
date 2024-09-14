@@ -35,9 +35,11 @@ const Project = () => {
             }
         };
 
+        const collectionName = project.projectType === "healthCare" ? "Health Care" : "Disaster Relief";
+
         const fetchImageUrls = async () => {
             try {
-                const docRef = doc(db, "Health Care", project.id); // Replace with correct collection and project ID
+                const docRef = doc(db, collectionName, project.id); // Replace with correct collection and project ID
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const images = docSnap.data().images || [];
