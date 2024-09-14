@@ -22,6 +22,7 @@ const Healthcare = () => {
                     owner: doc.data().owner,
                     imageUrls: doc.data().images,
                     verified: doc.data().verified,
+                    projectType: doc.data().projectType,    // Add projectType field to the project object
                 }));
 
                 setProjects(projectsArray);

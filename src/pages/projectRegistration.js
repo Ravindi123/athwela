@@ -140,7 +140,7 @@ const ProjectRegistration = () => {
                             <label className={styles.form_check_label} htmlFor="inlineRadio1">Health Care</label>
                         </div>
                         <div className={styles.form_group_tick}>
-                            <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="parentHome" onChange={handleProjectTypeChange} />
+                            <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="disasterRelief" onChange={handleProjectTypeChange} />
                             <label className={styles.form_check_label} htmlFor="inlineRadio2">Disaster Relief</label>
                         </div>
                     </div>
