@@ -12,7 +12,7 @@ const ProjectRegistration = () => {
     const [projectName, setProjectName] = useState('');
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState(0);
-    const [raised, setRaised] = useState('');
+    const [raised, setRaised] = useState('0');
     const [deadline, setDeadline] = useState('');
     const [phone, setPhone] = useState('');
     const [images, setImages] = useState([]);
@@ -104,7 +104,7 @@ const ProjectRegistration = () => {
 
                     const userDocRef = doc(db, "users", user.uid);
                     await updateDoc(userDocRef, {
-                        campaigns: [...(user.campaigns || []), { amount:docRef.id.raised, date: today, name:projectName }]
+                        campaigns: [...(user.campaigns || []), { type:collectionName, project:docRef.id, date: today}]
                     });
 
 

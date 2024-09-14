@@ -10,7 +10,7 @@ const DonationBox = () => {
     // const [name, setName] = useState('');
     const today = moment().format('YYYY-MM-DD');
     const location = useLocation();
-    const { project } = location.state || {}; 
+    const { docRef, collectionName } = location.state;
 
 
     const handleDonation = async (e) => {
@@ -23,7 +23,7 @@ const DonationBox = () => {
                 try {
 
                     await updateDoc(userDocRef, {
-                        donations: [...(user.donations || []), { amount:amount, date: today, name:project.projectName }]
+                        donations: [...(user.donations || []), { type:collectionName, project:docRef.id, date: today}]
                     });
                     console.log('Donation recorded successfully');
                 } catch (error) {

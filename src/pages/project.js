@@ -102,7 +102,7 @@ const Project = () => {
 
     // Function to navigate to the donation box
     const handleNavigate = (project) => {
-        navigate('/donationBox', { state: { project } });
+        navigate('/donationBox', { state: { docRef, collectionName:"Health Care" } });
     };
 
     // Handle tab switching

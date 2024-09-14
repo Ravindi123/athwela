@@ -17,19 +17,59 @@ const UserProfile = () => {
                         // Fetch user details
                         const userDocRef = doc(db, 'users', user.uid);
                         const userDocSnap = await getDoc(userDocRef);
+    
                         if (userDocSnap.exists()) {
                             setUserDetails(userDocSnap.data());
-
-                            // Fetch donations
+    
                             const donationsArray = userDocSnap.data().donations || [];
-                            setDonationHistory(donationsArray);
-
-                            //Fetch campaigns
+    
+                            const donationDataArray = [];
+                            for (const donation of donationsArray) {
+                                try {
+                                    const donationDocRef = doc(db, donation.type, donation.project);
+                                    const donationDocSnap = await getDoc(donationDocRef);  
+    
+                                    if (donationDocSnap.exists()) {
+                                        const donationData = {
+                                            name: donationDocSnap.data().projectName,  
+                                            date: donation.date, 
+                                            amount: donationDocSnap.data().amount,
+                                            image: donationDocSnap.data().images[0],  
+                                        };
+    
+                                        donationDataArray.push(donationData);
+                                    }
+                                } catch (error) {
+                                    console.error(`Error fetching donation ${donation.project}:`, error);
+                                }
+                            }
+    
+                            setDonationHistory(donationDataArray);  
+    
                             const campaignsArray = userDocSnap.data().campaigns || [];
-                            setCampaignHistory(campaignsArray);
-
-                            
-
+    
+                            const campaignDataArray = [];
+                            for (const campaign of campaignsArray) {
+                                try {
+                                    const campaignDocRef = doc(db, campaign.type, campaign.project);
+                                    const campaignDocSnap = await getDoc(campaignDocRef);  
+    
+                                    if (campaignDocSnap.exists()) {
+                                        const campaignData = {
+                                            name: campaignDocSnap.data().projectName,  
+                                            date: campaign.date, 
+                                            raised: campaignDocSnap.data().raised,
+                                            image: campaignDocSnap.data().images[0],  
+                                        };
+    
+                                        campaignDataArray.push(campaignData);
+                                    }
+                                } catch (error) {
+                                    console.error(`Error fetching campaign ${campaign.project}:`, error);
+                                }
+                            }
+    
+                            setCampaignHistory(campaignDataArray);
                         } else {
                             toast.error('User not found');
                         }
@@ -42,9 +82,10 @@ const UserProfile = () => {
                 }
             });
         };
-
+    
         fetchUserData();
     }, []);
+    
 
     const handleLogout = async () => {
         try {
@@ -105,12 +146,9 @@ const UserProfile = () => {
                                 </div>
                                 <div className="chart_info">
                                     <p className="summary">Total Amount Raised</p>
-                                    <p className="amount">Rs {campaignHistory.reduce((total, campaign) => total + Number(campaign.amount), 0).toFixed(2)}</p>
+                                    <p className="amount">Rs {campaignHistory.reduce((total, campaign) => total + Number(campaign.raised), 0).toFixed(2)}</p>
                                 </div>
                             </div>
-                            {/* <div className="chart">
-                                <canvas id="donationChart"></canvas>
-                            </div> */}
                         </div>
                     </div>
                     <div className="right_panel">
@@ -119,7 +157,7 @@ const UserProfile = () => {
                             {donationHistory.length > 0 ? (
                                 donationHistory.map((donation, index) => (
                                     <div className="project" key={index}>
-                                        <img src="donated.jpeg" alt={donation.name} className="project_image" />
+                                        <img src={donation.image} alt={donation.name} className="project_image" />
                                         <div className="project_info">
                                             <p className="project_title">{donation.name}</p>
                                             <div className="details">
@@ -138,12 +176,12 @@ const UserProfile = () => {
                             {campaignHistory.length > 0 ? (
                                 campaignHistory.map((campaign, index) => (
                                     <div className="project" key={index}>
-                                        <img src="fundraising.jpeg" alt={campaign.name} className="project_image" />
+                                        <img src= {campaign.image} alt={campaign.name} className="project_image" />
                                         <div className="project_info">
                                             <p className="project_title">{campaign.name}</p>
                                             <div className="details">
                                                 <p className="project_date">{campaign.date}</p>
-                                                <p className="project_amount">Rs.{campaign.amount}</p>
+                                                <p className="project_amount">Rs.{campaign.raised}</p>
                                             </div>
                                         </div>
                                     </div>
