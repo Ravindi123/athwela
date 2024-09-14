@@ -21,8 +21,6 @@ import SingleHome from './pages/singleHome';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProfile from './pages/userProfile';
-// import { auth } from './firebase';
-// import { useState, useEffect } from 'react';
 import HelpPage from './pages/helpPage';  
 import DonationBox from './pages/donationBox';
 
@@ -38,6 +36,7 @@ function App() {
           <Routes>
 
             <Route path="/" element={<>
+              {/* <div><SingleHome /></div> */}
               <div><Home /></div>
               <footer><Footer /></footer></>} />
             <Route path="/home" element={<>

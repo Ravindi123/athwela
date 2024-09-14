@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/project.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
-import { db, auth } from '../firebase'; 
+import { db, auth } from '../firebase';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'boxicons';
@@ -17,8 +17,10 @@ const Project = () => {
     const [activeTab, setActiveTab] = useState(1);
     const [comments, setComments] = useState(''); // New comment input state
     const [allComments, setAllComments] = useState([]); // Store all comments
-
+    const [email, setEmail] = useState(''); 
     
+
+
     useEffect(() => {
         const fetchOwnerName = async () => {
             try {
@@ -26,7 +28,9 @@ const Project = () => {
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const owner = docSnap.data().name;
+                    const email = docSnap.data().email;
                     setOwnerName(owner);
+                    setEmail(email);
                 } else {
                     console.log("No such owner document!");
                 }
@@ -86,13 +90,13 @@ const Project = () => {
                     comment: comments
                 };
 
-                const docRef = doc(db, "Health Care", project.id); 
+                const docRef = doc(db, "Health Care", project.id);
                 await updateDoc(docRef, {
-                    comments: arrayUnion(newComment) 
+                    comments: arrayUnion(newComment)
                 });
 
                 setAllComments(prevComments => [...prevComments, newComment]);
-                setComments(''); 
+                setComments('');
                 console.log("Comment added successfully");
             } else {
                 console.log("User not authenticated");
@@ -104,8 +108,8 @@ const Project = () => {
 
     // Function to navigate to the donation box
     const handleNavigate = (project) => {
-        const docRef = doc(db, "Health Care", project.id); 
-        navigate('/donationBox', { state: { docRef, collectionName:"Health Care" } });
+        const docRef = doc(db, "Health Care", project.id);
+        navigate('/donationBox', { state: { docRef, collectionName: "Health Care" } });
     };
 
     // Handle tab switching
@@ -153,7 +157,7 @@ const Project = () => {
                             </div>
                         </div>
                     </div>
-                    
+
                     {/* Comments Section */}
                     <div className={styles.comments_section}>
                         <h2>Words of Support</h2>
@@ -170,7 +174,7 @@ const Project = () => {
                             {allComments.length > 0 ? (
                                 allComments.map((comment, index) => (
                                     <div key={index} className={styles.comment}>
-                                        <img src="donated.jpeg" alt={comment.name}  />
+                                        <img src="donated.jpeg" alt={comment.name} />
                                         <div className={styles.comment_info}>
                                             <p><b>{comment.name}</b></p>
                                             <p>{comment.comment}</p>
@@ -183,43 +187,43 @@ const Project = () => {
                         </div>
                     </div>
                 </div>
-
-                <div className={styles.donation_box}>
-                    <h1>Rs.{project.raised}</h1>
-                    <p><b>raised of Rs.{project.need}</b></p>
-                    <div className={styles.progress_bar}>
-                        <div className={styles.progress} style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
+                <div className={styles.side_strip}>
+                    <div className={styles.donation_box}>
+                        <h1>Rs.{project.raised}</h1>
+                        <p><b>raised of Rs.{project.need}</b></p>
+                        <div className={styles.progress_bar}>
+                            <div className={styles.progress} style={{ width: `${(project.raised / project.need) * 100}%` }}></div>
+                        </div>
+                        <p className={styles.status}><b>{((project.raised / project.need) * 100).toFixed(0)}% funded</b></p>
+                        <button className={styles.donate} onClick={() => handleNavigate(project)}><h2>Donate Now</h2></button>
+                        <button className={styles.share}>
+                            <i class='bx bxl-facebook-circle'></i>
+                            <i class='bx bxl-instagram' ></i>
+                            <i class='bx bxl-whatsapp' ></i>
+                            <b> Share with Friends</b>
+                        </button>
                     </div>
-                    <p className={styles.status}><b>{((project.raised / project.need) * 100).toFixed(0)}% funded</b></p>
-                    <button className={styles.donate} onClick={() => handleNavigate(project)}><h2>Donate Now</h2></button>
-                    <button className={styles.share}>
-                        <i class='bx bxl-facebook-circle'></i>
-                        <i class='bx bxl-instagram' ></i>
-                        <i class='bx bxl-whatsapp' ></i>
-                        <b> Share with Friends</b>
-                    </button>
-                </div>
-                <div class="sidebar-content">
-                    <div class="home-project-info">
+
+                    <div className={styles.home_project_info}>
                         <h2>CONTACT DETAILS</h2>
-                        <div class="profile_content">
-                            <p class="info_title">Address</p>
-                            <p class="info">95,<br />W.A. de Silva Mawatha,<br />Colombo 6,<br />Sri Lanka</p>
+                        <div className={styles.profile_content}>
+                            <p className={styles.info_title}>Bank Details</p>
+                            <p className={styles.info}>{project.bankDetails.bankHolder}<br />{project.bankDetails.accNumber}<br />{project.bankDetails.bank}<br />{project.bankDetails.branch}</p>
                         </div>
-                        <hr class="styled-line" />
-                        <div class="profile_content">
-                            <p class="info_title">Telephone Number</p>
-                            <p class="info">+94112588838</p>
+                        <hr className={styles.styled_line} />
+                        <div className={styles.profile_content}>
+                            <p className={styles.info_title}>Telephone Number</p>
+                            <p className={styles.info}>+94{project.phone}</p>
                         </div>
-                        <hr class="styled-line" />
-                        <div class="profile_content">
-                            <p class="info_title">Email Address</p>
-                            <p class="info">info@srilankadhara.org</p>
+                        <hr className={styles.styled_line} />
+                        <div className={styles.profile_content}>
+                            <p className={styles.info_title}>Email Address</p>
+                            <p className={styles.info}>{email}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 
