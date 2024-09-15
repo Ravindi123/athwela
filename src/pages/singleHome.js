@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation  } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from '../styles/singleHome.module.css';
 import { getDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
-import { db, auth } from '../firebase'; 
+import { db, auth } from '../firebase';
 import { Carousel } from 'react-responsive-carousel';
 import 'boxicons';
 
@@ -10,16 +10,16 @@ const SingleHome = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { project } = location.state || {};
-    const [ownerName, setOwnerName] = useState('');
+    // const [ownerName, setOwnerName] = useState('');
     const imageUrls = project.imageUrls || [];
-    const [comments, setComments] = useState(''); 
+    const [comments, setComments] = useState('');
     const [allComments, setAllComments] = useState([]);
-    const [email, setEmail] = useState(''); 
+    // const [email, setEmail] = useState(''); 
 
     const collectionName = project.homeType === "childHome" ? "Children's Home" : "Adults Home";
 
     useEffect(() => {
-        
+
         // const collectionName = project.projectType === "childHome" ? "Children's Home" : "Adults Home";
 
         const fetchOwnerName = async () => {
@@ -27,10 +27,10 @@ const SingleHome = () => {
                 const docRef = doc(db, "users", project.owner);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    const owner = docSnap.data().name;
-                    const email = docSnap.data().email;
-                    setOwnerName(owner);
-                    setEmail(email);
+                    // const owner = docSnap.data().name;
+                    // const email = docSnap.data().email;
+                    // setOwnerName(owner);
+                    // setEmail(email);
                 } else {
                     console.log("No such owner document!");
                 }
@@ -74,7 +74,14 @@ const SingleHome = () => {
         fetchOwnerName();
         fetchComments();
         // fetchImageUrls();
-    }, [db]);
+    }, [project.id, project.owner, collectionName]);
+
+    const handleNavigate = (project) => {
+        // const docRef = doc(db, collectionName, project.id);
+        // navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
+        // const docRef = doc(db, "Health Care", project.id);
+        navigate('/donationBox', { state: { projectID: project.id, collectionName: collectionName } });
+    };
 
     // const changeImage = (e) => {
     //     var mainImage = document.getElementById("main-image");
@@ -94,13 +101,13 @@ const SingleHome = () => {
                     comment: comments
                 };
 
-                const docRef = doc(db, "Health Care", project.id); 
+                const docRef = doc(db, "Health Care", project.id);
                 await updateDoc(docRef, {
-                    comments: arrayUnion(newComment) 
+                    comments: arrayUnion(newComment)
                 });
 
                 setAllComments(prevComments => [...prevComments, newComment]);
-                setComments(''); 
+                setComments('');
                 console.log("Comment added successfully");
             } else {
                 console.log("User not authenticated");
@@ -110,15 +117,15 @@ const SingleHome = () => {
         }
     };
 
-    const handleNavigate = (project) => {
-        const docRef = doc(db, collectionName, project.id);
-        navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
-    };
+    // const handleNavigate = (project) => {
+    //     const docRef = doc(db, collectionName, project.id);
+    //     navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
+    // };
 
     if (!project) {
         return <h1>Project not found</h1>;
     }
-      
+
     return (
         <section className="singleHomeContainer">
             <section className={styles.home_project_banner}>
@@ -139,7 +146,7 @@ const SingleHome = () => {
                         <p>
                             {project.description}
                         </p>
-                        <a href="#" className={styles.donate_btn}>Donate Now</a>
+                        <button className={styles.donate_btn} onClick={() => handleNavigate(project)}>Donate Now</button>
                     </div>
                 </div>
 
@@ -161,9 +168,9 @@ const SingleHome = () => {
                             <p className={styles.info}>{project.email}</p>
                         </div>
 
-                        <a href="#" className="fa fa-facebook"></a>
-                        <a href="#" className="fa fa-instagram"></a>
-                        <a href="#" className="fa fa-youtube"></a>
+                        <i class='bx bxl-facebook-circle'></i>
+                        <i class='bx bxl-instagram' ></i>
+                        <i class='bx bxl-whatsapp' ></i>
                     </div>
 
                     {/* <div className={styles.home_project_map}>

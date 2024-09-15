@@ -3,7 +3,7 @@ import { useFirebase } from '../firebaseContext';
 import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/healthcare.module.css';
 import { useNavigate } from 'react-router-dom';
-import { onBackgroundMessage } from 'firebase/messaging/sw';
+// import { onBackgroundMessage } from 'firebase/messaging/sw';
 
 const DisasterRelief = () => {
     const { db } = useFirebase(); // Access Firestore instance from context

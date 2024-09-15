@@ -77,7 +77,7 @@ const Project = () => {
         fetchOwnerName();
         fetchImageUrls();
         fetchComments();
-    }, [db]);
+    }, [project, project.owner, project.id, collectionName]);
 
     // Handle adding a new comment
     const addComment = async () => {
@@ -113,7 +113,7 @@ const Project = () => {
     const handleNavigate = (project) => {
         // const docRef = doc(db, collectionName, project.id);
         // navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
-        const docRef = doc(db, "Health Care", project.id);
+        // const docRef = doc(db, "Health Care", project.id);
         navigate('/donationBox', { state: { projectID: project.id, collectionName: "Health Care" } });
     };
 
