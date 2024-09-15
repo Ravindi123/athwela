@@ -109,7 +109,7 @@ const Project = () => {
     // Function to navigate to the donation box
     const handleNavigate = (project) => {
         const docRef = doc(db, "Health Care", project.id);
-        navigate('/donationBox', { state: { docRef, collectionName: "Health Care" } });
+        navigate('/donationBox', { state: { projectID: project.id, collectionName: "Health Care" } });
     };
 
     // Handle tab switching
@@ -174,7 +174,7 @@ const Project = () => {
                             {allComments.length > 0 ? (
                                 allComments.map((comment, index) => (
                                     <div key={index} className={styles.comment}>
-                                        <img src="donated.jpeg" alt={comment.name} />
+                                        <img src="userprofile.jpg" alt={comment.name} />
                                         <div className={styles.comment_info}>
                                             <p><b>{comment.name}</b></p>
                                             <p>{comment.comment}</p>
