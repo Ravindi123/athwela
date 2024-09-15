@@ -313,7 +313,7 @@
 
 .home_project_info{
     margin-top: 10px;
-    position:sticky;
+    position:relative;
     background-color: #e1eaf8;
     background: linear-gradient(to bottom, #e1eaf8, #f3f5f8);
     padding: 20px;

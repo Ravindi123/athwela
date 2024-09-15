@@ -33,7 +33,7 @@ const UserProfile = () => {
                                         const donationData = {
                                             name: donationDocSnap.data().projectName,  
                                             date: donation.date, 
-                                            amount: donationDocSnap.data().amount,
+                                            amount: donation.amount,
                                             image: donationDocSnap.data().images[0],  
                                         };
     

@@ -113,6 +113,8 @@ const Project = () => {
     const handleNavigate = (project) => {
         // const docRef = doc(db, collectionName, project.id);
         // navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
+        const docRef = doc(db, "Health Care", project.id);
+        navigate('/donationBox', { state: { projectID: project.id, collectionName: "Health Care" } });
     };
 
     // Handle tab switching
@@ -177,7 +179,7 @@ const Project = () => {
                             {allComments.length > 0 ? (
                                 allComments.map((comment, index) => (
                                     <div key={index} className={styles.comment}>
-                                        <img src="donated.jpeg" alt={comment.name} />
+                                        <img src="userprofile.jpg" alt={comment.name} />
                                         <div className={styles.comment_info}>
                                             <p><b>{comment.name}</b></p>
                                             <p>{comment.comment}</p>
@@ -211,7 +213,16 @@ const Project = () => {
                         <h2>CONTACT DETAILS</h2>
                         <div className={styles.profile_content}>
                             <p className={styles.info_title}>Bank Details</p>
-                            <p className={styles.info}>{project.bankDetails.bankHolder}<br />{project.bankDetails.accNumber}<br />{project.bankDetails.bank}<br />{project.bankDetails.branch}</p>
+                            <p className={styles.info}>{project.bankDetails ? (
+                                    <>
+                                        {project.bankDetails.bankHolder}<br/>
+                                        {project.bankDetails.accNumber}<br/>
+                                        {project.bankDetails.bank}<br/>
+                                        {project.bankDetails.branch}
+                                    </>
+                                ) : (
+                                    'No bank details available.'
+                                )}</p>
                         </div>
                         <hr className={styles.styled_line} />
                         <div className={styles.profile_content}>
