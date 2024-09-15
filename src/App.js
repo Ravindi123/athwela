@@ -36,8 +36,8 @@ function App() {
           <Routes>
 
             <Route path="/" element={<>
-              {/* <div><SingleHome /></div> */}
-              <div><Home /></div>
+              <div><SingleHome /></div>
+              {/* <div><Home /></div> */}
               <footer><Footer /></footer></>} />
             <Route path="/home" element={<>
               <div><Home /></div>

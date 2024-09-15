@@ -83,6 +83,7 @@ const HomeRegistration = () => {
                     const docRef = await addDoc(collection(db, collectionName), {
                         owner: user.uid,
                         homeName: homeName,
+                        homeType: homeType,
                         telephone: tel,
                         description: description,
                         address: address,
@@ -220,7 +221,7 @@ const HomeRegistration = () => {
 
                         <div className={styles.form_group}>
                             <label htmlFor="exampleFormControlInput1" className="form-label">If you have a website, link for the website</label>
-                            <input type="email" className={styles.form_control} id="exampleFormControlInput1" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
+                            <input type="url" className={styles.form_control} id="exampleFormControlInput1" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className={styles.form_group}>
                             <label htmlFor="social-media">Social Media Profiles:</label>

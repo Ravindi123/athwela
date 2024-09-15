@@ -7,6 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'boxicons';
 
+
 const Project = () => {
 
     const location = useLocation();
@@ -18,8 +19,10 @@ const Project = () => {
     const [comments, setComments] = useState(''); // New comment input state
     const [allComments, setAllComments] = useState([]); // Store all comments
     const [email, setEmail] = useState(''); 
-    
 
+    console.log(project);
+    
+    const collectionName = project.projectType === "healthCare" ? "Health Care" : "Disaster Relief";
 
     useEffect(() => {
         const fetchOwnerName = async () => {
@@ -39,7 +42,7 @@ const Project = () => {
             }
         };
 
-        const collectionName = project.projectType === "healthCare" ? "Health Care" : "Disaster Relief";
+        // const collectionName = project.projectType === "healthCare" ? "Health Care" : "Disaster Relief";
 
         const fetchImageUrls = async () => {
             try {
@@ -58,7 +61,7 @@ const Project = () => {
 
         const fetchComments = async () => {
             try {
-                const docRef = doc(db, "Health Care", project.id); // Replace with correct collection and project ID
+                const docRef = doc(db, collectionName, project.id); // Replace with correct collection and project ID
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const commentsData = docSnap.data().comments || [];
@@ -108,8 +111,8 @@ const Project = () => {
 
     // Function to navigate to the donation box
     const handleNavigate = (project) => {
-        const docRef = doc(db, "Health Care", project.id);
-        navigate('/donationBox', { state: { docRef, collectionName: "Health Care" } });
+        // const docRef = doc(db, collectionName, project.id);
+        // navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
     };
 
     // Handle tab switching

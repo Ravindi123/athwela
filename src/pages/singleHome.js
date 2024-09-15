@@ -10,17 +10,40 @@ const SingleHome = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { project } = location.state || {};
+    const [ownerName, setOwnerName] = useState('');
     const [imageUrls, setImageUrl] = useState([]);
     const [comments, setComments] = useState(''); 
     const [allComments, setAllComments] = useState([]);
+    const [email, setEmail] = useState(''); 
+
+    const collectionName = project.projectType === "childHome" ? "Children's Home" : "Adults Home";
 
     useEffect(() => {
+        
+        // const collectionName = project.projectType === "childHome" ? "Children's Home" : "Adults Home";
 
-        
-        
-        const fetchImageUrls = async () => {
+        const fetchOwnerName = async () => {
             try {
-                const docRef = doc(db, "Health Care", project.id); // Replace with correct collection and project ID
+                const docRef = doc(db, "users", project.owner);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const owner = docSnap.data().name;
+                    const email = docSnap.data().email;
+                    setOwnerName(owner);
+                    setEmail(email);
+                } else {
+                    console.log("No such owner document!");
+                }
+            } catch (error) {
+                console.error("Error fetching owner name:", error);
+            }
+        };
+
+        const fetchImageUrls = async () => {
+
+
+            try {
+                const docRef = doc(db, collectionName, project.id); // Replace with correct collection and project ID
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const images = docSnap.data().images || [];
@@ -48,8 +71,9 @@ const SingleHome = () => {
             }
         };
 
-       
+        fetchOwnerName();
         fetchComments();
+        fetchImageUrls();
     }, [db]);
 
     // const changeImage = (e) => {
@@ -85,11 +109,16 @@ const SingleHome = () => {
             console.error("Error adding comment:", error);
         }
     };
+
+    const handleNavigate = (project) => {
+        const docRef = doc(db, collectionName, project.id);
+        navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
+    };
       
     return (
         <section className="singleHomeContainer">
             <section className={styles.home_project_banner}>
-                <h1>Sri Lankadhara Society</h1>
+                <h1>{project.name}</h1>
                 <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} className={styles.carouselBox}>
                     {imageUrls.map((url, index) => (
                         <div key={index}>
@@ -104,7 +133,7 @@ const SingleHome = () => {
                     <div className={styles.home_project_article}>
                         <h2>DESCRIPTION</h2>
                         <p>
-                            The Sri Lankadhara Society Senior Citizens Home, established in 1967, provides a safe and caring environment for 30 elderly women...
+                            {project.description}
                         </p>
                         <a href="#" className={styles.donate_btn}>Donate Now</a>
                     </div>
@@ -124,8 +153,8 @@ const SingleHome = () => {
                         </div>
                         <hr className={styles.styled_line} />
                         <div className={styles.profile_content}>
-                            <p className={styles.info_title}>Email Address</p>
-                            <p className={styles.info}>info@srilankadhara.org</p>
+                            <p className={styles.info_title}>Website</p>
+                            <p className={styles.info}>{project.email}</p>
                         </div>
 
                         <a href="#" className="fa fa-facebook"></a>

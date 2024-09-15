@@ -4,6 +4,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/healthcare.module.css';
 import { useNavigate } from 'react-router-dom';
 
+
 const Healthcare = () => {
     const { db } = useFirebase(); // Access Firestore instance from context
     const [projects, setProjects] = useState([]);
@@ -16,6 +17,7 @@ const Healthcare = () => {
                 const projectsArray = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     name: doc.data().projectName,
+                    phone: doc.data().phone,
                     description: doc.data().description,
                     need: doc.data().amount,
                     raised: doc.data().raised,
@@ -23,6 +25,7 @@ const Healthcare = () => {
                     imageUrls: doc.data().images,
                     verified: doc.data().verified,
                     projectType: doc.data().projectType,    // Add projectType field to the project object
+                    bankDetails: doc.data().bankDetails,    // Add bankDetails field to the project object
                 }));
 
                 setProjects(projectsArray);

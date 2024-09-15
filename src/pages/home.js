@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
-import { auth } from '../firebase';
+import {db, auth } from '../firebase';
 import { useLocation } from 'react-router-dom';
+import { doc, getDoc} from 'firebase/firestore';
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -16,6 +17,20 @@ const Home = () => {
     });
     return () => unsubscribe();
   }, []);
+
+  console.log(user);
+
+const getDocument = async (docId) => {
+  const docRef = doc(db, "users", docId); // Specify the collection and document ID
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    console.log("Collection path:", docRef.parent.path); // This gives you the collection path
+  } else {
+    console.log("No such document!");
+  }
+};
 
   const location = useLocation();
 
