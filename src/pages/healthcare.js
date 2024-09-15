@@ -54,7 +54,9 @@ const Healthcare = () => {
                         <div className={styles.image_container}>
                             {project.verified ? (
                                 <img src="/images/verified.jpg" alt="verified" className={styles.verified_icon} />
-                            ) : null}
+                            ) : 
+                                <img src="/images/report.png" alt='report' className={`${styles.verified_icon} ${styles.report_icon}`}/>
+                            }
                             {/* <img src="/images/kidneyPatient.jpg" alt="project_image" className={styles.project_image} /> */}
                             {project.imageUrls && project.imageUrls.length > 0 ? (
                                 <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
