@@ -208,7 +208,16 @@ const Project = () => {
                         <h2>CONTACT DETAILS</h2>
                         <div className={styles.profile_content}>
                             <p className={styles.info_title}>Bank Details</p>
-                            <p className={styles.info}>{project.bankDetails.bankHolder}<br />{project.bankDetails.accNumber}<br />{project.bankDetails.bank}<br />{project.bankDetails.branch}</p>
+                            <p className={styles.info}>{project.bankDetails ? (
+                                    <>
+                                        {project.bankDetails.bankHolder}<br/>
+                                        {project.bankDetails.accNumber}<br/>
+                                        {project.bankDetails.bank}<br/>
+                                        {project.bankDetails.branch}
+                                    </>
+                                ) : (
+                                    'No bank details available.'
+                                )}</p>
                         </div>
                         <hr className={styles.styled_line} />
                         <div className={styles.profile_content}>

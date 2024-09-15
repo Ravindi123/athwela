@@ -51,7 +51,7 @@ header{
     border: none; /* Remove any default border */
     background: none; /* Remove background color */
     padding: 0; /* Reset padding */
-    margin: 0; /* Reset margin */
+    margin-left: 52px; /* Reset margin */
 }
 .userprof {
     cursor: pointer;
