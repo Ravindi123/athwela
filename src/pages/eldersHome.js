@@ -3,7 +3,7 @@ import { useFirebase } from '../firebaseContext';
 import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/elders.module.css';
 import 'boxicons';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const EldersHome = () => {
@@ -18,6 +18,7 @@ const EldersHome = () => {
             (snapshot) => {
                 const projectsArray = snapshot.docs.map((doc) => ({
                     id: doc.id,
+                    homeType: doc.data().homeType,
                     name: doc.data().homeName,
                     address: doc.data().address,
                     description: doc.data().description,
@@ -38,7 +39,7 @@ const EldersHome = () => {
     }, [db]);
 
     const handleNavigate = (project) => {
-        navigate('/project', { state: { project } });
+        navigate('/singleHome', { state: { project } });
     };
 
     return (
@@ -50,7 +51,11 @@ const EldersHome = () => {
             <section className={styles.product_container}>
                 {projects.map((project) => (
                     <div className={styles.box} key={project.id}>
-                        <img src="children-images/item1.jpg" alt="" />
+                        {project.imageUrls && project.imageUrls.length > 0 ? (
+                            <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
+                        ) : (
+                            <img src="/elder.jpeg" alt="default_project_image" className={styles.project_image} />
+                        )}
 
                         <div className={styles.content}>
                             <h3>{project.name}</h3>

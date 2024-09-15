@@ -11,12 +11,12 @@ const SingleHome = () => {
     const navigate = useNavigate();
     const { project } = location.state || {};
     const [ownerName, setOwnerName] = useState('');
-    const [imageUrls, setImageUrl] = useState([]);
+    const imageUrls = project.imageUrls || [];
     const [comments, setComments] = useState(''); 
     const [allComments, setAllComments] = useState([]);
     const [email, setEmail] = useState(''); 
 
-    const collectionName = project.projectType === "childHome" ? "Children's Home" : "Adults Home";
+    const collectionName = project.homeType === "childHome" ? "Children's Home" : "Adults Home";
 
     useEffect(() => {
         
@@ -39,26 +39,26 @@ const SingleHome = () => {
             }
         };
 
-        const fetchImageUrls = async () => {
+        // const fetchImageUrls = async () => {
 
 
-            try {
-                const docRef = doc(db, collectionName, project.id); // Replace with correct collection and project ID
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    const images = docSnap.data().images || [];
-                    setImageUrl(images);
-                } else {
-                    console.log("No images found!");
-                }
-            } catch (error) {
-                console.error("Error fetching images:", error);
-            }
-        };
+        //     try {
+        //         const docRef = doc(db, collectionName, project.id); // Replace with correct collection and project ID
+        //         const docSnap = await getDoc(docRef);
+        //         if (docSnap.exists()) {
+        //             const images = docSnap.data().images || [];
+        //             setImageUrl(images);
+        //         } else {
+        //             console.log("No images found!");
+        //         }
+        //     } catch (error) {
+        //         console.error("Error fetching images:", error);
+        //     }
+        // };
 
         const fetchComments = async () => {
             try {
-                const docRef = doc(db, "Health Care", project.id); // Replace with correct collection and project ID
+                const docRef = doc(db, collectionName, project.id); // Replace with correct collection and project ID
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const commentsData = docSnap.data().comments || [];
@@ -73,7 +73,7 @@ const SingleHome = () => {
 
         fetchOwnerName();
         fetchComments();
-        fetchImageUrls();
+        // fetchImageUrls();
     }, [db]);
 
     // const changeImage = (e) => {
@@ -114,6 +114,10 @@ const SingleHome = () => {
         const docRef = doc(db, collectionName, project.id);
         navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
     };
+
+    if (!project) {
+        return <h1>Project not found</h1>;
+    }
       
     return (
         <section className="singleHomeContainer">
@@ -144,12 +148,12 @@ const SingleHome = () => {
                         <h2>CONTACT DETAILS</h2>
                         <div className={styles.profile_content}>
                             <p className={styles.info_title}>Address</p>
-                            <p className={styles.info}>95,<br />W.A. de Silva Mawatha,<br />Colombo 6,<br />Sri Lanka</p>
+                            <p className={styles.info}>{project.address}</p>
                         </div>
                         <hr className={styles.styled_line} />
                         <div className={styles.profile_content}>
                             <p className={styles.info_title}>Telephone Number</p>
-                            <p className={styles.info}>+94112588838</p>
+                            <p className={styles.info}>+94 {project.phone}</p>
                         </div>
                         <hr className={styles.styled_line} />
                         <div className={styles.profile_content}>
@@ -162,13 +166,13 @@ const SingleHome = () => {
                         <a href="#" className="fa fa-youtube"></a>
                     </div>
 
-                    <div className={styles.home_project_map}>
+                    {/* <div className={styles.home_project_map}>
                         <h2>LOCATION</h2>
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=..."
                             style={{ width: '100%', height: '200px', border: '0', borderRadius: '8px' }}
                             allowFullScreen loading="lazy"></iframe>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 

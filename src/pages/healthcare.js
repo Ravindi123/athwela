@@ -59,7 +59,7 @@ const Healthcare = () => {
                             {project.imageUrls && project.imageUrls.length > 0 ? (
                                 <img src={project.imageUrls[0]} alt={project.name} className={styles.project_image} />
                             ) : (
-                                <img src="/elder.jpeg" alt="default_project_image" className={styles.project_image} />
+                                <img src="/health.jpeg" alt="default_project_image" className={styles.project_image} />
                             )}
                         </div>
 
