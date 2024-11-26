@@ -1,15 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../styles/styles.module.css';
 import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
+import Chatbot from './Chatbot';
 
 const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
     const [user, setUser] = useState(null);
+    const [isChatbotVisible, setIsChatbotVisible] = useState(false);
     const navBtn = useRef(null);
 
     const toggleMenu = () => {
         setShowNav(!showNav);
+    };
+
+    const toggleChatbot = () => {
+        setIsChatbotVisible(!isChatbotVisible);
     };
 
     useEffect(() => {
@@ -27,7 +33,6 @@ const Navbar = () => {
         };
     }, [navBtn]);
 
-    
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
@@ -67,6 +72,12 @@ const Navbar = () => {
 
             <div className={styles.userprof}>
                 <button
+                    className={styles.chatbotButton}
+                    onClick={toggleChatbot}
+                >
+                    <i className='bx bx-message-rounded-dots'></i>
+                </button>
+                <button
                     className={styles.userproficon}
                     disabled={!user}  
                     onClick={() => {
@@ -79,9 +90,10 @@ const Navbar = () => {
                     <i className='bx bx-user-circle'></i>
                 </button>
             </div>
+
+            {isChatbotVisible && <Chatbot onClose={() => setIsChatbotVisible(false)} />}
         </>
     );
 };
 
 export default Navbar;
-
