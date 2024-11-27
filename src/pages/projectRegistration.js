@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/projectRegistration.module.css';
 // import {app} from '../firebase';
 import { db, storage, auth } from '../firebase';
@@ -7,6 +7,9 @@ import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
 import moment from 'moment';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
 
 const ProjectRegistration = () => {
     const [projectName, setProjectName] = useState('');
@@ -25,10 +28,80 @@ const ProjectRegistration = () => {
     const [checkbox, setCheckbox] = useState(false);
     const today = moment().format('YYYY-MM-DD');
 
-
     const [loading, setLoading] = useState(false);
+    const [imageValidationError, setImageValidationError] = useState(false);
+
+    useEffect(() => {
+        const savedFormData = localStorage.getItem('projectFormData');
+        if (savedFormData) {
+            const formData = JSON.parse(savedFormData);
+            setProjectName(formData.projectName || '');
+            setDescription(formData.description || '');
+            setAmount(formData.amount || 0);
+            setRaised(formData.raised || '0');
+            setDeadline(formData.deadline || '');
+            setPhone(formData.phone || '');
+            setBankHolder(formData.bankHolder || '');
+            setBank(formData.bank || '');
+            setBranch(formData.branch || '');
+            setAccNumber(formData.accNumber || '');
+            setProjectType(formData.projectType || '');
+        }
+    }, []);
+
+    const validateImageWithGemini = async (image, projectDetails) => {
+        try {
+            const genAI = new GoogleGenerativeAI(apiKey);
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+
+            const imageData = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result.split(',')[1]);
+                reader.readAsDataURL(image);
+            });
+
+            const prompt = `Analyze this image and determine if it's relevant to:
+                Project Type: ${projectDetails.projectType}
+                Project Name: ${projectDetails.projectName}
+                Description: ${projectDetails.description}
+                
+                Respond with only "true" if relevant, "false" if not relevant.`;
+
+            const imagePart = {
+                inlineData: {
+                    data: imageData,
+                    mimeType: image.type
+                }
+            };
+            console.log(`Image converted and image part created`);
+
+            const result = await model.generateContent([prompt, imagePart]);
+            const response = await result.response.text().toLowerCase();
+            console.log(`Response: ${response}`);
+            return response.includes('true');
+        } catch (error) {
+            console.error('Image validation error:', error);
+            throw error;
+        }
+    };
 
     const handleProject = async (e) => {
+
+        localStorage.setItem('projectFormData', JSON.stringify({
+            projectName,
+            description,
+            amount,
+            raised,
+            deadline,
+            phone,
+            bankHolder,
+            bank,
+            branch,
+            accNumber,
+            projectType
+        }));
+
+
         e.preventDefault();
 
         if (!projectType) {
@@ -61,6 +134,24 @@ const ProjectRegistration = () => {
                 setLoading(true);
 
                 try {
+                    // Validate each image before uploading
+                    for (const image of images) {
+                        console.log(`Validating image`);
+                        const isValid = await validateImageWithGemini(image, {
+                            projectType,
+                            projectName,
+                            description
+                        });
+
+                        if (!isValid) {
+                            setImageValidationError(true);
+                            toast.error('The image uploaded does not match the project details. Please review and reupload.');
+                            setLoading(false);
+                            return;
+                        }
+                    }
+
+                    // If all images are valid, proceed with upload
                     const imageUrls = await Promise.all(
                         [...images].map(async (image) => {
                             const imageRef = ref(storage, `images/${image.name}`);
@@ -101,6 +192,7 @@ const ProjectRegistration = () => {
 
                     console.log("Document written with ID: ", docRef.id);
                     toast.success('Project registered successfully');
+                    localStorage.clear();
 
                     const userDocRef = doc(db, "users", user.uid);
                     await updateDoc(userDocRef, {
@@ -110,7 +202,7 @@ const ProjectRegistration = () => {
 
                 } catch (error) {
                     console.error('Error uploading images:', error);
-                    toast.error('Failed to upload images');
+                    toast.error("Server is busy. Please try again in a moment.");
                     return;
                 } finally {
                     setLoading(false);
@@ -136,41 +228,57 @@ const ProjectRegistration = () => {
                 <form onSubmit={handleProject} method="post" enctype="multipart/form-data">
                     <div className={styles.radioGroup}>
                         <div className={styles.form_group_tick}>
-                            <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="healthCare" onChange={handleProjectTypeChange} />
+                            <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="healthCare" checked={projectType === 'healthCare'} onChange={handleProjectTypeChange} />
                             <label className={styles.form_check_label} htmlFor="inlineRadio1">Health Care</label>
                         </div>
                         <div className={styles.form_group_tick}>
-                            <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="disasterRelief" onChange={handleProjectTypeChange} />
+                            <input className={styles.form_check_input} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="disasterRelief" checked={projectType === 'disasterRelief'} onChange={handleProjectTypeChange} />
                             <label className={styles.form_check_label} htmlFor="inlineRadio2">Disaster Relief</label>
                         </div>
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="project-name">Project Name:</label>
-                        <input type="text" id="project-name" name="project-name" required onChange={(e) => setProjectName(e.target.value)} />
+                        <input type="text" id="project-name" name="project-name" value={projectName} required onChange={(e) => setProjectName(e.target.value)} />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="description">Brief Description:</label>
-                        <textarea id="description" name="description" rows="4" required onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <textarea id="description" name="description" rows="4" value={description} required onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="amount">Amount to Raise:</label>
-                        <input type="number" id="amount" name="amount" required onChange={(e) => setAmount(e.target.value)} />
+                        <input type="number" id="amount" name="amount" value={amount} required onChange={(e) => setAmount(e.target.value)} />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="raised">Amount Raised So Far:</label>
-                        <input type="number" id="raised" name="raised" required onChange={(e) => setRaised(e.target.value)} />
+                        <input type="number" id="raised" name="raised" value={raised} required onChange={(e) => setRaised(e.target.value)} />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="deadline">Deadline:</label>
-                        <input type="date" id="deadline" name="deadline" required onChange={(e) => setDeadline(e.target.value)} />
+                        <input type="date" id="deadline" name="deadline" value={deadline} required onChange={(e) => setDeadline(e.target.value)} />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="phone">Telephone Number:</label>
-                        <input type="tel" id="phone" name="phone" required onChange={(e) => setPhone(e.target.value)} />
+                        <input type="tel" id="phone" name="phone" value={phone} required onChange={(e) => setPhone(e.target.value)} />
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="images">Images:</label>
-                        <input type="file" id="images" name="images" accept="image/*" multiple required onChange={(e) => setImages(e.target.files)} />
+                        <input 
+                            type="file" 
+                            id="images" 
+                            name="images" 
+                            accept="image/*" 
+                            multiple 
+                            required 
+                            onChange={(e) => {
+                                setImages(e.target.files);
+                                setImageValidationError(false); // Reset error when new images are selected
+                            }} 
+                        />
+                        {imageValidationError && (
+                            <p className={styles.error_message}>
+                                Images do not match project details. Please upload relevant images.
+                            </p>
+                        )}
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="evidence">Evidence Document:</label>
@@ -178,17 +286,17 @@ const ProjectRegistration = () => {
                     </div>
                     <div className={styles.form_group}>
                         <label htmlFor="bank-details">Bank Details:</label>
-                        <input className={styles.url_text} type="text" id="name" name="Name" placeholder="Account holder's name" onChange={(e) => setBankHolder(e.target.value)} required/>
-                        <select id="inputState" className={styles.url_text} title='Select a bank' onChange={(e) => setBank(e.target.value)}>
-                                    <option value="invalid" selected disabled>Choose...</option>
+                        <input className={styles.url_text} type="text" id="name" name="Name" placeholder="Account holder's name" value={bankHolder} onChange={(e) => setBankHolder(e.target.value)} required/>
+                        <select id="inputState" className={styles.url_text} title='Select a bank' value={bank} onChange={(e) => setBank(e.target.value)}>
+                                    <option value="invalid" disabled>Choose...</option>
                                     <option value="Bank of Ceylon">Bank of Ceylon</option>
                                     <option value="Sampath Bank">Sampath Bank</option>
                                     <option value="Commercial Bank">Commercial Bank</option>
                                     <option value="Hatton National Bank">Hatton National Bank</option>
                                     <option value="Nation's Trust Bank">Nation's Trust Bank</option>
                                 </select>
-                        <input className={styles.url_text} type="text" id="other-social-media" title='Enter the branch name' placeholder="Branch name" onChange={(e) => setBranch(e.target.value)} required/>
-                        <input className={styles.url_text} type="text" id="acc-number" placeholder="Account Number" onChange={(e) => setAccNumber(e.target.value)}/>
+                        <input className={styles.url_text} type="text" id="other-social-media" title='Enter the branch name' placeholder="Branch name" value={branch} onChange={(e) => setBranch(e.target.value)} required/>
+                        <input className={styles.url_text} type="text" id="acc-number" placeholder="Account Number" value={accNumber} onChange={(e) => setAccNumber(e.target.value)}/>
                     </div>
                     <div className={styles.form_check}>
                         <div className={styles.checkboxContainer}>
@@ -208,3 +316,5 @@ const ProjectRegistration = () => {
 }
 
 export default ProjectRegistration;
+
+//npm install @google/generative-ai

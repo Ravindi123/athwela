@@ -48,19 +48,39 @@ header{
     font-size: 50px;
     outline: none;
     box-shadow: none;
-    border: none; /* Remove any default border */
-    background: none; /* Remove background color */
-    padding: 0; /* Reset padding */
-    margin-left: 52px; /* Reset margin */
-}
-.userprof {
-    cursor: pointer;
-    padding: 4px; /* You can adjust or remove padding */
-    border-radius: 50%; /* Ensures the div remains rounded if it's affecting the button shape */
-    background: none; /* Remove background color if any */
-    box-shadow: none; /* Remove box-shadow */
+    border: none;
+    background: none;
+    padding: 0;
+    margin-left: 52px;
 }
 
+/* Chatbot button styles */
+.chatbotButton {
+    font-size: 40px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.chatbotButton:hover {
+    color: var(--main-color);
+}
+
+.userprof {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    background: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+}
 
 .userproficon:disabled {
     cursor: not-allowed;
@@ -626,4 +646,3 @@ header{
         padding-right: 50px;
     }
 }
-
