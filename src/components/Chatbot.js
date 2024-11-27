@@ -5,9 +5,13 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
 const Chatbot = ({ onClose }) => {
-  const [messages, setMessages] = useState([
-    { sender: 'bot', text: 'Welcome to Athwela! I\'m your virtual assistant. How can I help you with fundraising today?' },
-  ]);
+  // Load messages from localStorage on initial render
+  const [messages, setMessages] = useState(() => {
+    const savedMessages = localStorage.getItem('chatMessages');
+    return savedMessages ? JSON.parse(savedMessages) : [
+      { sender: 'bot', text: 'Welcome to Athwela! I\'m your virtual assistant. How can I help you with fundraising today?' },
+    ];
+  });
   const [newMessage, setNewMessage] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -15,7 +19,9 @@ const Chatbot = ({ onClose }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Save messages to localStorage whenever they change
   useEffect(() => {
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
     scrollToBottom();
   }, [messages]);
 
