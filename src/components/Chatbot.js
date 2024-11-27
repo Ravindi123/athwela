@@ -25,6 +25,13 @@ const Chatbot = ({ onClose }) => {
     scrollToBottom();
   }, [messages]);
 
+  const handleClearChat = () => {
+    localStorage.removeItem('chatMessages');
+    setMessages([
+      { sender: 'bot', text: 'Welcome to Athwela! I\'m your virtual assistant. How can I help you with fundraising today?' },
+    ]);
+  };
+
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (newMessage.trim() === '') return;
@@ -90,6 +97,7 @@ const Chatbot = ({ onClose }) => {
         <div className="card-header">
           <img src="/favicon.ico" alt="Athwela" className="img-avatar" />
           <div className="text-chat">Athwela Assistant</div>
+          <button className="clear-button" onClick={handleClearChat}>Clear Chat</button>
           <button className="close-button" onClick={onClose}>×</button>
         </div>
         <div className="card-body">
@@ -187,6 +195,26 @@ const StyledWrapper = styled.div`
     color: #1a1a1a;
     font-size: 26px;
     font-weight: bold;
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff6b6b;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+
+  .clear-button:hover {
+    background: #ff5252;
+    transform: translateY(-50%) scale(1.05);
   }
 
   .close-button {
