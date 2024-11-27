@@ -114,7 +114,7 @@ const Project = () => {
         // const docRef = doc(db, collectionName, project.id);
         // navigate('/donationBox', { state: { docRef, collectionName: collectionName} });
         // const docRef = doc(db, "Health Care", project.id);
-        navigate('/donationBox', { state: { projectID: project.id, collectionName: "Health Care" } });
+        navigate('/donationBox', { state: { projectID: project.id, collectionName: collectionName } });
     };
 
     // Handle tab switching
