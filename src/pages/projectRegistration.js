@@ -8,6 +8,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from 'react-toastify';
 import moment from 'moment';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import axios from 'axios';
 
 const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
 
@@ -48,6 +49,21 @@ const ProjectRegistration = () => {
             setProjectType(formData.projectType || '');
         }
     }, []);
+
+    const sendEmailNotification = async (userEmail) => {
+        try {
+            const emailData = {
+                receiver_email: userEmail,
+                subject: "Project Registration Successful!",
+                body: `Dear project owner,\n\nThank you for registering your ${projectType} project (${projectName}) with Athwela.\n\nYour project is now under review. We will notify you once it's verified.\n\nBest regards,\nAthwela Team`
+            };
+
+            const response = await axios.post('http://localhost:8001/send-email', emailData);
+            console.log('Email notification sent:', response.data);
+        } catch (error) {
+            console.error('Error sending email notification:', error);
+        }
+    };
 
     const validateImageWithGemini = async (image, projectDetails) => {
         try {
@@ -199,6 +215,8 @@ const ProjectRegistration = () => {
                         campaigns: [...(user.campaigns || []), { type:collectionName, project:docRef.id, date: today}]
                     });
 
+                    // Send email notification after successful registration
+                    await sendEmailNotification(user.email);
 
                 } catch (error) {
                     console.error('Error uploading images:', error);
