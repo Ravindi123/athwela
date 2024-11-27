@@ -71,11 +71,18 @@ const Chatbot = ({ onClose }) => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(e);
+    }
+  };
+
   return (
     <StyledWrapper onClick={handleBackdropClick}>
       <div className="card-container">
         <div className="card-header">
-          <div className="img-avatar" />
+          <img src="/favicon.ico" alt="Athwela" className="img-avatar" />
           <div className="text-chat">Athwela Assistant</div>
           <button className="close-button" onClick={onClose}>×</button>
         </div>
@@ -104,6 +111,7 @@ const Chatbot = ({ onClose }) => {
                 className="message-send"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
               />
               <button type="submit" className="button-send">
                 Send
@@ -165,20 +173,8 @@ const StyledWrapper = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #4CAF50, #45a049);
     margin-right: 15px;
     position: relative;
-    &:after {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background-color: #22c55e;
-      border-radius: 50%;
-      bottom: 2px;
-      right: 2px;
-      border: 2px solid white;
-    }
   }
 
   .text-chat {
