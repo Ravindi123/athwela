@@ -11,7 +11,7 @@ body {
     /* display:flex;
     flex-direction: row; */
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(36pxauto));
+    grid-template-columns: repeat(auto-fit,minmax(36px ,auto));
     /* align-items: stretch; */
     gap: 1.5rem;
     margin-top: 1rem;

@@ -75,7 +75,7 @@ const Navbar = () => {
                     className={styles.chatbotButton}
                     onClick={toggleChatbot}
                 >
-                    <i className='bx bx-message-rounded-dots'></i>
+                    <i className='bx bx-bot'></i>
                 </button>
                 <button
                     className={styles.userproficon}
