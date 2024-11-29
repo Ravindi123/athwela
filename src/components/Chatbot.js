@@ -96,7 +96,7 @@ const Chatbot = ({ onClose }) => {
       <div className="card-container">
         <div className="card-header">
           <img src="/favicon.ico" alt="Athwela" className="img-avatar" />
-          <div className="text-chat">Athwela Assistant</div>
+          <div className="text-chat">අත්වැල Assistant</div>
           <button className="clear-button" onClick={handleClearChat}>Clear Chat</button>
           <button className="close-button" onClick={onClose}>×</button>
         </div>
@@ -179,14 +179,14 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     padding-bottom: 20px;
-    border-bottom: 2px solid #e8e8e8;
+    border-bottom: 2px solid #5b85b6;
     position: relative;
   }
 
   .img-avatar {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius:0;
     margin-right: 15px;
     position: relative;
   }
@@ -268,7 +268,7 @@ const StyledWrapper = styled.div`
   }
 
   .message-box.right {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: linear-gradient(135deg, #5b85b6, #88a1bf);
     color: #fff;
     align-self: flex-end;
     border-bottom-right-radius: 5px;
@@ -289,7 +289,7 @@ const StyledWrapper = styled.div`
 
   .message-input {
     padding: 20px;
-    border-top: 2px solid #e8e8e8;
+    border-top: 2px solid #5b85b6;
     background-color: #fff;
     border-radius: 0 0 20px 20px;
   }
@@ -302,7 +302,7 @@ const StyledWrapper = styled.div`
   .message-send {
     flex: 1;
     padding: 15px;
-    border: 2px solid #e8e8e8;
+    border: 2px solid #5b85b6;
     border-radius: 12px;
     resize: none;
     font-size: 16px;
@@ -310,13 +310,13 @@ const StyledWrapper = styled.div`
     transition: border-color 0.2s ease;
     &:focus {
       outline: none;
-      border-color: #4CAF50;
+      border-color: #5b85b6;
     }
   }
 
   .button-send {
     padding: 12px 28px;
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: linear-gradient(135deg, #5b85b6, #5b85b0);
     color: #fff;
     border: none;
     border-radius: 12px;
