@@ -3,10 +3,12 @@ import { useFirebase } from '../firebaseContext';
 import { collection, onSnapshot } from "firebase/firestore";
 import styles from '../styles/elders.module.css';
 import 'boxicons';
+import { useNavigate } from 'react-router-dom';
 
 const ChildernHome = () => {
     const { db } = useFirebase(); // Access Firestore instance from context
     const [projects, setProjects] = useState([]);
+    const navigate = useNavigate(); // For navigation
 
 
     useEffect(() => {
@@ -20,6 +22,9 @@ const ChildernHome = () => {
                     description: doc.data().description,
                     owner: doc.data().owner,
                     imageUrls: doc.data().images,
+                    bankDetails: doc.data().bankDetails,
+                    phone: doc.data().telephone,
+                    web: doc.data().email,
                 }));
 
                 setProjects(projectsArray);
@@ -30,6 +35,10 @@ const ChildernHome = () => {
         // Cleanup function to unsubscribe from the listener when the component unmounts
         return () => unsubscribe();
     }, [db]);
+// ===========
+    const handleNavigate = (project) => {
+        navigate('/singleHome', { state: { project } });
+    };
 
     return (
         <div>
@@ -51,8 +60,7 @@ const ChildernHome = () => {
 
                         </div>
                         <div className={styles.actions}>
-
-                            <span className={styles.donate_button}>Donate</span>
+                        <button className={styles.donate_button} onClick={() => handleNavigate(project)}>Donate</button>
                         </div>
                     </div>
                 ))}
